@@ -1,8 +1,12 @@
 <script>
-    import barcode from '$lib/assets/images/barcode-kortrijk-belgium.svg?raw';
+    import barcode from '$lib/assets/images/2.svg?raw';
+    import RandomImageGrid from "$lib/common/RandomImageGrid.svelte";
     // import {onMount} from "svelte";
 </script>
 <div class="min-h-screen w-full flex flex-col items-center justify-center bg-surface">
+    <div class="h-screen w-full overflow-hidden absolute top-0">
+        <RandomImageGrid/>
+    </div>
     <div class="h-screen w-[375px] bg-surface relative flex flex-col">
         <div class="h-1/2 w-full flex flex-col justify-center items-end relative">
             <div class="absolute top-12 right-[22px] flex flex-row items-center justify-center gap-3 pr-3 z-[100]">
@@ -23,20 +27,23 @@
             <p class="brand-font font-[400] z-[2] text-on-surface text-[10rem] leading-[8.125rem]">FALAK</p>
             <p class="brand-font text-on-surface text-[10rem] leading-[8.25rem]">FESTIVAL</p>
         </div>
-        <div class="h-[30%] w-full absolute bottom-0 px-8 items-center flex flex-row justify-center gap-1 pb-10">
-            <div class="h-full w-fit relative flex flex-col items-end justify-end">
-                {@html barcode}
-            </div>
-            <div class="h-full w-fit flex flex-col items-center justify-end">
-                <p class="regular-font text-on-surface">2024</p>
-                <div class="bg-on-surface text-surface px-3 py-2 regular-font">FLK</div>
+        <div class="h-[30%] w-full absolute bottom-0 px-8 items-center flex flex-col justify-center gap-1 pb-10">
+            <p class="regular-font text-on-surface text-[16px]">FASTEN YOUR SEATBELTS!</p>
+            <div class="h-full w-full flex flex-row justify-center gap-1">
+                <div class="h-full w-fit relative flex flex-col items-end justify-end">
+                    {@html barcode}
+                </div>
+                <div class="h-full w-fit flex flex-col items-center justify-end">
+                    <p class="regular-font text-on-surface">2024</p>
+                    <div class="bg-on-surface text-surface px-3 py-2 regular-font">FLK</div>
+                </div>
             </div>
         </div>
         <!--        <div class="absolute top-0 h-[20px] w-full bg-primary"></div>-->
         <!--        <div class="absolute bottom-0 h-[20px] w-full bg-primary"></div>-->
         <div class="absolute right-0 top-0 h-[33vh] w-[20px] bg-primary"></div>
         <div class="absolute left-0 top-0 h-[33vh] w-[20px] bg-primary"></div>
-        <p class="absolute left-[20px] top-6 regular-font text-[16px] font-thin rotate-180"
+        <p class="absolute left-[20px] top-6 regular-font text-[16px] font-thin rotate-180 text-on-surface"
            style="writing-mode: vertical-rl;">DEPARTURE</p>
         <div class="absolute left-0 bottom-0 min-h-[30vh] max-h-[40vh] w-[20px] bg-primary"></div>
         <div class="absolute right-0 bottom-0 min-h-[30vh] max-h-[40vh] w-[20px] bg-primary"></div>
