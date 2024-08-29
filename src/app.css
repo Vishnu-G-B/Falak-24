@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "PPNeue Montreal";
+    src: url(./lib/assets/fonts/GT-Flexa-X-Compressed-Bold-Trial.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "PPEditorial New";
+    src: url(./lib/assets/fonts/GT-Planar-Regular-Trial.otf) format("opentype");
+}
+
+.brand-font {
+    font-family: "PPNeue Montreal";
+}
+
+.regular-font {
+    font-family: "PPEditorial New";
+}
+
