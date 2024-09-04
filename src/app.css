@@ -12,6 +12,21 @@
     src: url(./lib/assets/fonts/GT-Planar-Regular-Trial.otf) format("opentype");
 }
 
+@font-face {
+    font-family: "TripSans";
+    src: url(./lib/assets/fonts/TripSans-Ultra.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "canopee";
+    src: url(./lib/assets/fonts/Canopee_Regular.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "PPEditorial";
+    src: url(./lib/assets/fonts/PPEditorialNew-Regular.otf) format("opentype");
+}
+
 .brand-font {
     font-family: "PPNeue Montreal";
 }

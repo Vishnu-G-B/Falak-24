@@ -2,7 +2,9 @@
     import barcode from '$lib/assets/images/2.svg?raw';
     import RandomImageGrid from "$lib/common/RandomImageGrid.svelte";
     import {gsap} from "gsap/dist/gsap";
+    import {toggleNavbar} from "$lib/stores/navStore.js";
     import {TextPlugin} from "gsap/dist/TextPlugin";
+    import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     import {onMount} from "svelte";
     import {goto} from "$app/navigation";
     import image from "$lib/assets/images/1.jpg";
@@ -10,11 +12,10 @@
     import image2 from "$lib/assets/images/2.jpg";
     import {loaderPlayed} from "../store.js";
     import logo from "$lib/assets/images/logo_inverted.svg?raw";
-    // import {onMount} from "svelte";
 
     onMount(() => {
         if(!$loaderPlayed) {
-            gsap.registerPlugin(TextPlugin);
+            gsap.registerPlugin(TextPlugin, ScrollTrigger);
             let loaderTimeline = gsap.timeline({
                 onComplete: () => {
                     $loaderPlayed = true;
@@ -80,8 +81,34 @@
                 display: 'none',
             })
         }
+        let scrollAnimTimeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.scrollAnimParent',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 1,
+            }
+        });
+        let scrollController = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.scrollAnimParent',
+                start: 'top -110%',
+                end: 'top -200%',
+                scrub: 1,
+            }
+        });
+
+        scrollAnimTimeline.to(".scrollAnim", {
+            translateZ: "50em",
+        });
+
+        scrollController.to('.scrollAnim',
+            {
+                opacity: 0,
+            })
     })
 </script>
+
 <!--LOADER-->
 <div class="h-screen w-full fixed top-0 bg-on-surface z-[200] loader">
     <div class="h-full w-full flex flex-col items-center justify-center">
@@ -125,7 +152,9 @@
                     Tickets
                     <div class="absolute bottom-0 right-0 bg-surface"></div>
                 </button>
-                <button on:click={() => {window.toggleMenu()}} class="text-xl text-on-surface regular-font tracking-tight">Menu</button>
+                <button class="text-xl text-on-surface regular-font tracking-tight"
+                        on:click={toggleNavbar}>Menu
+                </button>
             </div>
             <time class="leading-none px-5 h-fit w-full grid grid-cols-12 pb-4" datetime="2024-10-04">
                 <span class="brand-font translate-y-[0.08em] col-span-3 text-right text-[3.75rem] text-on-surface font-thin leading-[60px]">04</span>
@@ -134,8 +163,32 @@
             </time>
         </div>
         <div class="h-fit w-full absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 flex flex-col items-start justify-center">
-            <p class="brand-font font-[400] z-[2] text-on-surface text-[10rem] leading-[8.125rem]">FALAK</p>
-            <p class="brand-font text-on-surface text-[10rem] leading-[8.25rem]">FESTIVAL</p>
+            <!--            <p class="brand-font font-[400] z-[2] text-on-surface text-[10rem] leading-[8.125rem]">FALAK</p>-->
+            <!--            <p class="brand-font text-on-surface text-[10rem] leading-[8.25rem]">FESTIVAL</p>-->
+            <!--            <div class="content h-[8rem] w-full -mt-32">-->
+            <!--                <p class="absolute brand-font font-[400] z-[2] text-on-surface text-[10rem] leading-[8.125rem]">-->
+            <!--                    FALAK-->
+            <!--                </p>-->
+            <!--                <p class="absolute brand-font text-on-surface text-[10rem] leading-[8.25rem]">-->
+            <!--                    FALAK-->
+            <!--                </p>-->
+            <!--            </div>-->
+            <!--            <div class="content w-full">-->
+            <!--                <p class="absolute brand-font font-[400] z-[2] text-on-surface text-[10rem] leading-[8.125rem]">-->
+            <!--                    FESTIVAL-->
+            <!--                </p>-->
+            <!--                <p class="absolute brand-font text-on-surface text-[10rem] leading-[8.25rem]">-->
+            <!--                    FESTIVAL-->
+            <!--                </p>-->
+            <!--            </div>-->
+            <div class="content h-[15rem] w-full">
+                <p class="absolute brand-font font-[400] z-[2] text-on-surface text-[10rem] leading-[8.125rem]">
+                    FALAK <br> FESTIVAL
+                </p>
+                <p class="absolute brand-font text-on-surface text-[10rem] leading-[8.25rem]">
+                    FALAK <br> FESTIVAL
+                </p>
+            </div>
         </div>
         <div class="h-[30%] w-full absolute bottom-0 px-8 items-center flex flex-col justify-center gap-1 pb-10">
             <p class="regular-font text-on-surface text-[16px]">FASTEN YOUR SEATBELTS!</p>
@@ -158,5 +211,66 @@
         <div class="absolute left-0 bottom-0 min-h-[30vh] max-h-[40vh] w-[20px] bg-primary"></div>
         <div class="absolute right-0 bottom-0 min-h-[30vh] max-h-[40vh] w-[20px] bg-primary"></div>
     </div>
-    <div class="h-screen w-full bg-pink-600"></div>
 </div>
+
+<div class="scrollAnimParent h-[300vh] w-full bg-surface relative" style="perspective: 800px;">
+    <div class="h-screen w-full sticky top-0 " style="perspective: 800px;">
+        <div class="h-fit w-fit p-2 absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2
+                font-tripSans text-on-surface text-center text-9xl">
+            Cultural
+        </div>
+        <div class="scrollAnim h-[6.25rem] w-[18.75rem] bg-primary absolute left-[45%] top-1/3 rounded
+                border-2 border-on-surface border-solid
+                transform -translate-x-1/2 -translate-y-1/2
+                flex justify-center items-center text-center">
+            Button Rotate
+        </div>
+        <div class="scrollAnim h-[19rem] w-[12rem] bg-primary absolute left-3/4 top-1/3 rounded
+                border-2 border-on-surface border-solid
+                transform -translate-x-1/2 -translate-y-1/2
+                flex justify-center items-center text-center">
+            Image Vertical
+        </div>
+        <div class="scrollAnim h-[12.5rem] w-[20.625rem] bg-primary absolute left-2/4 top-2/3 rounded
+                border-2 border-on-surface border-solid
+                transform -translate-x-1/2 -translate-y-1/2
+                flex justify-center items-center text-center">
+            Image Horizontal
+        </div>
+    </div>
+</div>
+
+<style>
+    .content {
+        position: relative;
+    }
+
+    .content p:nth-child(1) {
+        color: transparent;
+        -webkit-text-stroke: 2px #F5FFFA;
+    }
+
+    .content p:nth-child(2) {
+        color: #F5FFFA;
+        animation: animate 3s ease-in-out infinite;
+    }
+
+    @keyframes animate {
+        0%,
+        100% {
+            clip-path: polygon(
+                    0% 65%, /* Moved up */ 16% 60%, /* Moved up */ 33% 70%, /* Moved down */ 54% 65%, /* Moved up */ 70% 75%, /* Moved down */ 84% 62%, /* Moved up */ 100% 70%, /* Moved down */ 100% 100%,
+                    0% 100%
+            );
+        }
+
+        50% {
+            clip-path: polygon(
+                    0% 75%, /* Moved down */ 15% 80%, /* Moved down */ 34% 70%, /* Moved up */ 51% 75%, /* Moved down */ 67% 65%, /* Moved up */ 84% 78%, /* Moved down */ 100% 70%, /* Moved up */ 100% 100%,
+                    0% 100%
+            );
+        }
+    }
+
+
+</style>
