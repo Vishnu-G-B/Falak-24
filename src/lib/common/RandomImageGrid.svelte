@@ -1,5 +1,5 @@
 <script>
-    import {gsap} from 'gsap';
+    import {gsap} from 'gsap/dist/gsap.js';
     import {onMount} from "svelte";
     import imagesLoaded from "imagesloaded";
 
@@ -147,10 +147,6 @@
                 <div class="grid__item-img" style="background-image:url(src/lib/assets/images/10.jpg);"></div>
             </div>
         </div>
-        <h2 class="content__title no-select">
-            <span>Grip</span>
-            <span class="content__title-sub">tapes</span>
-        </h2>
     </div>
 </main>
 
