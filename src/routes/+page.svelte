@@ -12,7 +12,6 @@
     import image2 from "$lib/assets/images/2.jpg";
     import {loaderPlayed} from "../store.js";
     import logo from "$lib/assets/images/logo_inverted.svg?raw";
-    import AICanvasClaude from "$lib/common/AICanvasClaude.svelte";
     import AICanvasClaude2 from "$lib/common/AICanvasClaude2.svelte";
 
     onMount(() => {

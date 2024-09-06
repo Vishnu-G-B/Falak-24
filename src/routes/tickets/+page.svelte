@@ -16,25 +16,28 @@
             name: 'Battle Of Bands',
             price: 1000,
         }
-    ]
+    ];
+    let currentIndex = 1;
 
     onMount(() => {
-        let carouselTimeline = gsap.timeline();
-        // carouselTimeline.to('.carousel-2', {
-        //     translateX: '0%',
-        //     translateY: '0%',
-        //     rotate: '0deg',
-        // });
-        // carouselTimeline.to('.carousel-1', {
-        //     translateX: '105%',
-        //     translateY: '20%',
-        //     rotate: '12deg',
-        // }, '<');
     })
+
+    function getTranslatePercentage() {
+        const transformValue = window.getComputedStyle(document.getElementsByClassName('carousel-1')[0]).transform;
+        const w = window.getComputedStyle(document.getElementsByClassName('carousel-1')[0]).width;
+        var matrix = new WebKitCSSMatrix(transformValue);
+      
+        return matrix.m41/parseInt(w)*100;
+      }
+
+    function slideRight() {
+        let slideRightTimeline = gsap.timeline();
+        getTranslatePercentage()
+    }
 </script>
 
 <div class="min-h-screen w-full flex flex-row flex-shrink-0 items-center justify-center gap-2 relative">
-    <div class="h-fit w-fit absolute carousel-1 z-[{culturalPasses.length + 2}]">
+    <div class="h-fit w-fit absolute carousel-1 z-[{culturalPasses.length + 2}]" on:click={() => {slideRight()}}>
         <Ticket mainTitle="CULTURAL" isPassHeading="{false}" showBuyButton="{false}"/>
     </div>
     {#each culturalPasses as cultrualTicket, index}
