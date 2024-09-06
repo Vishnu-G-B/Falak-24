@@ -1,5 +1,5 @@
 <script>
-    import barcode from '$lib/assets/images/2.svg?raw';
+    import barcode from '$lib/assets/images/updated_2.svg?raw';
     import RandomImageGrid from "$lib/common/RandomImageGrid.svelte";
     import {gsap} from "gsap/dist/gsap";
     import {toggleNavbar} from "$lib/stores/navStore.js";
@@ -12,6 +12,8 @@
     import image2 from "$lib/assets/images/2.jpg";
     import {loaderPlayed} from "../store.js";
     import logo from "$lib/assets/images/logo_inverted.svg?raw";
+    import AICanvasClaude from "$lib/common/AICanvasClaude.svelte";
+    import AICanvasClaude2 from "$lib/common/AICanvasClaude2.svelte";
 
     onMount(() => {
         if(!$loaderPlayed) {
@@ -136,15 +138,12 @@
 </div>
 
 <div class="min-h-screen w-full flex flex-col items-center justify-center bg-surface main-content">
-
-    <div class="h-screen w-full overflow-hidden absolute top-0">
-        <RandomImageGrid/>
+    <div class="h-screen w-full absolute top-0 overflow-hidden">
+<!--        <RandomImageGrid/>-->
+<!--        <AICanvasClaude />-->
+        <AICanvasClaude2 />
     </div>
-
     <div class="h-screen w-[375px] bg-surface relative flex flex-col">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[2.75rem] w-full">
-            {@html logo}
-        </div>
         <div class="h-1/2 w-full flex flex-col justify-center items-end relative">
             <div class="absolute top-12 right-[22px] flex flex-row items-center justify-center gap-3 pr-3 z-[100]">
                 <button class="bg-on-surface text-surface relative regular-font text-xl text-center py-1.5 corner-br px-5 hover:bg-primary hover:text-on-surface duration-300 ease-in transition-all"
@@ -214,7 +213,7 @@
 </div>
 
 <div class="scrollAnimParent h-[300vh] w-full bg-surface relative" style="perspective: 800px;">
-    <div class="h-screen w-full sticky top-0 " style="perspective: 800px;">
+    <div class="h-screen w-full sticky top-0 overflow-hidden" style="perspective: 800px;">
         <div class="h-fit w-fit p-2 absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2
                 font-tripSans text-on-surface text-center text-9xl">
             Cultural
