@@ -7,7 +7,7 @@ export default {
                 "surface": '#1c1c1a',
                 "on-surface": "#F5FFFA",
                 "primary": "#0156cf",
-                "somethinf": "#191970"
+                "somethinf": "#000000"
             },
             fontFamily: {
                 tripSans: ["TripSans", "sans-serif"],

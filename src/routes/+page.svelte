@@ -15,7 +15,8 @@
     import AICanvasClaude2 from "$lib/common/AICanvasClaude2.svelte";
 
     onMount(() => {
-        if(!$loaderPlayed) {
+        const vh = (coef) => window.innerHeight * (coef / 100);
+        if (!$loaderPlayed) {
             gsap.registerPlugin(TextPlugin, ScrollTrigger);
             let loaderTimeline = gsap.timeline({
                 onComplete: () => {
@@ -82,31 +83,107 @@
                 display: 'none',
             })
         }
-        let scrollAnimTimeline = gsap.timeline({
+        // Content Showcase timelines
+
+        // STAGE 1 Timelines
+        let scrollAnimStage1 = gsap.timeline({
             scrollTrigger: {
+                markers: false,
+                id: "stage1",
                 trigger: '.scrollAnimParent',
                 start: 'top top',
+                end: 'top+=' + vh(150) + ' top',
+                scrub: 1,
+            }
+        });
+
+        scrollAnimStage1
+            .to(".scrollAnimStage1", {
+                opacity: 1,
+                duration: 0.2,
+                ease: "power2.inOut"
+            })
+            .to(".scrollAnimStage1", {
+                translateZ: "50em",
+            }, "<");
+
+        let scrollControllerStage1 = gsap.timeline({
+            scrollTrigger: {
+                markers: false,
+                id: "scrollController",
+                trigger: '.scrollStage1Parent',
+                start: 'bottom 20%',
                 end: 'bottom top',
                 scrub: 1,
             }
         });
-        let scrollController = gsap.timeline({
+
+        scrollControllerStage1
+            .to('.scrollAnimStage1', {
+                opacity: 0,
+                duration: 0.2,
+            })
+            .to(".sectionTextStage1", {
+                translateY: "-100%",
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.inOut"
+            }, "<")
+
+            .to(".sectionTextStage2", {
+                translateY: "0%",
+                opacity: 1,
+                duration: 0.8,
+                ease: "power2.inOut"
+            }, "<")
+
+
+        // STAGE 2 Timelines
+
+        let scrollAnimStage2 = gsap.timeline({
             scrollTrigger: {
+                markers: false,
+                id: "stage2",
                 trigger: '.scrollAnimParent',
-                start: 'top -110%',
-                end: 'top -200%',
+                start: 'top+=' + vh(100.1) + ' top',
+                end: 'top+=' + vh(250) + ' top',
                 scrub: 1,
             }
         });
 
-        scrollAnimTimeline.to(".scrollAnim", {
-            translateZ: "50em",
+        scrollAnimStage2
+            .to(".scrollAnimStage2", {
+                opacity: 1,
+                duration: 0.2,
+                ease: "power2.inOut"
+            }, "<")
+            .to(".scrollAnimStage2", {
+                translateZ: "50em",
+            }, "<");
+
+        let scrollControllerStage2 = gsap.timeline({
+            scrollTrigger: {
+                markers: false,
+                id: "scrollController2",
+                trigger: ".scrollStage2Parent",
+                start: 'bottom 20%',
+                end: 'bottom top',
+                scrub: 1,
+            }
         });
 
-        scrollController.to('.scrollAnim',
-            {
+        scrollControllerStage2
+            .to(".scrollAnimStage2", {
                 opacity: 0,
+                duration: 0.2,
             })
+            .to(".sectionTextStage2", {
+                translateY: "-100%",
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.inOut"
+            }, "<+=0.2");
+
     })
 </script>
 
@@ -136,6 +213,7 @@
     </div>
 </div>
 
+<!-- Landing Page -->
 <div class="min-h-screen w-full flex flex-col items-center justify-center bg-surface main-content">
     <div class="h-screen w-full absolute top-0 overflow-hidden">
 <!--        <RandomImageGrid/>-->
@@ -146,7 +224,8 @@
         <div class="h-1/2 w-full flex flex-col justify-center items-end relative">
             <div class="absolute top-12 right-[22px] flex flex-row items-center justify-center gap-3 pr-3 z-[100]">
                 <button class="bg-on-surface text-surface relative regular-font text-xl text-center py-1.5 corner-br px-5 hover:bg-primary hover:text-on-surface duration-300 ease-in transition-all"
-                        style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);" on:click={() => {goto('/testing')}}>
+                        style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);"
+                        on:click={() => {goto('/testing')}}>
                     Tickets
                     <div class="absolute bottom-0 right-0 bg-surface"></div>
                 </button>
@@ -211,32 +290,65 @@
     </div>
 </div>
 
-<div class="scrollAnimParent h-[300vh] w-full bg-surface relative" style="perspective: 800px;">
-    <div class="h-screen w-full sticky top-0 overflow-hidden" style="perspective: 800px;">
+<!-- Content Showcase -->
+<div class="scrollAnimParent h-[350vh] w-full bg-surface relative" style="perspective: 800px;">
+    <div class="scrollStage1Parent h-screen w-full sticky top-0 overflow-hidden"
+         style="perspective: 800px;">
         <div class="h-fit w-fit p-2 absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2
-                font-tripSans text-on-surface text-center text-9xl">
-            Cultural
+                overflow-hidden">
+            <div class="sectionTextStage1 font-tripSans text-on-surface text-center text-9xl transform">
+                Cultural
+            </div>
         </div>
-        <div class="scrollAnim h-[6.25rem] w-[18.75rem] bg-primary absolute left-[45%] top-1/3 rounded
+        <div class="scrollAnimStage1 h-[6.25rem] w-[18.75rem] bg-primary absolute left-[45%] top-1/3 rounded
                 border-2 border-on-surface border-solid
-                transform -translate-x-1/2 -translate-y-1/2
+                transform -translate-x-1/2 -translate-y-1/2 opacity-0
                 flex justify-center items-center text-center">
             Button Rotate
         </div>
-        <div class="scrollAnim h-[19rem] w-[12rem] bg-primary absolute left-3/4 top-1/3 rounded
+        <div class="scrollAnimStage1 h-[19rem] w-[12rem] bg-primary absolute left-3/4 top-1/3 rounded
                 border-2 border-on-surface border-solid
-                transform -translate-x-1/2 -translate-y-1/2
+                transform -translate-x-1/2 -translate-y-1/2 opacity-0
                 flex justify-center items-center text-center">
             Image Vertical
         </div>
-        <div class="scrollAnim h-[12.5rem] w-[20.625rem] bg-primary absolute left-2/4 top-2/3 rounded
+        <div class="scrollAnimStage1 h-[12.5rem] w-[20.625rem] bg-primary absolute left-2/4 top-[68%] rounded
                 border-2 border-on-surface border-solid
-                transform -translate-x-1/2 -translate-y-1/2
+                transform -translate-x-1/2 -translate-y-1/2 opacity-0
                 flex justify-center items-center text-center">
             Image Horizontal
         </div>
     </div>
+    <div class="scrollStage2Parent h-screen w-full sticky top-0 overflow-hidden"
+         style="perspective: 800px;">
+        <div class="h-fit w-fit p-2 absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2
+                        overflow-hidden">
+            <div class="sectionTextStage2 font-tripSans text-on-surface text-center text-9xl
+                        transform translate-y-full opacity-0">
+                Sports
+            </div>
+        </div>
+        <div class="scrollAnimStage2 h-[6.25rem] w-[18.75rem] bg-primary absolute left-[45%] top-1/3 rounded
+                        border-2 border-on-surface border-solid
+                        transform -translate-x-1/2 -translate-y-1/2 opacity-0
+                        flex justify-center items-center text-center">
+            Button Rotate
+        </div>
+        <div class="scrollAnimStage2 h-[19rem] w-[12rem] bg-primary absolute left-3/4 top-1/3 rounded
+                        border-2 border-on-surface border-solid
+                        transform -translate-x-1/2 -translate-y-1/2 opacity-0
+                        flex justify-center items-center text-center">
+            Image Vertical
+        </div>
+        <div class="scrollAnimStage2 h-[12.5rem] w-[20.625rem] bg-primary absolute left-2/4 top-[68%] rounded
+                        border-2 border-on-surface border-solid
+                        transform -translate-x-1/2 -translate-y-1/2 opacity-0
+                        flex justify-center items-center text-center">
+            Image Horizontal
+        </div>
+    </div>
 </div>
+<!--<div class="h-screen w-full bg-surface"></div>-->
 
 <style>
     .content {
