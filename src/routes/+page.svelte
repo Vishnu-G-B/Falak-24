@@ -100,7 +100,7 @@
         scrollAnimStage1
             .to(".scrollAnimStage1", {
                 opacity: 1,
-                duration: 0.2,
+                duration: 0.1,
                 ease: "power2.inOut"
             })
             .to(".scrollAnimStage1", {
@@ -136,6 +136,11 @@
                 duration: 0.8,
                 ease: "power2.inOut"
             }, "<")
+            .to(".scrollAnimParent", {
+                backgroundColor: "#BEB7A4",
+                duration: 0.5,
+                ease: "power2.inOut",
+            }, "<")
 
 
         // STAGE 2 Timelines
@@ -154,7 +159,7 @@
         scrollAnimStage2
             .to(".scrollAnimStage2", {
                 opacity: 1,
-                duration: 0.2,
+                duration: 0.1,
                 ease: "power2.inOut"
             }, "<")
             .to(".scrollAnimStage2", {
@@ -182,43 +187,100 @@
                 opacity: 0,
                 duration: 0.8,
                 ease: "power2.inOut"
+            }, "<+=0.2")
+            .to(".sectionTextStage3", {
+                translateY: "0%",
+                opacity: 1,
+                duration: 0.8,
+                ease: "power2.inOut"
+            }, "<")
+            .to(".scrollAnimParent", {
+                backgroundColor: "#2D898B",
+                duration: 0.5,
+                ease: "power2.inOut",
+            }, "<")
+
+        // STAGE 3 Timelines
+
+        let scrollAnimStage3 = gsap.timeline({
+            scrollTrigger: {
+                markers: false,
+                id: "stage2",
+                trigger: '.scrollAnimParent',
+                start: 'top+=' + vh(200.1) + ' top',
+                end: 'top+=' + vh(350) + ' top',
+                scrub: 1,
+            }
+        });
+
+        scrollAnimStage3
+            .to(".scrollAnimStage3", {
+                opacity: 1,
+                duration: 0.1,
+                ease: "power2.inOut"
+            }, "<")
+            .to(".scrollAnimStage3", {
+                translateZ: "50em",
+            }, "<");
+
+        let scrollControllerStage3 = gsap.timeline({
+            scrollTrigger: {
+                markers: false,
+                id: "scrollController3",
+                trigger: ".scrollStage3Parent",
+                start: 'bottom 20%',
+                end: 'bottom top',
+                scrub: 1,
+            }
+        });
+
+        scrollControllerStage3
+            .to(".scrollAnimStage3", {
+                opacity: 0,
+                duration: 0.2,
+            })
+            .to(".sectionTextStage3", {
+                translateY: "-100%",
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.inOut"
             }, "<+=0.2");
 
     })
 </script>
 
 <!--LOADER-->
-<div class="h-screen w-full fixed top-0 bg-on-surface z-[200] loader">
-    <div class="h-full w-full flex flex-col items-center justify-center">
-        <div class="h-[350px] w-full relative flex flex-col items-center justify-end">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image scale-0">
-                <img src="{image}" alt="" class="h-full w-full object-cover">
-            </div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image scale-0">
-                <img src="{image1}" alt="" class="h-full w-full object-cover">
-            </div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image scale-0">
-                <img src="{image2}" alt="" class="h-full w-full object-cover">
-            </div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image z-[4] scale-0">
-                <img src="{image}" alt="" class="h-full w-full object-cover">
-            </div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image z-[5] scale-0">
-                <img src="{image1}" alt="" class="h-full w-full object-cover">
-            </div>
-        </div>
-        <div class="h-fit w-full overflow-hidden flex flex-col items-center">
-            <p class="text-xl regular-font text-surface loader-text mt-14">Loading...</p>
-        </div>
-    </div>
-</div>
+<!--<div class="h-screen w-full fixed top-0 bg-on-surface z-[200] loader">-->
+<!--    <div class="h-full w-full flex flex-col items-center justify-center">-->
+<!--        <div class="h-[350px] w-full relative flex flex-col items-center justify-end">-->
+<!--            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image scale-0">-->
+<!--                <img src="{image}" alt="" class="h-full w-full object-cover">-->
+<!--            </div>-->
+<!--            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image scale-0">-->
+<!--                <img src="{image1}" alt="" class="h-full w-full object-cover">-->
+<!--            </div>-->
+<!--            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image scale-0">-->
+<!--                <img src="{image2}" alt="" class="h-full w-full object-cover">-->
+<!--            </div>-->
+<!--            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image z-[4] scale-0">-->
+<!--                <img src="{image}" alt="" class="h-full w-full object-cover">-->
+<!--            </div>-->
+<!--            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image z-[5] scale-0">-->
+<!--                <img src="{image1}" alt="" class="h-full w-full object-cover">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="h-fit w-full overflow-hidden flex flex-col items-center">-->
+<!--            <p class="text-xl regular-font text-surface loader-text mt-14">Loading...</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <!-- Landing Page -->
 <div class="min-h-screen w-full flex flex-col items-center justify-center bg-surface main-content">
     <div class="h-screen w-full absolute top-0 overflow-hidden">
-<!--        <RandomImageGrid/>-->
-<!--        <AICanvasClaude />-->
-        <AICanvasClaude2 />
+        <!--        <RandomImageGrid/>-->
+        <!--        <AICanvasClaude />-->
+        <AICanvasClaude2/>
     </div>
     <div class="h-screen w-[375px] bg-surface relative flex flex-col">
         <div class="h-1/2 w-full flex flex-col justify-center items-end relative">
@@ -291,7 +353,7 @@
 </div>
 
 <!-- Content Showcase -->
-<div class="scrollAnimParent h-[350vh] w-full bg-surface relative" style="perspective: 800px;">
+<div class="scrollAnimParent h-[400vh] w-full bg-surface relative" style="perspective: 800px;">
     <div class="scrollStage1Parent h-screen w-full sticky top-0 overflow-hidden"
          style="perspective: 800px;">
         <div class="h-fit w-fit p-2 absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2
@@ -341,6 +403,34 @@
             Image Vertical
         </div>
         <div class="scrollAnimStage2 h-[12.5rem] w-[20.625rem] bg-primary absolute left-2/4 top-[68%] rounded
+                        border-2 border-on-surface border-solid
+                        transform -translate-x-1/2 -translate-y-1/2 opacity-0
+                        flex justify-center items-center text-center">
+            Image Horizontal
+        </div>
+    </div>
+    <div class="scrollStage3Parent h-screen w-full sticky top-0 overflow-hidden"
+         style="perspective: 800px;">
+        <div class="h-fit w-fit p-2 absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2
+                        overflow-hidden">
+            <div class="sectionTextStage3 font-tripSans text-on-surface text-center text-9xl
+                        transform translate-y-full opacity-0">
+                Something
+            </div>
+        </div>
+        <div class="scrollAnimStage3 h-[6.25rem] w-[18.75rem] bg-primary absolute left-[45%] top-1/3 rounded
+                        border-2 border-on-surface border-solid
+                        transform -translate-x-1/2 -translate-y-1/2 opacity-0
+                        flex justify-center items-center text-center">
+            Button Rotate
+        </div>
+        <div class="scrollAnimStage3 h-[19rem] w-[12rem] bg-primary absolute left-3/4 top-1/3 rounded
+                        border-2 border-on-surface border-solid
+                        transform -translate-x-1/2 -translate-y-1/2 opacity-0
+                        flex justify-center items-center text-center">
+            Image Vertical
+        </div>
+        <div class="scrollAnimStage3 h-[12.5rem] w-[20.625rem] bg-primary absolute left-2/4 top-[68%] rounded
                         border-2 border-on-surface border-solid
                         transform -translate-x-1/2 -translate-y-1/2 opacity-0
                         flex justify-center items-center text-center">

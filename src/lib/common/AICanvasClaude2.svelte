@@ -5,8 +5,8 @@
     let ctx;
     let planes = [];
     const numPlanes = 20;
-    const trailLength = 10000000;
-    const speedMultiplier = 1.3; // Adjust this value to control the overall speed
+    const trailLength = 1000;
+    const speedMultiplier = 0.8; // Adjust this value to control the overall speed
 
     // Configurable label size
     const labelWidth = 50;
@@ -26,8 +26,8 @@
         return {
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 2 * speedMultiplier,
-            vy: (Math.random() - 0.5) * 2 * speedMultiplier,
+            vx: (Math.random() - 0.5) * speedMultiplier,
+            vy: (Math.random() - 0.5) * speedMultiplier,
             trail: [],
             name: name
         };
@@ -43,7 +43,7 @@
         if (plane.y <= 0 || plane.y >= canvas.height) plane.vy *= -1;
 
         // Update trail
-        plane.trail.push({ x: plane.x, y: plane.y });
+        plane.trail.push({x: plane.x, y: plane.y});
         if (plane.trail.length > trailLength) plane.trail.shift();
     }
 
