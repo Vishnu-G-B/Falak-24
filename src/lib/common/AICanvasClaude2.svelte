@@ -5,8 +5,8 @@
     let ctx;
     let planes = [];
     const numPlanes = 20;
-    const trailLength = 1000;
-    const speedMultiplier = 0.8; // Adjust this value to control the overall speed
+    const trailLength = 10000;
+    const speedMultiplier = 0.3; // Adjust this value to control the overall speed
 
     // Configurable label size
     const labelWidth = 50;

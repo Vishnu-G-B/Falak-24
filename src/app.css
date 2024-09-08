@@ -47,6 +47,10 @@ html.lenis, html.lenis body {
     src: url(./lib/assets/fonts/PPEditorialNew-Regular.otf) format("opentype");
 }
 
+.another-font {
+    font-family: "canopee";
+}
+
 .brand-font {
     font-family: "PPNeue Montreal";
 }
@@ -57,4 +61,35 @@ html.lenis, html.lenis body {
 
 body {
     background-color: #1c1c1a;
+}
+
+ .content {
+     position: relative;
+ }
+
+.content p:nth-child(1) {
+    color: transparent;
+    -webkit-text-stroke: 2px #F5FFFA;
+}
+
+.content p:nth-child(2) {
+    color: #F5FFFA;
+    animation: animate 3s ease-in-out infinite;
+}
+
+@keyframes animate {
+    0%,
+    100% {
+        clip-path: polygon(
+                0% 65%, /* Moved up */ 16% 60%, /* Moved up */ 33% 70%, /* Moved down */ 54% 65%, /* Moved up */ 70% 75%, /* Moved down */ 84% 62%, /* Moved up */ 100% 70%, /* Moved down */ 100% 100%,
+                0% 100%
+        );
+    }
+
+    50% {
+        clip-path: polygon(
+                0% 75%, /* Moved down */ 15% 80%, /* Moved down */ 34% 70%, /* Moved up */ 51% 75%, /* Moved down */ 67% 65%, /* Moved up */ 84% 78%, /* Moved down */ 100% 70%, /* Moved up */ 100% 100%,
+                0% 100%
+        );
+    }
 }
