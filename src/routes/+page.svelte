@@ -6,9 +6,6 @@
     import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     import {onMount} from "svelte";
     import {goto} from "$app/navigation";
-    import image from "$lib/assets/images/1.jpg";
-    import image1 from "$lib/assets/images/3.jpg";
-    import image2 from "$lib/assets/images/2.jpg";
     import {loaderPlayed} from "../store.js";
     import AICanvasClaude2 from "$lib/common/AICanvasClaude2.svelte";
 
@@ -307,12 +304,12 @@
     <div class="h-full w-full flex flex-col items-center justify-center relative">
         <div class="h-fit w-fit overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <p class="text-9xl text-on-surface brand-font flex flex-row items-center justify-center">
-                <span class="loader-page-heading-1 keep-stroke italic -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">U</span><span
-                class="loader-page-heading-1 keep-stroke italic -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">N</span><span
-                class="loader-page-heading-1 keep-stroke italic -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">I</span><span
-                class="loader-page-heading-1 keep-stroke italic -translate-y-[800px] -translate-x-[80%] -rotate-[45deg]">T</span><span
-                class="loader-page-heading-1 keep-stroke italic -translate-y-[1000px] -translate-x-[80%] -rotate-[45deg]">E</span>
-                <span class="loader-page-heading-1 -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">&nbsp;&nbsp;C</span>
+                <span class="loader-page-heading-1 keep-stroke -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">U</span><span
+                    class="loader-page-heading-1 keep-stroke -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">N</span><span
+                    class="loader-page-heading-1 keep-stroke -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">I</span><span
+                    class="loader-page-heading-1 keep-stroke -translate-y-[800px] -translate-x-[80%] -rotate-[45deg]">T</span><span
+                    class="loader-page-heading-1 keep-stroke -translate-y-[1000px] -translate-x-[80%] -rotate-[45deg]">E</span>
+                <span class="loader-page-heading-1 -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">&nbsp;C</span>
                 <span class="loader-page-heading-1 -translate-y-[1600px] -translate-x-[80%] -rotate-[45deg]">U</span><span
                     class="loader-page-heading-1 -translate-y-[1800px] -translate-x-[80%] -rotate-[45deg]">L</span>
                 <span class="loader-page-heading-1 -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">T</span>
@@ -333,27 +330,27 @@
                     class="loader-page-heading-2 -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">A</span>
                 <span class="loader-page-heading-2 -translate-y-[1600px] -translate-x-[80%] -rotate-[45deg]">T</span><span
                     class="loader-page-heading-2 -translate-y-[1800px] -translate-x-[80%] -rotate-[45deg]">E</span>
-                <span class="loader-page-heading-2 keep-stroke italic -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">&nbsp;T</span>
-                <span class="loader-page-heading-2 keep-stroke italic -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">O</span>
-                <span class="loader-page-heading-2 keep-stroke italic -translate-y-[2200px] -translate-x-[80%] -rotate-[45deg]">G</span>
-                <span class="loader-page-heading-2 keep-stroke italic -translate-y-[2400px] -translate-x-[80%] -rotate-[45deg]">E</span>
-                <span class="loader-page-heading-2 keep-stroke italic -translate-y-[2600px] -translate-x-[80%] -rotate-[45deg]">T</span>
-                <span class="loader-page-heading-2 keep-stroke italic -translate-y-[2800px] -translate-x-[80%] -rotate-[45deg]">H</span>
-                <span class="loader-page-heading-2 keep-stroke italic -translate-y-[3000px] -translate-x-[80%] -rotate-[45deg]">E</span>
-                <span class="loader-page-heading-2 keep-stroke italic -translate-y-[3200px] -translate-x-[80%] -rotate-[45deg]">R</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">&nbsp;T</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">O</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[2200px] -translate-x-[80%] -rotate-[45deg]">G</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[2400px] -translate-x-[80%] -rotate-[45deg]">E</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[2600px] -translate-x-[80%] -rotate-[45deg]">T</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[2800px] -translate-x-[80%] -rotate-[45deg]">H</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[3000px] -translate-x-[80%] -rotate-[45deg]">E</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[3200px] -translate-x-[80%] -rotate-[45deg]">R</span>
             </p>
         </div>
         <div class="h-fit w-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <p class="text-9xl text-on-surface brand-font flex flex-row items-center justify-center">
-                <span class="loader-page-heading-3 keep-stroke italic -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">D</span><span
-                    class="loader-page-heading-3 keep-stroke italic -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">I</span><span
-                    class="loader-page-heading-3 keep-stroke italic -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">S</span><span
-                    class="loader-page-heading-3 keep-stroke italic -translate-y-[800px] -translate-x-[80%] -rotate-[45deg]">C</span><span
-                    class="loader-page-heading-3 keep-stroke italic -translate-y-[1000px] -translate-x-[80%] -rotate-[45deg]">O</span><span
-                    class="loader-page-heading-3 keep-stroke italic -translate-y-[1200px] -translate-x-[80%] -rotate-[45deg]">V</span><span
-                    class="loader-page-heading-3 keep-stroke italic -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">E</span>
-                <span class="loader-page-heading-3 keep-stroke italic -translate-y-[1600px] -translate-x-[80%] -rotate-[45deg]">R</span><span
-                    class="loader-page-heading-3 -translate-y-[1800px] -translate-x-[80%] -rotate-[45deg]">&nbsp;&nbsp;F</span>
+                <span class="loader-page-heading-3 keep-stroke -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">D</span><span
+                    class="loader-page-heading-3 keep-stroke -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">I</span><span
+                    class="loader-page-heading-3 keep-stroke -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">S</span><span
+                    class="loader-page-heading-3 keep-stroke -translate-y-[800px] -translate-x-[80%] -rotate-[45deg]">C</span><span
+                    class="loader-page-heading-3 keep-stroke -translate-y-[1000px] -translate-x-[80%] -rotate-[45deg]">O</span><span
+                    class="loader-page-heading-3 keep-stroke -translate-y-[1200px] -translate-x-[80%] -rotate-[45deg]">V</span><span
+                    class="loader-page-heading-3 keep-stroke -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">E</span>
+                <span class="loader-page-heading-3 keep-stroke -translate-y-[1600px] -translate-x-[80%] -rotate-[45deg]">R</span><span
+                    class="loader-page-heading-3 -translate-y-[1800px] -translate-x-[80%] -rotate-[45deg]">&nbsp;F</span>
                 <span class="loader-page-heading-3 -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">A</span>
                 <span class="loader-page-heading-3 -translate-y-[2200px] -translate-x-[80%] -rotate-[45deg]">L</span>
                 <span class="loader-page-heading-3 -translate-y-[2400px] -translate-x-[80%] -rotate-[45deg]">A</span>
@@ -441,7 +438,7 @@
             <!--            </div>-->
             <div class="content h-[15rem] w-full">
                 <p class="absolute brand-font font-[400] z-[2] text-on-surface text-[10rem] leading-[8.125rem]">
-                    FALAK <br> FESTIVAL
+                    FALAK <br> <span style="-webkit-text-stroke: 2px transparent;">FESTIVAL</span>
                 </p>
                 <p class="absolute brand-font text-on-surface text-[10rem] leading-[8.25rem]">
                     FALAK <br> FESTIVAL
@@ -569,7 +566,24 @@
     }
 
     .content p:nth-child(2) {
-        color: #F5FFFA;
+        color: transparent;
+        background: linear-gradient(
+                0deg,
+                hsl(215deg 99% 41%) 0%,
+                hsl(209deg 100% 43%) 11%,
+                hsl(204deg 100% 44%) 22%,
+                hsl(198deg 100% 44%) 33%,
+                hsl(192deg 100% 44%) 44%,
+                hsl(190deg 68% 56%) 56%,
+                hsl(185deg 56% 67%) 67%,
+                hsl(176deg 50% 77%) 78%,
+                hsl(164deg 53% 88%) 89%,
+                hsl(150deg 100% 98%) 100%
+        );
+        background-size: 50% 50%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        /*color: #F5FFFA;*/
         animation: animate 3s ease-in-out infinite;
     }
 

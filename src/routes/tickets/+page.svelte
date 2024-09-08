@@ -161,10 +161,10 @@
     <div class="h-screen w-full fixed top-0">
         <AICanvasClaude2/>
     </div>
-    <div class="brand-font text-[26vh] lg:text-[45vh] text-on-surface overflow-hidden h-fit w-fit flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div class="brand-font text-[26vh] sm:text-[40vh] xl:text-[45vh] text-on-surface overflow-hidden h-fit w-fit flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <div class="h-fit w-full flex flex-row items-center justify-between">
-            <p class="text-4xl regular-font cultural-pass-text-main"></p>
-            <p class="text-4xl regular-font sports-pass-text-main"></p>
+            <p class="text-xl lg:text-2xl xl:text-3xl regular-font cultural-pass-text-main"></p>
+            <p class="text-xl lg:text-2xl xl:text-3xl regular-font sports-pass-text-main"></p>
         </div>
         <div class="h-fit w-fit overflow-hidden flex flex-row items-center justify-center leading-[1]">
             <span class="main-page-heading -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">T</span><span
@@ -176,7 +176,7 @@
                 class="main-page-heading -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">S</span>
         </div>
         <div class="h-fit w-full flex flex-row items-center justify-center -mt-5">
-            <p class="text-4xl regular-font esports-pass-text-main"></p>
+            <p class="text-xl lg:text-2xl xl:text-3xl regular-font esports-pass-text-main"></p>
         </div>
     </div>
     <div class="h-screen w-full flex flex-col items-center justify-center relative cultural-tickets" style="perspective: 800px">
