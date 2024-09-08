@@ -10,7 +10,7 @@
     onMount(() => {
         gsap.registerPlugin(ScrollTrigger);
         const lenis = new Lenis({
-            lerp: 0.4,
+            lerp: 1,
         });
         lenis.on("scroll", ScrollTrigger.update);
         gsap.ticker.add((time) => {

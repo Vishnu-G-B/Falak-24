@@ -6,7 +6,7 @@
     let planes = [];
     const numPlanes = 20;
     const trailLength = 10000000;
-    const speedMultiplier = 0.3; // Adjust this value to control the overall speed
+    const speedMultiplier = 1.3; // Adjust this value to control the overall speed
 
     // Configurable label size
     const labelWidth = 50;

@@ -22,17 +22,25 @@
     onMount(() => {
     })
 
-    function getTranslatePercentage() {
-        const transformValue = window.getComputedStyle(document.getElementsByClassName('carousel-1')[0]).transform;
-        const w = window.getComputedStyle(document.getElementsByClassName('carousel-1')[0]).width;
+    function getTranslatePercentage(element) {
+        const transformValue = window.getComputedStyle(element).transform;
+        const w = window.getComputedStyle(element).width;
         var matrix = new WebKitCSSMatrix(transformValue);
-      
-        return matrix.m41/parseInt(w)*100;
-      }
+        const h = window.getComputedStyle(element).height;
+        return {
+            x: (matrix.m41 / parseInt(w)) * 100,
+            y: (matrix.m42 / parseInt(h)) * 100,
+        }
+    }
 
     function slideRight() {
+        // console.log(getTranslatePercentage())
         let slideRightTimeline = gsap.timeline();
-        getTranslatePercentage()
+        for (let i = 0; i < culturalPasses.length; i++) {
+            let tempEl = document.querySelector(`carousel-${i + 1}`)
+            console.log(typeof tempEl)
+            // getTranslatePercentage(tempEl)
+        }
     }
 </script>
 
