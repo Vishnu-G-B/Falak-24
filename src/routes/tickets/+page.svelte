@@ -179,7 +179,7 @@
             <p class="text-xl lg:text-2xl xl:text-3xl regular-font esports-pass-text-main"></p>
         </div>
     </div>
-    <div class="h-screen w-full flex flex-col items-center justify-center relative cultural-tickets" style="perspective: 800px">
+    <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets" style="perspective: 800px">
         <div class="w-full p-0 lg:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[25] flex items-center justify-between">
             <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl -translate-x-[100%] cultural-controller-left"
                     on:click={() => {slideLeft('cultural')}}>
@@ -203,7 +203,7 @@
             </div>
         {/each}
     </div>
-    <div class="h-screen w-full flex flex-col items-center justify-center relative cultural-tickets" style="perspective: 800px">
+    <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets" style="perspective: 800px">
         <div class="w-full p-0 lg:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[25] flex items-center justify-between">
             <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl sports-controller-left"
                     on:click={() => {slideLeft('sports')}}>
@@ -224,7 +224,7 @@
             </div>
         {/each}
     </div>
-    <div class="h-screen w-full flex flex-col items-center justify-center relative cultural-tickets" style="perspective: 800px">
+    <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets" style="perspective: 800px">
         <div class="w-full p-0 lg:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[25] flex items-center justify-between">
             <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl esports-controller-left"
                     on:click={() => {slideLeft('esports')}}>
