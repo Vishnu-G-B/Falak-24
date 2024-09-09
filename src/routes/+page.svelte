@@ -1,17 +1,12 @@
 <script>
     import barcode from '$lib/assets/images/updated_2.svg?raw';
-    import RandomImageGrid from "$lib/common/RandomImageGrid.svelte";
     import {gsap} from "gsap/dist/gsap";
     import {toggleNavbar} from "$lib/stores/navStore.js";
     import {TextPlugin} from "gsap/dist/TextPlugin";
     import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     import {onMount} from "svelte";
     import {goto} from "$app/navigation";
-    import image from "$lib/assets/images/1.jpg";
-    import image1 from "$lib/assets/images/3.jpg";
-    import image2 from "$lib/assets/images/2.jpg";
     import {loaderPlayed} from "../store.js";
-    import logo from "$lib/assets/images/logo_inverted.svg?raw";
     import AICanvasClaude2 from "$lib/common/AICanvasClaude2.svelte";
 
     onMount(() => {
@@ -22,63 +17,118 @@
                     $loaderPlayed = true;
                 }
             });
-            let loaderTextTimeline = gsap.timeline();
-            // loaderTimeline.pause();
-            // loaderTextTimeline.pause();
-
-            loaderTextTimeline.to('.loader-text', {
-                text: 'Cooking...',
-                duration: 1,
-                ease: 'none',
-            });
-            loaderTextTimeline.to('.loader-text', {
-                text: 'Baking...',
-                duration: 1,
-                ease: 'none',
-            });
-            loaderTextTimeline.to('.loader-text', {
-                text: 'Eating...',
-                duration: 1,
-                ease: 'none',
-            });
-            loaderTextTimeline.to('.loader-text', {
-                text: 'Loading...',
-                duration: 1,
-                ease: 'none',
-            });
-
-            loaderTimeline.to('.loader-image', {
-                scale: 1,
-                duration: 0.35,
-                ease: 'expoScale(0.5,7,none)',
-                stagger: 1,
-            })
-            loaderTimeline.to('.loader-image', {
-                yPercent: -80,
-                duration: 0.25,
-                ease: 'expoScale(0.5,7,none)',
+            loaderTimeline.to('.loader-page-heading-1', {
+                translateY: 0,
+                translateX: 0,
+                rotate: 0,
+                ease: 'sine',
+                duration: 0.55,
                 stagger: 0.1,
             });
-            loaderTimeline.to('.loader-image', {
-                yPercent: 120,
-                duration: 0.65,
-                ease: "expoScale(0.2,2,none)",
-                stagger: -0.1,
-            }, '<+0.76');
-            loaderTimeline.to('.loader', {
-                yPercent: 100,
-                duration: 0.75,
-            }, '<+0.7');
-            loaderTimeline.to('.loader-text', {
-                opacity: 0,
-                duration: 0.75,
-            }, '<');
-            loaderTimeline.to('.main-content', {
+            loaderTimeline.to('.loader-page-heading-1', {
+                translateY: '100%',
+                translateX: '80%',
+                rotate: '45deg',
+                ease: 'sine',
+                duration: 0.55,
+                stagger: 0.1,
+            });
+            loaderTimeline.to('.loader-page-heading-2', {
                 translateY: 0,
-                duration: 0.75,
+                translateX: 0,
+                rotate: 0,
+                ease: 'sine',
+                duration: 0.55,
+                stagger: 0.1,
             }, '<');
+            loaderTimeline.to('.loader-page-heading-2', {
+                translateY: '100%',
+                translateX: '80%',
+                rotate: '45deg',
+                ease: 'sine',
+                duration: 0.55,
+                stagger: 0.1,
+            });
+            loaderTimeline.to('.loader-page-heading-3', {
+                translateY: 0,
+                translateX: 0,
+                rotate: 0,
+                ease: 'sine',
+                duration: 0.55,
+                stagger: 0.1,
+            }, '<');
+            loaderTimeline.to('.loader-page-heading-3', {
+                translateY: '100%',
+                translateX: '80%',
+                rotate: '45deg',
+                ease: 'sine',
+                duration: 0.55,
+                stagger: 0.1,
+            });
+            loaderTimeline.to('.loader-main-div', {
+                translateY: '100%',
+                display: 'hidden',
+                ease: 'sine',
+                duration: 1,
+            });
+            // let loaderTextTimeline = gsap.timeline({
+            // });
+            // // loaderTimeline.pause();
+            // // loaderTextTimeline.pause();
+            //
+            // loaderTextTimeline.to('.loader-text', {
+            //     text: 'Cooking...',
+            //     duration: 1,
+            //     ease: 'none',
+            // });
+            // loaderTextTimeline.to('.loader-text', {
+            //     text: 'Baking...',
+            //     duration: 1,
+            //     ease: 'none',
+            // });
+            // loaderTextTimeline.to('.loader-text', {
+            //     text: 'Eating...',
+            //     duration: 1,
+            //     ease: 'none',
+            // });
+            // loaderTextTimeline.to('.loader-text', {
+            //     text: 'Loading...',
+            //     duration: 1,
+            //     ease: 'none',
+            // });
+            //
+            // loaderTimeline.to('.loader-image', {
+            //     scale: 1,
+            //     duration: 0.35,
+            //     ease: 'expoScale(0.5,7,none)',
+            //     stagger: 1,
+            // })
+            // loaderTimeline.to('.loader-image', {
+            //     yPercent: -80,
+            //     duration: 0.25,
+            //     ease: 'expoScale(0.5,7,none)',
+            //     stagger: 0.1,
+            // });
+            // loaderTimeline.to('.loader-image', {
+            //     yPercent: 120,
+            //     duration: 0.65,
+            //     ease: "expoScale(0.2,2,none)",
+            //     stagger: -0.1,
+            // }, '<+0.76');
+            // loaderTimeline.to('.loader', {
+            //     yPercent: 100,
+            //     duration: 0.75,
+            // }, '<+0.7');
+            // loaderTimeline.to('.loader-text', {
+            //     opacity: 0,
+            //     duration: 0.75,
+            // }, '<');
+            // loaderTimeline.to('.main-content', {
+            //     translateY: 0,
+            //     duration: 0.75,
+            // }, '<');
         } else {
-            gsap.set('.loader', {
+            gsap.set('.loader-main-div', {
                 display: 'none',
             })
         }
@@ -88,30 +138,65 @@
 </script>
 
 <!--LOADER-->
-<!--<div class="h-screen w-full fixed top-0 bg-on-surface z-[200] loader">-->
-<!--    <div class="h-full w-full flex flex-col items-center justify-center">-->
-<!--        <div class="h-[350px] w-full relative flex flex-col items-center justify-end">-->
-<!--            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image scale-0">-->
-<!--                <img src="{image}" alt="" class="h-full w-full object-cover">-->
-<!--            </div>-->
-<!--            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image scale-0">-->
-<!--                <img src="{image1}" alt="" class="h-full w-full object-cover">-->
-<!--            </div>-->
-<!--            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image scale-0">-->
-<!--                <img src="{image2}" alt="" class="h-full w-full object-cover">-->
-<!--            </div>-->
-<!--            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image z-[4] scale-0">-->
-<!--                <img src="{image}" alt="" class="h-full w-full object-cover">-->
-<!--            </div>-->
-<!--            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[350px] border-2 border-surface loader-image z-[5] scale-0">-->
-<!--                <img src="{image1}" alt="" class="h-full w-full object-cover">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="h-fit w-full overflow-hidden flex flex-col items-center">-->
-<!--            <p class="text-xl regular-font text-surface loader-text mt-14">Loading...</p>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+<div class="h-screen w-full fixed top-0 bg-primary z-[200] loader-main-div">
+    <div class="h-full w-full flex flex-col items-center justify-center relative">
+        <div class="h-fit w-fit overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <p class="text-9xl text-on-surface brand-font flex flex-row items-center justify-center">
+                <span class="loader-page-heading-1 keep-stroke -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">U</span><span
+                    class="loader-page-heading-1 keep-stroke -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">N</span><span
+                    class="loader-page-heading-1 keep-stroke -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">I</span><span
+                    class="loader-page-heading-1 keep-stroke -translate-y-[800px] -translate-x-[80%] -rotate-[45deg]">T</span><span
+                    class="loader-page-heading-1 keep-stroke -translate-y-[1000px] -translate-x-[80%] -rotate-[45deg]">E</span>
+                <span class="loader-page-heading-1 -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">&nbsp;C</span>
+                <span class="loader-page-heading-1 -translate-y-[1600px] -translate-x-[80%] -rotate-[45deg]">U</span><span
+                    class="loader-page-heading-1 -translate-y-[1800px] -translate-x-[80%] -rotate-[45deg]">L</span>
+                <span class="loader-page-heading-1 -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">T</span>
+                <span class="loader-page-heading-1 -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">U</span>
+                <span class="loader-page-heading-1 -translate-y-[2200px] -translate-x-[80%] -rotate-[45deg]">R</span>
+                <span class="loader-page-heading-1 -translate-y-[2400px] -translate-x-[80%] -rotate-[45deg]">E</span>
+                <span class="loader-page-heading-1 -translate-y-[2600px] -translate-x-[80%] -rotate-[45deg]">S</span>
+            </p>
+        </div>
+        <div class="h-fit w-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <p class="text-9xl text-on-surface brand-font flex flex-row items-center justify-center">
+                <span class="loader-page-heading-2 -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">C</span><span
+                    class="loader-page-heading-2 -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">E</span><span
+                    class="loader-page-heading-2 -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">L</span><span
+                    class="loader-page-heading-2 -translate-y-[800px] -translate-x-[80%] -rotate-[45deg]">E</span><span
+                    class="loader-page-heading-2 -translate-y-[1000px] -translate-x-[80%] -rotate-[45deg]">B</span><span
+                    class="loader-page-heading-2 -translate-y-[1200px] -translate-x-[80%] -rotate-[45deg]">R</span><span
+                    class="loader-page-heading-2 -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">A</span>
+                <span class="loader-page-heading-2 -translate-y-[1600px] -translate-x-[80%] -rotate-[45deg]">T</span><span
+                    class="loader-page-heading-2 -translate-y-[1800px] -translate-x-[80%] -rotate-[45deg]">E</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">&nbsp;T</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">O</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[2200px] -translate-x-[80%] -rotate-[45deg]">G</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[2400px] -translate-x-[80%] -rotate-[45deg]">E</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[2600px] -translate-x-[80%] -rotate-[45deg]">T</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[2800px] -translate-x-[80%] -rotate-[45deg]">H</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[3000px] -translate-x-[80%] -rotate-[45deg]">E</span>
+                <span class="loader-page-heading-2 keep-stroke -translate-y-[3200px] -translate-x-[80%] -rotate-[45deg]">R</span>
+            </p>
+        </div>
+        <div class="h-fit w-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <p class="text-9xl text-on-surface brand-font flex flex-row items-center justify-center">
+                <span class="loader-page-heading-3 keep-stroke -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">D</span><span
+                    class="loader-page-heading-3 keep-stroke -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">I</span><span
+                    class="loader-page-heading-3 keep-stroke -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">S</span><span
+                    class="loader-page-heading-3 keep-stroke -translate-y-[800px] -translate-x-[80%] -rotate-[45deg]">C</span><span
+                    class="loader-page-heading-3 keep-stroke -translate-y-[1000px] -translate-x-[80%] -rotate-[45deg]">O</span><span
+                    class="loader-page-heading-3 keep-stroke -translate-y-[1200px] -translate-x-[80%] -rotate-[45deg]">V</span><span
+                    class="loader-page-heading-3 keep-stroke -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">E</span>
+                <span class="loader-page-heading-3 keep-stroke -translate-y-[1600px] -translate-x-[80%] -rotate-[45deg]">R</span><span
+                    class="loader-page-heading-3 -translate-y-[1800px] -translate-x-[80%] -rotate-[45deg]">&nbsp;F</span>
+                <span class="loader-page-heading-3 -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">A</span>
+                <span class="loader-page-heading-3 -translate-y-[2200px] -translate-x-[80%] -rotate-[45deg]">L</span>
+                <span class="loader-page-heading-3 -translate-y-[2400px] -translate-x-[80%] -rotate-[45deg]">A</span>
+                <span class="loader-page-heading-3 -translate-y-[2600px] -translate-x-[80%] -rotate-[45deg]">K</span>
+            </p>
+        </div>
+    </div>
+</div>
 
 <!-- Landing Page -->
 <div class="min-h-screen w-full flex flex-col items-center justify-center bg-surface main-content">
@@ -120,12 +205,12 @@
         <!--        <AICanvasClaude />-->
         <AICanvasClaude2/>
     </div>
-    <div class="h-screen w-[375px] bg-surface relative flex flex-col">
+    <div class="h-screen min-h-fit w-[375px] bg-surface relative flex flex-col">
         <div class="h-1/2 w-full flex flex-col justify-center items-end relative">
             <div class="absolute top-12 right-[22px] flex flex-row items-center justify-center gap-3 pr-3 z-[100]">
                 <button class="bg-on-surface text-surface relative regular-font text-xl text-center py-1.5 corner-br px-5 hover:bg-primary hover:text-on-surface duration-300 ease-in transition-all"
                         style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);"
-                        on:click={() => {goto('/testing')}}>
+                        on:click={() => {goto('/tickets')}}>
                     Tickets
                     <div class="absolute bottom-0 right-0 bg-surface"></div>
                 </button>
@@ -133,11 +218,18 @@
                         on:click={toggleNavbar}>Menu
                 </button>
             </div>
-            <time class="leading-none px-5 h-fit w-full grid grid-cols-12 pb-4" datetime="2024-10-04">
+            <time class="leading-none px-5 h-fit w-full grid grid-cols-12 pb-4 datetime-falak-main"
+                  datetime="2024-10-04">
                 <span class="brand-font translate-y-[0.08em] col-span-3 text-right text-[3.75rem] text-on-surface font-thin leading-[60px]">04</span>
                 <span class="brand-font translate-y-[0.08em] col-span-2 text-right text-[3.75rem] text-on-surface font-thin leading-[60px]">10</span>
                 <span class="brand-font translate-y-[0.08em] col-span-4 text-right text-[3.75rem] text-on-surface font-thin leading-[60px]">2024</span>
             </time>
+            <!--            <div class="leading-none px-5 h-fit w-full datetime-falak-main flex items-center justify-center scale-[2] opacity-0 origin-bottom-left">-->
+            <!--                <div class="text-[3.75rem] text-on-surface bg-primary rounded-xl px-4 pt-2 brand-font text-center relative">-->
+            <!--                    04-10-2024-->
+            <!--                    <div class="h-3 w-3 z-[2] rounded-full border-2 border-on-surface bg-surface absolute bottom-1 left-1 datetime-falak-pin scale-2 opacity-0"></div>-->
+            <!--                </div>-->
+            <!--            </div>-->
         </div>
         <div class="h-fit w-full absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 flex flex-col items-start justify-center">
             <!--            <p class="brand-font font-[400] z-[2] text-on-surface text-[10rem] leading-[8.125rem]">FALAK</p>-->
@@ -160,7 +252,7 @@
             <!--            </div>-->
             <div class="content h-[15rem] w-full">
                 <p class="absolute brand-font font-[400] z-[2] text-on-surface text-[10rem] leading-[8.125rem]">
-                    FALAK <br> FESTIVAL
+                    FALAK <br> <span style="-webkit-text-stroke: 2px transparent;">FESTIVAL</span>
                 </p>
                 <p class="absolute brand-font text-on-surface text-[10rem] leading-[8.25rem]">
                     FALAK <br> FESTIVAL
@@ -201,7 +293,25 @@
     }
 
     .content p:nth-child(2) {
+        /*color: transparent;
+        background: linear-gradient(
+                0deg,
+                hsl(215deg 99% 41%) 0%,
+                hsl(209deg 100% 43%) 11%,
+                hsl(204deg 100% 44%) 22%,
+                hsl(198deg 100% 44%) 33%,
+                hsl(192deg 100% 44%) 44%,
+                hsl(190deg 68% 56%) 56%,
+                hsl(185deg 56% 67%) 67%,
+                hsl(176deg 50% 77%) 78%,
+                hsl(164deg 53% 88%) 89%,
+                hsl(150deg 100% 98%) 100%
+        );
+        background-size: 50% 50%;
+        background-clip: text;
+        -webkit-background-clip: text;*/
         color: #F5FFFA;
+        -webkit-text-stroke: 2px #F5FFFA;
         animation: animate 3s ease-in-out infinite;
     }
 
@@ -222,5 +332,8 @@
         }
     }
 
-
+    .keep-stroke {
+        color: transparent;
+        -webkit-text-stroke: 2px #F5FFFA;
+    }
 </style>

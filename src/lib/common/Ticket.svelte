@@ -1,5 +1,11 @@
 <script>
     import footerImg from "$lib/assets/images/footer.gif";
+    import {createEventDispatcher} from "svelte";
+
+    const showMoreDispatch = createEventDispatcher();
+    function handleShowMore() {
+        showMoreDispatch('showMoreClick');
+    }
 
     export let mainTitle;
     export let isPassHeading;
@@ -27,6 +33,7 @@
         <div class="w-full h-full flex flex-col items-center justify-between relative p-5">
             <p class="text-xl regular-font text-on-surface">
                 Step into a vibrant celebration of talent, culture, and creativity. Open to all—join the experience!
+                Coming Soon!
             </p>
             <div class="h-full w-full flex flex-row items-end justify-between gap-2">
                 <img src="{footerImg}" alt="gif" class="h-1/5 w-full">
@@ -35,9 +42,10 @@
                         Buy Ticket
                     </div>
                 {:else}
-                    <div class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface">
-                        See More
-                    </div>
+                    <button class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface"
+                        on:click={handleShowMore}>
+                        See All Passes
+                    </button>
                 {/if}
             </div>
         </div>
