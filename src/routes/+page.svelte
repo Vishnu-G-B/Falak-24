@@ -584,6 +584,7 @@
         background-clip: text;
         -webkit-background-clip: text;*/
         color: #F5FFFA;
+        -webkit-text-stroke: 2px #F5FFFA;
         animation: animate 3s ease-in-out infinite;
     }
 
