@@ -566,7 +566,7 @@
     }
 
     .content p:nth-child(2) {
-        color: transparent;
+        /*color: transparent;
         background: linear-gradient(
                 0deg,
                 hsl(215deg 99% 41%) 0%,
@@ -582,8 +582,8 @@
         );
         background-size: 50% 50%;
         background-clip: text;
-        -webkit-background-clip: text;
-        /*color: #F5FFFA;*/
+        -webkit-background-clip: text;*/
+        color: #F5FFFA;
         animation: animate 3s ease-in-out infinite;
     }
 
