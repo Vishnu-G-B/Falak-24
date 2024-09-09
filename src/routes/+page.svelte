@@ -391,7 +391,7 @@
         <!--        <AICanvasClaude />-->
         <AICanvasClaude2/>
     </div>
-    <div class="h-screen w-[375px] bg-surface relative flex flex-col">
+    <div class="h-screen min-h-fit w-[375px] bg-surface relative flex flex-col">
         <div class="h-1/2 w-full flex flex-col justify-center items-end relative">
             <div class="absolute top-12 right-[22px] flex flex-row items-center justify-center gap-3 pr-3 z-[100]">
                 <button class="bg-on-surface text-surface relative regular-font text-xl text-center py-1.5 corner-br px-5 hover:bg-primary hover:text-on-surface duration-300 ease-in transition-all"
