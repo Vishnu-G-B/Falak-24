@@ -6,7 +6,7 @@
     import {browser} from '$app/environment';
     import {gsap} from "gsap";
     import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
-    import {goto} from "$app/navigation";
+    import {beforeNavigate, goto} from "$app/navigation";
     import {page} from "$app/stores";
 
     let heightTimeline;
@@ -103,11 +103,14 @@
             {@html horizontalBarcode}
             <ul class="py-6">
                 <li class="">
-                    <a href="/" aria-current="page"
-                       class="text-5xl block text-center py-1 underline text-alt">Home</a>
+                    <a on:click|preventDefault={() => {
+                        closeNavbar();
+                        goto("/")
+                    }} aria-current="page"
+                       class="text-5xl block text-center py-1 underline text-alt cursor-pointer">Home</a>
                 </li>
                 <li class="">
-                    <a href="/" class="text-5xl block text-center py-1 hover:text-alt">Coming Soon...</a>
+                    <a class="text-5xl block text-center py-1 hover:text-alt cursor-pointer">Coming Soon...</a>
                 </li>
                 <!--                <li class="">-->
                 <!--                    <a href="/practical" class="text-5xl block text-center py-1 hover:text-alt">Practical</a>-->
@@ -131,6 +134,7 @@
                            -mr-3"
                     style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);"
                     on:click={() => {
+                        closeNavbar();
                         goto('/tickets');
                     }}>
                 Tickets
@@ -157,6 +161,7 @@
                            -mr-3"
                     style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);"
                     on:click={() => {
+                        closeNavbar();
                         goto('/tickets');
                     }}>
                 Tickets
