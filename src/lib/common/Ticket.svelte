@@ -3,6 +3,7 @@
     import {createEventDispatcher} from "svelte";
 
     const showMoreDispatch = createEventDispatcher();
+
     function handleShowMore() {
         showMoreDispatch('showMoreClick');
     }
@@ -12,7 +13,7 @@
     export let showBuyButton;
 </script>
 
-<div class="w-[325px] h-[550px] relative bg-surface shadow-2xl flex-shrink-0">
+<div class="w-[300px] h-[525px] sm:w-[325px] sm:h-[550px] relative bg-surface shadow-2xl flex-shrink-0">
     <div class="absolute top-0 h-full w-full bg-surface flex flex-col p-3">
         <div class="w-full flex flex-row items-start justify-between">
             <div class="flex flex-col gap-12">
@@ -21,12 +22,13 @@
                     LANDING
                 </p>
                 <div class="flex flex-col">
-                    <p class="text-8xl brand-font text-on-surface bg-surface w-full -translate-x-[14px] z-[2] pt-2">
+                    <p class="text-7xl sm:text-8xl brand-font text-on-surface bg-surface w-full -translate-x-[14px] z-[2] pt-2">
                         {mainTitle}
                     </p>
                 </div>
             </div>
-            <p class="text-xl regular-font text-surface bg-on-surface p-2 translate-y-[12px] -translate-x-[24px] text-nowrap">
+            <p class="text-xl regular-font text-surface bg-on-surface p-2 translate-y-[12px] -translate-x-[20px]
+                        sm:-translate-x-[24px] text-nowrap">
                 FLK 24
             </p>
         </div>
@@ -36,14 +38,14 @@
                 Coming Soon!
             </p>
             <div class="h-full w-full flex flex-row items-end justify-between gap-2">
-                <img src="{footerImg}" alt="gif" class="h-1/5 w-full">
+                <img src="{footerImg}" alt="gif" class=" h-[33.7%] w-[40%] sm:h-1/5 sm:w-full">
                 {#if showBuyButton}
                     <div class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface">
                         Buy Ticket
                     </div>
                 {:else}
                     <button class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface"
-                        on:click={handleShowMore}>
+                            on:click={handleShowMore}>
                         See All Passes
                     </button>
                 {/if}

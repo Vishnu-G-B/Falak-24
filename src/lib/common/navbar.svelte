@@ -1,16 +1,28 @@
 <script>
-    import {onMount} from 'svelte';
+    import {onMount, onDestroy} from 'svelte';
+    import {toggleNavbar} from "$lib/stores/navStore.js";
     import {isNavbarOpen} from '$lib/stores/navStore.js';
     import horizontalBarcode from "$lib/assets/images/horizontalBarCode.svg?raw";
     import {browser} from '$app/environment';
     import {gsap} from "gsap";
+    import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
+    import {goto} from "$app/navigation";
+    import {page} from "$app/stores";
 
     let heightTimeline;
     let containerHeight;
     let containerMovement;
+    let minimalNavTimeline;
+    let minimalNav;
+    let scroll_thresh = 60;
+    let isHomePage = true;
+    let scrollTriggerInstance;
 
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Sets up the navbar timeline for use
     function setupAnimation() {
-        if (containerHeight && containerMovement) {
+        if (containerHeight && containerMovement && minimalNav) {
             heightTimeline = gsap.timeline({paused: true});
             heightTimeline
                 .to(containerHeight, {
@@ -19,20 +31,47 @@
                     ease: "power1.inOut",
                 })
                 .to(containerMovement, {
+                    display: "flex",
                     translateY: 0,
                     ease: "power1.inOut",
                     duration: 0.5
                 }, "<");
+            minimalNavTimeline = gsap.timeline({paused: true});
+            minimalNavTimeline
+                .to(minimalNav, {
+                    translateY: 0,
+                    duration: 0.3,
+                    ease: "power1.inOut",
+                });
+        }
+    }
+
+    // Updates the scrolltrigger threshold values
+    function updateScrollTrigger() {
+        if (scrollTriggerInstance) {
+            console.log("killing scrolltrigger instance");
+            scrollTriggerInstance.kill();
+        }
+
+        if (isHomePage && browser) {
+            console.log("The page that is being navigated to should be the homepage");
+            scroll_thresh = 60;
+            scrollTriggerInstance = ScrollTrigger.create({
+                start: scroll_thresh,
+                onEnter: () => minimalNavTimeline.play(),
+                onLeaveBack: () => minimalNavTimeline.reverse(),
+            });
+        } else if (browser) {
+            console.log("The page that is being navigated to should not be the homepage")
+            minimalNavTimeline?.play();
+            scroll_thresh = -1;
         }
     }
 
     onMount(() => {
         setupAnimation();
+        updateScrollTrigger();
     });
-
-    $: if (containerHeight && containerMovement && !heightTimeline) {
-        setupAnimation();
-    }
 
     $: if (browser && heightTimeline) {
         if ($isNavbarOpen) {
@@ -44,12 +83,21 @@
         }
     }
 
+    $: if ($page.url.pathname !== undefined) {
+        console.log("page.url.pathname", $page.url.pathname);
+        isHomePage = $page.url.pathname === "/";
+        scroll_thresh = isHomePage ? 60 : -1;
+        if (browser) {
+            updateScrollTrigger();
+        }
+    }
+
     function closeNavbar() {
         $isNavbarOpen = false;
     }
 </script>
 
-<div class="fixed w-[375px] h-auto left-1/2 z-[999] top-0 transform -translate-x-1/2 border-solid border-0 border-surface">
+<div class="fixed w-[325px] sm:w-[375px] h-auto left-1/2 z-[999] top-0 transform -translate-x-1/2 border-solid border-0 border-surface">
     <div bind:this={containerHeight} class="h-0 w-full overflow-hidden">
         <div class="h-full w-full bg-on-surface text-primary brand-font uppercase px-6 border-b-4 border-solid border-surface">
             {@html horizontalBarcode}
@@ -59,27 +107,32 @@
                        class="text-5xl block text-center py-1 underline text-alt">Home</a>
                 </li>
                 <li class="">
-                    <a href="/schedule" class="text-5xl block text-center py-1 hover:text-alt">Schedule</a>
+                    <a href="/" class="text-5xl block text-center py-1 hover:text-alt">Coming Soon...</a>
                 </li>
-                <li class="">
-                    <a href="/practical" class="text-5xl block text-center py-1 hover:text-alt">Practical</a>
-                </li>
-                <li class="">
-                    <a href="/partners" class="text-5xl block text-center py-1 hover:text-alt">Partners</a>
-                </li>
+                <!--                <li class="">-->
+                <!--                    <a href="/practical" class="text-5xl block text-center py-1 hover:text-alt">Practical</a>-->
+                <!--                </li>-->
+                <!--                <li class="">-->
+                <!--                    <a href="/partners" class="text-5xl block text-center py-1 hover:text-alt">Partners</a>-->
+                <!--                </li>-->
             </ul>
         </div>
     </div>
     <div bind:this={containerMovement}
-         class="w-full h-[3.75rem] flex transform -translate-y-full bg-on-surface justify-center items-center">
+         class="w-full h-[3.75rem] hidden transform -translate-y-full bg-on-surface justify-center items-center">
         <div class="w-1/2 h-full px-5 py-2">
             <!-- Logo placeholder -->
             <!--            <img src="{logo}">-->
 
         </div>
         <div class="w-1/2 h-full flex justify-between items-center pl-5">
-            <button class="bg-primary text-on-surface relative regular-font text-xl text-center py-1.5 corner-br px-5 hover:bg-surface duration-300 ease-in transition-all"
-                    style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);">
+            <button class="bg-primary text-on-surface relative regular-font text-xl text-center py-1.5 corner-br px-5
+                           hover:bg-surface hover:text-on-surface duration-300 ease-in transition-all
+                           -mr-3"
+                    style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);"
+                    on:click={() => {
+                        goto('/tickets');
+                    }}>
                 Tickets
                 <div class="absolute bottom-0 right-0 bg-surface"></div>
             </button>
@@ -90,6 +143,32 @@
               </span>
             </button>
         </div>
+    </div>
+</div>
+
+<!-- Minimal Nav -->
+<div class="minimalNav fixed w-[325px] sm:w-[375px] h-[60px] left-1/2 z-[998] top-0 -translate-x-1/2 border-solid border-0
+            border-surface bg-white transform -translate-y-full corner-br"
+     bind:this={minimalNav}>
+    <div class="h-full w-full flex justify-center items-center">
+        <div class="h-full w-full flex justify-between items-center px-2">
+            <button class="bg-primary text-on-surface relative regular-font text-xl text-center py-1.5 corner-br px-5
+                           hover:bg-surface hover:text-on-surface duration-300 ease-in transition-all
+                           -mr-3"
+                    style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);"
+                    on:click={() => {
+                        goto('/tickets');
+                    }}>
+                Tickets
+                <div class="absolute bottom-0 right-0 bg-surface"></div>
+            </button>
+            <button id="hamburger" class="hamburger hamburger--collapse" type="button" on:click={toggleNavbar}>
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button>
+        </div>
+
     </div>
 </div>
 

@@ -10,8 +10,12 @@
                     resolve();
                 }
             });
-            let closeTransition = gsap.timeline();
-            closeTransition.pause(0);
+            let closeTransition = gsap.timeline({paused: true});
+            transition.to(".minimalNav", {
+                translateY: "-100%",
+                duration: 0.3,
+                ease: "power1.inOut",
+            })
             transition.to('.main-transition', {
                 translateY: 0,
                 opacity: 1,

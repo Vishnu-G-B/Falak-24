@@ -6,7 +6,7 @@
     let planes = [];
     const numPlanes = 20;
     const trailLength = 1000;  // Reduced the length for performance
-    const speedMultiplier = 0.3;  // Adjust this value to control the overall speed
+    const speedMultiplier = 0.8;  // Adjust this value to control the overall speed
     const labelWidth = 50;
     const labelHeight = 20;
 
@@ -46,7 +46,7 @@
 
     function drawTrail(plane) {
         ctx.strokeStyle = `rgba(1, 86, 207, 1)`;
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 1.5;
         ctx.beginPath();
 
         // let start = Math.max(plane.trail.length, 0);  // Only draw last few segments

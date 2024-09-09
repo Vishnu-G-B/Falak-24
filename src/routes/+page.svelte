@@ -17,12 +17,13 @@
                     $loaderPlayed = true;
                 }
             });
+            // loaderTimeline.pause(0.5);
             loaderTimeline.to('.loader-page-heading-1', {
                 translateY: 0,
                 translateX: 0,
                 rotate: 0,
                 ease: 'sine',
-                duration: 0.55,
+                duration: 0.35,
                 stagger: 0.1,
             });
             loaderTimeline.to('.loader-page-heading-1', {
@@ -30,7 +31,7 @@
                 translateX: '80%',
                 rotate: '45deg',
                 ease: 'sine',
-                duration: 0.55,
+                duration: 0.35,
                 stagger: 0.1,
             });
             loaderTimeline.to('.loader-page-heading-2', {
@@ -38,7 +39,7 @@
                 translateX: 0,
                 rotate: 0,
                 ease: 'sine',
-                duration: 0.55,
+                duration: 0.35,
                 stagger: 0.1,
             }, '<');
             loaderTimeline.to('.loader-page-heading-2', {
@@ -46,7 +47,7 @@
                 translateX: '80%',
                 rotate: '45deg',
                 ease: 'sine',
-                duration: 0.55,
+                duration: 0.35,
                 stagger: 0.1,
             });
             loaderTimeline.to('.loader-page-heading-3', {
@@ -54,7 +55,7 @@
                 translateX: 0,
                 rotate: 0,
                 ease: 'sine',
-                duration: 0.55,
+                duration: 0.35,
                 stagger: 0.1,
             }, '<');
             loaderTimeline.to('.loader-page-heading-3', {
@@ -62,7 +63,7 @@
                 translateX: '80%',
                 rotate: '45deg',
                 ease: 'sine',
-                duration: 0.55,
+                duration: 0.35,
                 stagger: 0.1,
             });
             loaderTimeline.to('.loader-main-div', {
@@ -141,7 +142,7 @@
 <div class="h-screen w-full fixed top-0 bg-primary z-[200] loader-main-div">
     <div class="h-full w-full flex flex-col items-center justify-center relative">
         <div class="h-fit w-fit overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <p class="text-9xl text-on-surface brand-font flex flex-row items-center justify-center">
+            <p class="text-[3.8rem] sm:text-9xl text-on-surface brand-font flex flex-row items-center justify-center">
                 <span class="loader-page-heading-1 keep-stroke -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">U</span><span
                     class="loader-page-heading-1 keep-stroke -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">N</span><span
                     class="loader-page-heading-1 keep-stroke -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">I</span><span
@@ -158,7 +159,7 @@
             </p>
         </div>
         <div class="h-fit w-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <p class="text-9xl text-on-surface brand-font flex flex-row items-center justify-center">
+            <p class="text-[3.8rem] sm:text-9xl text-on-surface brand-font flex flex-row items-center justify-center">
                 <span class="loader-page-heading-2 -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">C</span><span
                     class="loader-page-heading-2 -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">E</span><span
                     class="loader-page-heading-2 -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">L</span><span
@@ -179,7 +180,7 @@
             </p>
         </div>
         <div class="h-fit w-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <p class="text-9xl text-on-surface brand-font flex flex-row items-center justify-center">
+            <p class="text-[3.8rem] sm:text-9xl text-on-surface brand-font flex flex-row items-center justify-center">
                 <span class="loader-page-heading-3 keep-stroke -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">D</span><span
                     class="loader-page-heading-3 keep-stroke -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">I</span><span
                     class="loader-page-heading-3 keep-stroke -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">S</span><span
@@ -201,11 +202,9 @@
 <!-- Landing Page -->
 <div class="min-h-screen w-full flex flex-col items-center justify-center bg-surface main-content">
     <div class="h-screen w-full absolute top-0 overflow-hidden">
-        <!--        <RandomImageGrid/>-->
-        <!--        <AICanvasClaude />-->
         <AICanvasClaude2/>
     </div>
-    <div class="h-screen min-h-fit w-[375px] bg-surface relative flex flex-col">
+    <div class="h-screen min-h-fit w-[325px] sm:w-[375px] bg-surface relative flex flex-col">
         <div class="h-1/2 w-full flex flex-col justify-center items-end relative">
             <div class="absolute top-12 right-[22px] flex flex-row items-center justify-center gap-3 pr-3 z-[100]">
                 <button class="bg-on-surface text-surface relative regular-font text-xl text-center py-1.5 corner-br px-5 hover:bg-primary hover:text-on-surface duration-300 ease-in transition-all"
@@ -224,37 +223,14 @@
                 <span class="brand-font translate-y-[0.08em] col-span-2 text-right text-[3.75rem] text-on-surface font-thin leading-[60px]">10</span>
                 <span class="brand-font translate-y-[0.08em] col-span-4 text-right text-[3.75rem] text-on-surface font-thin leading-[60px]">2024</span>
             </time>
-            <!--            <div class="leading-none px-5 h-fit w-full datetime-falak-main flex items-center justify-center scale-[2] opacity-0 origin-bottom-left">-->
-            <!--                <div class="text-[3.75rem] text-on-surface bg-primary rounded-xl px-4 pt-2 brand-font text-center relative">-->
-            <!--                    04-10-2024-->
-            <!--                    <div class="h-3 w-3 z-[2] rounded-full border-2 border-on-surface bg-surface absolute bottom-1 left-1 datetime-falak-pin scale-2 opacity-0"></div>-->
-            <!--                </div>-->
-            <!--            </div>-->
+
         </div>
         <div class="h-fit w-full absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-1/2 flex flex-col items-start justify-center">
-            <!--            <p class="brand-font font-[400] z-[2] text-on-surface text-[10rem] leading-[8.125rem]">FALAK</p>-->
-            <!--            <p class="brand-font text-on-surface text-[10rem] leading-[8.25rem]">FESTIVAL</p>-->
-            <!--            <div class="content h-[8rem] w-full -mt-32">-->
-            <!--                <p class="absolute brand-font font-[400] z-[2] text-on-surface text-[10rem] leading-[8.125rem]">-->
-            <!--                    FALAK-->
-            <!--                </p>-->
-            <!--                <p class="absolute brand-font text-on-surface text-[10rem] leading-[8.25rem]">-->
-            <!--                    FALAK-->
-            <!--                </p>-->
-            <!--            </div>-->
-            <!--            <div class="content w-full">-->
-            <!--                <p class="absolute brand-font font-[400] z-[2] text-on-surface text-[10rem] leading-[8.125rem]">-->
-            <!--                    FESTIVAL-->
-            <!--                </p>-->
-            <!--                <p class="absolute brand-font text-on-surface text-[10rem] leading-[8.25rem]">-->
-            <!--                    FESTIVAL-->
-            <!--                </p>-->
-            <!--            </div>-->
             <div class="content h-[15rem] w-full">
-                <p class="absolute brand-font font-[400] z-[2] text-on-surface text-[10rem] leading-[8.125rem]">
-                    FALAK <br> <span style="-webkit-text-stroke: 2px transparent;">FESTIVAL</span>
+                <p class="absolute brand-font font-[400] z-[2] text-on-surface text-[9rem] leading-[8.125rem]">
+                    FALAK <br> FESTIVAL
                 </p>
-                <p class="absolute brand-font text-on-surface text-[10rem] leading-[8.25rem]">
+                <p class="absolute brand-font text-on-surface text-[9rem] leading-[8.25rem]">
                     FALAK <br> FESTIVAL
                 </p>
             </div>
@@ -271,8 +247,6 @@
                 </div>
             </div>
         </div>
-        <!--        <div class="absolute top-0 h-[20px] w-full bg-primary"></div>-->
-        <!--        <div class="absolute bottom-0 h-[20px] w-full bg-primary"></div>-->
         <div class="absolute right-0 top-0 h-[33vh] w-[20px] bg-primary"></div>
         <div class="absolute left-0 top-0 h-[33vh] w-[20px] bg-primary"></div>
         <p class="absolute left-[20px] top-6 regular-font text-[16px] font-thin rotate-180 text-on-surface"
@@ -281,6 +255,7 @@
         <div class="absolute right-0 bottom-0 min-h-[30vh] max-h-[40vh] w-[20px] bg-primary"></div>
     </div>
 </div>
+
 
 <style>
     .content {
@@ -293,23 +268,6 @@
     }
 
     .content p:nth-child(2) {
-        /*color: transparent;
-        background: linear-gradient(
-                0deg,
-                hsl(215deg 99% 41%) 0%,
-                hsl(209deg 100% 43%) 11%,
-                hsl(204deg 100% 44%) 22%,
-                hsl(198deg 100% 44%) 33%,
-                hsl(192deg 100% 44%) 44%,
-                hsl(190deg 68% 56%) 56%,
-                hsl(185deg 56% 67%) 67%,
-                hsl(176deg 50% 77%) 78%,
-                hsl(164deg 53% 88%) 89%,
-                hsl(150deg 100% 98%) 100%
-        );
-        background-size: 50% 50%;
-        background-clip: text;
-        -webkit-background-clip: text;*/
         color: #F5FFFA;
         -webkit-text-stroke: 2px #F5FFFA;
         animation: animate 3s ease-in-out infinite;
