@@ -1,29 +1,21 @@
 <script>
-    import {onMount, onDestroy} from 'svelte';
-    import {toggleNavbar} from "$lib/stores/navStore.js";
-    import {isNavbarOpen} from '$lib/stores/navStore.js';
+    import {onMount} from 'svelte';
+    import {isNavbarOpen, toggleNavbar} from '$lib/stores/navStore.js';
     import horizontalBarcode from "$lib/assets/images/horizontalBarCode.svg?raw";
     import {browser} from '$app/environment';
-    import {gsap} from "gsap";
-    import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     import {goto} from "$app/navigation";
+    import {gsap} from "gsap";
     import {page} from "$app/stores";
 
     let heightTimeline;
     let containerHeight;
     let containerMovement;
-    let minimalNavTimeline;
     let minimalNav;
-    let scroll_thresh = 60;
-    let isHomePage = true;
-    let scrollTriggerInstance;
+    let isHomePage;
 
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Sets up the navbar timeline for use
     function setupAnimation() {
-        if (containerHeight && containerMovement && minimalNav) {
-            heightTimeline = gsap.timeline({paused: true});
+        if (containerHeight && containerMovement) {
+            heightTimeline = gsap.timeline({paused: true, id: "navbarExpandTimeline"});
             heightTimeline
                 .to(containerHeight, {
                     height: "auto",
@@ -36,42 +28,28 @@
                     ease: "power1.inOut",
                     duration: 0.5
                 }, "<");
-            minimalNavTimeline = gsap.timeline({paused: true});
-            minimalNavTimeline
-                .to(minimalNav, {
-                    translateY: 0,
-                    duration: 0.3,
-                    ease: "power1.inOut",
-                });
-        }
-    }
-
-    // Updates the scrolltrigger threshold values
-    function updateScrollTrigger() {
-        if (scrollTriggerInstance) {
-            console.log("killing scrolltrigger instance");
-            scrollTriggerInstance.kill();
-        }
-
-        if (isHomePage && browser) {
-            console.log("The page that is being navigated to should be the homepage");
-            scroll_thresh = 60;
-            scrollTriggerInstance = ScrollTrigger.create({
-                start: scroll_thresh,
-                onEnter: () => minimalNavTimeline.play(),
-                onLeaveBack: () => minimalNavTimeline.reverse(),
-            });
-        } else if (browser) {
-            console.log("The page that is being navigated to should not be the homepage")
-            minimalNavTimeline?.play();
-            scroll_thresh = -1;
         }
     }
 
     onMount(() => {
         setupAnimation();
-        updateScrollTrigger();
+
+        if (browser) {
+            const showMinimalNavThreshold = 60;
+
+            window.addEventListener('scroll', () => {
+                if (isHomePage) {
+                    if (window.scrollY > showMinimalNavThreshold) {
+                        gsap.to(minimalNav, {translateY: 0, duration: 0.3});
+                    } else {
+                        gsap.to(minimalNav, {translateY: '-100%', duration: 0.3});
+                    }
+                }
+            });
+        }
     });
+
+    $: isHomePage = $page.url.pathname === "/";
 
     $: if (browser && heightTimeline) {
         if ($isNavbarOpen) {
@@ -83,17 +61,20 @@
         }
     }
 
-    $: if ($page.url.pathname !== undefined) {
-        console.log("page.url.pathname", $page.url.pathname);
-        isHomePage = $page.url.pathname === "/";
-        scroll_thresh = isHomePage ? 60 : -1;
-        if (browser) {
-            updateScrollTrigger();
+    $: if (browser && minimalNav) {
+        if (isHomePage) {
+            gsap.set(minimalNav, {translateY: '-100%'});
+        } else {
+            gsap.to(minimalNav, {translateY: 0, duration: 0.3, delay: 0.2});
         }
     }
 
-    function closeNavbar() {
+    async function handleNavigation(path) {
         $isNavbarOpen = false;
+        if ($page.url.pathname !== path) {
+            gsap.set(minimalNav, {opacity: 0})
+            await goto(path);
+        }
     }
 </script>
 
@@ -101,13 +82,15 @@
     <div bind:this={containerHeight} class="h-0 w-full overflow-hidden">
         <div class="h-full w-full bg-on-surface text-primary brand-font uppercase px-6 border-b-4 border-solid border-surface">
             {@html horizontalBarcode}
-            <ul class="py-6">
-                <li class="">
-                    <a href="/" aria-current="page"
-                       class="text-5xl block text-center py-1 underline text-alt">Home</a>
+            <ul class="py-6 w-full">
+                <li class="w-full flex justify-center items-center">
+                    <button on:click={() => {handleNavigation("/")}} aria-current="page"
+                            class="text-5xl block text-center py-1 underline text-alt cursor-pointer">Home
+                    </button>
                 </li>
-                <li class="">
-                    <a href="/" class="text-5xl block text-center py-1 hover:text-alt">Coming Soon...</a>
+                <li class="w-full flex justify-center items-center">
+                    <button class="text-5xl block text-center py-1 hover:text-alt cursor-pointer">Coming Soon...
+                    </button>
                 </li>
                 <!--                <li class="">-->
                 <!--                    <a href="/practical" class="text-5xl block text-center py-1 hover:text-alt">Practical</a>-->
@@ -130,14 +113,13 @@
                            hover:bg-surface hover:text-on-surface duration-300 ease-in transition-all
                            -mr-3"
                     style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);"
-                    on:click={() => {
-                        goto('/tickets');
-                    }}>
+                    on:click={() => {handleNavigation("/tickets")}}>
                 Tickets
                 <div class="absolute bottom-0 right-0 bg-surface"></div>
             </button>
             <div class="hidden is-active"></div>
-            <button id="hamburger" class="hamburger hamburger--collapse is-active" type="button" on:click={closeNavbar}>
+            <button id="hamburger" class="hamburger hamburger--collapse is-active" type="button"
+                    on:click={toggleNavbar}>
               <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
               </span>
@@ -148,17 +130,16 @@
 
 <!-- Minimal Nav -->
 <div class="minimalNav fixed w-[325px] sm:w-[375px] h-[60px] left-1/2 z-[998] top-0 -translate-x-1/2 border-solid border-0
-            border-surface bg-white transform -translate-y-full corner-br"
-     bind:this={minimalNav}>
+            border-surface bg-white transform corner-br"
+     bind:this={minimalNav}
+>
     <div class="h-full w-full flex justify-center items-center">
         <div class="h-full w-full flex justify-between items-center px-2">
             <button class="bg-primary text-on-surface relative regular-font text-xl text-center py-1.5 corner-br px-5
                            hover:bg-surface hover:text-on-surface duration-300 ease-in transition-all
                            -mr-3"
                     style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);"
-                    on:click={() => {
-                        goto('/tickets');
-                    }}>
+                    on:click={() => {handleNavigation("/tickets")}}>
                 Tickets
                 <div class="absolute bottom-0 right-0 bg-surface"></div>
             </button>
@@ -168,7 +149,6 @@
               </span>
             </button>
         </div>
-
     </div>
 </div>
 
