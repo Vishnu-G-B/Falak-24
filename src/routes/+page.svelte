@@ -139,65 +139,65 @@
 </script>
 
 <!--LOADER-->
-<div class="h-screen w-full fixed top-0 bg-primary z-[200] loader-main-div">
-    <div class="h-full w-full flex flex-col items-center justify-center relative">
-        <div class="h-fit w-fit overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <p class="text-[3.8rem] sm:text-9xl text-on-surface brand-font flex flex-row items-center justify-center">
-                <span class="loader-page-heading-1 keep-stroke -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">U</span><span
-                    class="loader-page-heading-1 keep-stroke -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">N</span><span
-                    class="loader-page-heading-1 keep-stroke -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">I</span><span
-                    class="loader-page-heading-1 keep-stroke -translate-y-[800px] -translate-x-[80%] -rotate-[45deg]">T</span><span
-                    class="loader-page-heading-1 keep-stroke -translate-y-[1000px] -translate-x-[80%] -rotate-[45deg]">E</span>
-                <span class="loader-page-heading-1 -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">&nbsp;C</span>
-                <span class="loader-page-heading-1 -translate-y-[1600px] -translate-x-[80%] -rotate-[45deg]">U</span><span
-                    class="loader-page-heading-1 -translate-y-[1800px] -translate-x-[80%] -rotate-[45deg]">L</span>
-                <span class="loader-page-heading-1 -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">T</span>
-                <span class="loader-page-heading-1 -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">U</span>
-                <span class="loader-page-heading-1 -translate-y-[2200px] -translate-x-[80%] -rotate-[45deg]">R</span>
-                <span class="loader-page-heading-1 -translate-y-[2400px] -translate-x-[80%] -rotate-[45deg]">E</span>
-                <span class="loader-page-heading-1 -translate-y-[2600px] -translate-x-[80%] -rotate-[45deg]">S</span>
-            </p>
-        </div>
-        <div class="h-fit w-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <p class="text-[3.8rem] sm:text-9xl text-on-surface brand-font flex flex-row items-center justify-center">
-                <span class="loader-page-heading-2 -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">C</span><span
-                    class="loader-page-heading-2 -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">E</span><span
-                    class="loader-page-heading-2 -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">L</span><span
-                    class="loader-page-heading-2 -translate-y-[800px] -translate-x-[80%] -rotate-[45deg]">E</span><span
-                    class="loader-page-heading-2 -translate-y-[1000px] -translate-x-[80%] -rotate-[45deg]">B</span><span
-                    class="loader-page-heading-2 -translate-y-[1200px] -translate-x-[80%] -rotate-[45deg]">R</span><span
-                    class="loader-page-heading-2 -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">A</span>
-                <span class="loader-page-heading-2 -translate-y-[1600px] -translate-x-[80%] -rotate-[45deg]">T</span><span
-                    class="loader-page-heading-2 -translate-y-[1800px] -translate-x-[80%] -rotate-[45deg]">E</span>
-                <span class="loader-page-heading-2 keep-stroke -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">&nbsp;T</span>
-                <span class="loader-page-heading-2 keep-stroke -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">O</span>
-                <span class="loader-page-heading-2 keep-stroke -translate-y-[2200px] -translate-x-[80%] -rotate-[45deg]">G</span>
-                <span class="loader-page-heading-2 keep-stroke -translate-y-[2400px] -translate-x-[80%] -rotate-[45deg]">E</span>
-                <span class="loader-page-heading-2 keep-stroke -translate-y-[2600px] -translate-x-[80%] -rotate-[45deg]">T</span>
-                <span class="loader-page-heading-2 keep-stroke -translate-y-[2800px] -translate-x-[80%] -rotate-[45deg]">H</span>
-                <span class="loader-page-heading-2 keep-stroke -translate-y-[3000px] -translate-x-[80%] -rotate-[45deg]">E</span>
-                <span class="loader-page-heading-2 keep-stroke -translate-y-[3200px] -translate-x-[80%] -rotate-[45deg]">R</span>
-            </p>
-        </div>
-        <div class="h-fit w-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <p class="text-[3.8rem] sm:text-9xl text-on-surface brand-font flex flex-row items-center justify-center">
-                <span class="loader-page-heading-3 keep-stroke -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">D</span><span
-                    class="loader-page-heading-3 keep-stroke -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">I</span><span
-                    class="loader-page-heading-3 keep-stroke -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">S</span><span
-                    class="loader-page-heading-3 keep-stroke -translate-y-[800px] -translate-x-[80%] -rotate-[45deg]">C</span><span
-                    class="loader-page-heading-3 keep-stroke -translate-y-[1000px] -translate-x-[80%] -rotate-[45deg]">O</span><span
-                    class="loader-page-heading-3 keep-stroke -translate-y-[1200px] -translate-x-[80%] -rotate-[45deg]">V</span><span
-                    class="loader-page-heading-3 keep-stroke -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">E</span>
-                <span class="loader-page-heading-3 keep-stroke -translate-y-[1600px] -translate-x-[80%] -rotate-[45deg]">R</span><span
-                    class="loader-page-heading-3 -translate-y-[1800px] -translate-x-[80%] -rotate-[45deg]">&nbsp;F</span>
-                <span class="loader-page-heading-3 -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">A</span>
-                <span class="loader-page-heading-3 -translate-y-[2200px] -translate-x-[80%] -rotate-[45deg]">L</span>
-                <span class="loader-page-heading-3 -translate-y-[2400px] -translate-x-[80%] -rotate-[45deg]">A</span>
-                <span class="loader-page-heading-3 -translate-y-[2600px] -translate-x-[80%] -rotate-[45deg]">K</span>
-            </p>
-        </div>
-    </div>
-</div>
+<!--<div class="h-screen w-full fixed top-0 bg-primary z-[200] loader-main-div">-->
+<!--    <div class="h-full w-full flex flex-col items-center justify-center relative">-->
+<!--        <div class="h-fit w-fit overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">-->
+<!--            <p class="text-[3.8rem] sm:text-9xl text-on-surface brand-font flex flex-row items-center justify-center">-->
+<!--                <span class="loader-page-heading-1 keep-stroke -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">U</span><span-->
+<!--                    class="loader-page-heading-1 keep-stroke -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">N</span><span-->
+<!--                    class="loader-page-heading-1 keep-stroke -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">I</span><span-->
+<!--                    class="loader-page-heading-1 keep-stroke -translate-y-[800px] -translate-x-[80%] -rotate-[45deg]">T</span><span-->
+<!--                    class="loader-page-heading-1 keep-stroke -translate-y-[1000px] -translate-x-[80%] -rotate-[45deg]">E</span>-->
+<!--                <span class="loader-page-heading-1 -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">&nbsp;C</span>-->
+<!--                <span class="loader-page-heading-1 -translate-y-[1600px] -translate-x-[80%] -rotate-[45deg]">U</span><span-->
+<!--                    class="loader-page-heading-1 -translate-y-[1800px] -translate-x-[80%] -rotate-[45deg]">L</span>-->
+<!--                <span class="loader-page-heading-1 -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">T</span>-->
+<!--                <span class="loader-page-heading-1 -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">U</span>-->
+<!--                <span class="loader-page-heading-1 -translate-y-[2200px] -translate-x-[80%] -rotate-[45deg]">R</span>-->
+<!--                <span class="loader-page-heading-1 -translate-y-[2400px] -translate-x-[80%] -rotate-[45deg]">E</span>-->
+<!--                <span class="loader-page-heading-1 -translate-y-[2600px] -translate-x-[80%] -rotate-[45deg]">S</span>-->
+<!--            </p>-->
+<!--        </div>-->
+<!--        <div class="h-fit w-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">-->
+<!--            <p class="text-[3.8rem] sm:text-9xl text-on-surface brand-font flex flex-row items-center justify-center">-->
+<!--                <span class="loader-page-heading-2 -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">C</span><span-->
+<!--                    class="loader-page-heading-2 -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">E</span><span-->
+<!--                    class="loader-page-heading-2 -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">L</span><span-->
+<!--                    class="loader-page-heading-2 -translate-y-[800px] -translate-x-[80%] -rotate-[45deg]">E</span><span-->
+<!--                    class="loader-page-heading-2 -translate-y-[1000px] -translate-x-[80%] -rotate-[45deg]">B</span><span-->
+<!--                    class="loader-page-heading-2 -translate-y-[1200px] -translate-x-[80%] -rotate-[45deg]">R</span><span-->
+<!--                    class="loader-page-heading-2 -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">A</span>-->
+<!--                <span class="loader-page-heading-2 -translate-y-[1600px] -translate-x-[80%] -rotate-[45deg]">T</span><span-->
+<!--                    class="loader-page-heading-2 -translate-y-[1800px] -translate-x-[80%] -rotate-[45deg]">E</span>-->
+<!--                <span class="loader-page-heading-2 keep-stroke -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">&nbsp;T</span>-->
+<!--                <span class="loader-page-heading-2 keep-stroke -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">O</span>-->
+<!--                <span class="loader-page-heading-2 keep-stroke -translate-y-[2200px] -translate-x-[80%] -rotate-[45deg]">G</span>-->
+<!--                <span class="loader-page-heading-2 keep-stroke -translate-y-[2400px] -translate-x-[80%] -rotate-[45deg]">E</span>-->
+<!--                <span class="loader-page-heading-2 keep-stroke -translate-y-[2600px] -translate-x-[80%] -rotate-[45deg]">T</span>-->
+<!--                <span class="loader-page-heading-2 keep-stroke -translate-y-[2800px] -translate-x-[80%] -rotate-[45deg]">H</span>-->
+<!--                <span class="loader-page-heading-2 keep-stroke -translate-y-[3000px] -translate-x-[80%] -rotate-[45deg]">E</span>-->
+<!--                <span class="loader-page-heading-2 keep-stroke -translate-y-[3200px] -translate-x-[80%] -rotate-[45deg]">R</span>-->
+<!--            </p>-->
+<!--        </div>-->
+<!--        <div class="h-fit w-full overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">-->
+<!--            <p class="text-[3.8rem] sm:text-9xl text-on-surface brand-font flex flex-row items-center justify-center">-->
+<!--                <span class="loader-page-heading-3 keep-stroke -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">D</span><span-->
+<!--                    class="loader-page-heading-3 keep-stroke -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">I</span><span-->
+<!--                    class="loader-page-heading-3 keep-stroke -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">S</span><span-->
+<!--                    class="loader-page-heading-3 keep-stroke -translate-y-[800px] -translate-x-[80%] -rotate-[45deg]">C</span><span-->
+<!--                    class="loader-page-heading-3 keep-stroke -translate-y-[1000px] -translate-x-[80%] -rotate-[45deg]">O</span><span-->
+<!--                    class="loader-page-heading-3 keep-stroke -translate-y-[1200px] -translate-x-[80%] -rotate-[45deg]">V</span><span-->
+<!--                    class="loader-page-heading-3 keep-stroke -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">E</span>-->
+<!--                <span class="loader-page-heading-3 keep-stroke -translate-y-[1600px] -translate-x-[80%] -rotate-[45deg]">R</span><span-->
+<!--                    class="loader-page-heading-3 -translate-y-[1800px] -translate-x-[80%] -rotate-[45deg]">&nbsp;F</span>-->
+<!--                <span class="loader-page-heading-3 -translate-y-[2000px] -translate-x-[80%] -rotate-[45deg]">A</span>-->
+<!--                <span class="loader-page-heading-3 -translate-y-[2200px] -translate-x-[80%] -rotate-[45deg]">L</span>-->
+<!--                <span class="loader-page-heading-3 -translate-y-[2400px] -translate-x-[80%] -rotate-[45deg]">A</span>-->
+<!--                <span class="loader-page-heading-3 -translate-y-[2600px] -translate-x-[80%] -rotate-[45deg]">K</span>-->
+<!--            </p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <!-- Landing Page -->
 <div class="min-h-screen w-full flex flex-col items-center justify-center bg-surface main-content">
@@ -256,6 +256,7 @@
     </div>
 </div>
 
+<div class="h-screen w-full bg-surface"></div>
 
 <style>
     .content {
