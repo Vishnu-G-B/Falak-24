@@ -1,17 +1,21 @@
 <script>
     import {onMount} from 'svelte';
-    import {isNavbarOpen} from '$lib/stores/navStore.js';
+    import {isNavbarOpen, toggleNavbar} from '$lib/stores/navStore.js';
     import horizontalBarcode from "$lib/assets/images/horizontalBarCode.svg?raw";
     import {browser} from '$app/environment';
+    import {goto} from "$app/navigation";
     import {gsap} from "gsap";
+    import {page} from "$app/stores";
 
     let heightTimeline;
     let containerHeight;
     let containerMovement;
+    let minimalNav;
+    let isHomePage;
 
     function setupAnimation() {
         if (containerHeight && containerMovement) {
-            heightTimeline = gsap.timeline({paused: true});
+            heightTimeline = gsap.timeline({paused: true, id: "navbarExpandTimeline"});
             heightTimeline
                 .to(containerHeight, {
                     height: "auto",
@@ -19,6 +23,7 @@
                     ease: "power1.inOut",
                 })
                 .to(containerMovement, {
+                    display: "flex",
                     translateY: 0,
                     ease: "power1.inOut",
                     duration: 0.5
@@ -28,11 +33,23 @@
 
     onMount(() => {
         setupAnimation();
+
+        if (browser) {
+            const showMinimalNavThreshold = 60;
+
+            window.addEventListener('scroll', () => {
+                if (isHomePage) {
+                    if (window.scrollY > showMinimalNavThreshold) {
+                        gsap.to(minimalNav, {translateY: 0, duration: 0.3});
+                    } else {
+                        gsap.to(minimalNav, {translateY: '-100%', duration: 0.3});
+                    }
+                }
+            });
+        }
     });
 
-    $: if (containerHeight && containerMovement && !heightTimeline) {
-        setupAnimation();
-    }
+    $: isHomePage = $page.url.pathname === "/";
 
     $: if (browser && heightTimeline) {
         if ($isNavbarOpen) {
@@ -44,47 +61,89 @@
         }
     }
 
-    function closeNavbar() {
+    $: if (browser && minimalNav) {
+        if (isHomePage) {
+            gsap.set(minimalNav, {translateY: '-100%'});
+        } else {
+            gsap.to(minimalNav, {translateY: 0, duration: 0.3, delay: 0.2});
+        }
+    }
+
+    async function handleNavigation(path) {
         $isNavbarOpen = false;
+        if ($page.url.pathname !== path) {
+            gsap.set(minimalNav, {opacity: 0})
+            await goto(path);
+        }
     }
 </script>
 
-<div class="fixed w-[375px] h-auto left-1/2 z-[999] top-0 transform -translate-x-1/2 border-solid border-0 border-surface">
+<div class="fixed w-[325px] sm:w-[375px] h-auto left-1/2 z-[999] top-0 transform -translate-x-1/2 border-solid border-0 border-surface">
     <div bind:this={containerHeight} class="h-0 w-full overflow-hidden">
         <div class="h-full w-full bg-on-surface text-primary brand-font uppercase px-6 border-b-4 border-solid border-surface">
             {@html horizontalBarcode}
-            <ul class="py-6">
-                <li class="">
-                    <a href="/" aria-current="page"
-                       class="text-5xl block text-center py-1 underline text-alt">Home</a>
+            <ul class="py-6 w-full">
+                <li class="w-full flex justify-center items-center">
+                    <button on:click={() => {handleNavigation("/")}} aria-current="page"
+                            class="text-5xl block text-center py-1 underline text-alt cursor-pointer">Home
+                    </button>
                 </li>
-                <li class="">
-                    <a href="/schedule" class="text-5xl block text-center py-1 hover:text-alt">Schedule</a>
+                <li class="w-full flex justify-center items-center">
+                    <button class="text-5xl block text-center py-1 hover:text-alt cursor-pointer">Coming Soon...
+                    </button>
                 </li>
-                <li class="">
-                    <a href="/practical" class="text-5xl block text-center py-1 hover:text-alt">Practical</a>
-                </li>
-                <li class="">
-                    <a href="/partners" class="text-5xl block text-center py-1 hover:text-alt">Partners</a>
-                </li>
+                <!--                <li class="">-->
+                <!--                    <a href="/practical" class="text-5xl block text-center py-1 hover:text-alt">Practical</a>-->
+                <!--                </li>-->
+                <!--                <li class="">-->
+                <!--                    <a href="/partners" class="text-5xl block text-center py-1 hover:text-alt">Partners</a>-->
+                <!--                </li>-->
             </ul>
         </div>
     </div>
     <div bind:this={containerMovement}
-         class="w-full h-[3.75rem] flex transform -translate-y-full bg-on-surface justify-center items-center">
+         class="w-full h-[3.75rem] hidden transform -translate-y-full bg-on-surface justify-center items-center">
         <div class="w-1/2 h-full px-5 py-2">
             <!-- Logo placeholder -->
             <!--            <img src="{logo}">-->
 
         </div>
         <div class="w-1/2 h-full flex justify-between items-center pl-5">
-            <button class="bg-primary text-on-surface relative regular-font text-xl text-center py-1.5 corner-br px-5 hover:bg-surface duration-300 ease-in transition-all"
-                    style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);">
+            <button class="bg-primary text-on-surface relative regular-font text-xl text-center py-1.5 corner-br px-5
+                           hover:bg-surface hover:text-on-surface duration-300 ease-in transition-all
+                           -mr-3"
+                    style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);"
+                    on:click={() => {handleNavigation("/tickets")}}>
                 Tickets
                 <div class="absolute bottom-0 right-0 bg-surface"></div>
             </button>
             <div class="hidden is-active"></div>
-            <button id="hamburger" class="hamburger hamburger--collapse is-active" type="button" on:click={closeNavbar}>
+            <button id="hamburger" class="hamburger hamburger--collapse is-active" type="button"
+                    on:click={toggleNavbar}>
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Minimal Nav -->
+<div class="minimalNav fixed w-[325px] sm:w-[375px] h-[60px] left-1/2 z-[998] top-0 -translate-x-1/2 border-solid border-0
+            border-surface bg-white transform corner-br"
+     bind:this={minimalNav}
+>
+    <div class="h-full w-full flex justify-center items-center">
+        <div class="h-full w-full flex justify-between items-center px-2">
+            <button class="bg-primary text-on-surface relative regular-font text-xl text-center py-1.5 corner-br px-5
+                           hover:bg-surface hover:text-on-surface duration-300 ease-in transition-all
+                           -mr-3"
+                    style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);"
+                    on:click={() => {handleNavigation("/tickets")}}>
+                Tickets
+                <div class="absolute bottom-0 right-0 bg-surface"></div>
+            </button>
+            <button id="hamburger" class="hamburger hamburger--collapse" type="button" on:click={toggleNavbar}>
               <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
               </span>

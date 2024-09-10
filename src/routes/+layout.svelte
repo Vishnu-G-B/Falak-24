@@ -10,15 +10,12 @@
     onMount(() => {
         gsap.registerPlugin(ScrollTrigger);
         const lenis = new Lenis({
-            lerp: 0.05,
-            wheelMultiplier: 0.5,
-            touchMultiplier: 0.5,
+            lerp: 0.05
         });
         lenis.on("scroll", ScrollTrigger.update);
         gsap.ticker.add((time) => {
             lenis.raf(time * 1000);
         });
-        // gsap.ticker.lagSmoothing(0);
     })
 </script>
 

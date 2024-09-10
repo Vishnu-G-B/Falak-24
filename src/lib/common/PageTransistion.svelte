@@ -7,11 +7,11 @@
             let transition = gsap.timeline({
                 onComplete: () => {
                     closeTransition.play(0);
+                    gsap.set(".minimalNav", {opacity: 1})
                     resolve();
                 }
             });
-            let closeTransition = gsap.timeline();
-            closeTransition.pause(0);
+            let closeTransition = gsap.timeline({paused: true});
             transition.to('.main-transition', {
                 translateY: 0,
                 opacity: 1,

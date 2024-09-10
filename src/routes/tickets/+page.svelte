@@ -54,8 +54,8 @@
             delay: 1.25,
             ease: 'sine',
         }, '<');
-        for(let i = 0; i <= culturalPasses.length; i++) {
-            onLoadTimeline.to(`.cultural-carousel-${i+1}`, {
+        for (let i = 0; i <= culturalPasses.length; i++) {
+            onLoadTimeline.to(`.cultural-carousel-${i + 1}`, {
                 translateX: `${12 * i}%`,
                 translateZ: `${-8 * i}em`,
             }, '<');
@@ -161,7 +161,7 @@
     <div class="h-screen w-full fixed top-0">
         <AICanvasClaude2/>
     </div>
-    <div class="brand-font text-[26vh] sm:text-[40vh] xl:text-[45vh] text-on-surface overflow-hidden h-fit w-fit flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div class="brand-font text-[9rem] sm:text-[40vh] xl:text-[45vh] text-on-surface overflow-hidden h-fit w-fit flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <div class="h-fit w-full flex flex-row items-center justify-between">
             <p class="text-xl lg:text-2xl xl:text-3xl regular-font cultural-pass-text-main"></p>
             <p class="text-xl lg:text-2xl xl:text-3xl regular-font sports-pass-text-main"></p>
@@ -179,7 +179,8 @@
             <p class="text-xl lg:text-2xl xl:text-3xl regular-font esports-pass-text-main"></p>
         </div>
     </div>
-    <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets" style="perspective: 800px">
+    <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets"
+         style="perspective: 800px">
         <div class="w-full p-0 lg:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[25] flex items-center justify-between">
             <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl -translate-x-[100%] cultural-controller-left"
                     on:click={() => {slideLeft('cultural')}}>
@@ -191,7 +192,8 @@
         <!--        <div class="h-fit w-fit main-page-ticket absolute origin-bottom-left">-->
         <!--            <Ticket mainTitle="TICKETS" isPassHeading="{false}" showBuyButton="{false}"/>-->
         <!--        </div>-->
-        <div class="h-fit w-fit cultural-heading-ticket cultural-ticket-div absolute cultural-carousel-1 origin-bottom-left z-[{culturalPasses.length + 2}] -translate-y-[100%]">
+        <div class="h-fit w-fit cultural-heading-ticket cultural-ticket-div absolute cultural-carousel-1 origin-bottom-left -translate-y-[100%]"
+             style="z-index: {culturalPasses.length + 2};">
             <Ticket mainTitle="CULTURAL" isPassHeading="{false}" showBuyButton="{false}"
                     on:showMoreClick={() => {openTickets('cultural')}}/>
         </div>
@@ -203,7 +205,8 @@
             </div>
         {/each}
     </div>
-    <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets" style="perspective: 800px">
+    <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets"
+         style="perspective: 800px">
         <div class="w-full p-0 lg:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[25] flex items-center justify-between">
             <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl sports-controller-left"
                     on:click={() => {slideLeft('sports')}}>
@@ -212,7 +215,8 @@
                     on:click={() => {slideRight('sports')}}>
             </button>
         </div>
-        <div class="h-fit w-fit sports-heading-ticket sports-ticket-div absolute sports-carousel-1 origin-bottom-left z-[{culturalPasses.length + 2}]">
+        <div class="h-fit w-fit sports-heading-ticket sports-ticket-div absolute sports-carousel-1 origin-bottom-left"
+             style="z-index: {culturalPasses.length + 2};">
             <Ticket mainTitle="SPORTS" isPassHeading="{false}" showBuyButton="{false}"
                     on:showMoreClick={() => {openTickets('sports')}}/>
         </div>
@@ -224,7 +228,8 @@
             </div>
         {/each}
     </div>
-    <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets" style="perspective: 800px">
+    <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets"
+         style="perspective: 800px">
         <div class="w-full p-0 lg:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[25] flex items-center justify-between">
             <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl esports-controller-left"
                     on:click={() => {slideLeft('esports')}}>
@@ -233,7 +238,8 @@
                     on:click={() => {slideRight('esports')}}>
             </button>
         </div>
-        <div class="h-fit w-fit sports-heading-ticket sports-ticket-div absolute esports-carousel-1 origin-bottom-left z-[{culturalPasses.length + 2}]">
+        <div class="h-fit w-fit sports-heading-ticket sports-ticket-div absolute esports-carousel-1 origin-bottom-left "
+             style="z-index: {culturalPasses.length + 2};">
             <Ticket mainTitle="E-SPORTS" isPassHeading="{false}" showBuyButton="{false}"
                     on:showMoreClick={() => {openTickets('esports')}}/>
         </div>
