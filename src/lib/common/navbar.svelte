@@ -108,7 +108,7 @@
             <!--            <img src="{logo}">-->
 
         </div>
-        <div class="w-1/2 h-full flex justify-between items-center pl-5">
+        <div class="w-1/2 h-full flex justify-between items-center sm:pl-5">
             <button class="bg-primary text-on-surface relative regular-font text-xl text-center py-1.5 corner-br px-5
                            hover:bg-surface hover:text-on-surface duration-300 ease-in transition-all
                            -mr-3"
@@ -130,7 +130,7 @@
 
 <!-- Minimal Nav -->
 <div class="minimalNav fixed w-[325px] sm:w-[375px] h-[60px] left-1/2 z-[998] top-0 -translate-x-1/2 border-solid border-0
-            border-surface bg-white transform corner-br"
+            border-surface bg-white transform corner-br -translate-y-full"
      bind:this={minimalNav}
 >
     <div class="h-full w-full flex justify-center items-center">

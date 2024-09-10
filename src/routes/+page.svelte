@@ -8,10 +8,12 @@
     import {goto} from "$app/navigation";
     import {loaderPlayed} from "../store.js";
     import AICanvasClaude2 from "$lib/common/AICanvasClaude2.svelte";
+    import LandingSection from "$lib/common/LandingSection.svelte";
+    import Footer from '$lib/common/Footer.svelte';
 
     onMount(() => {
+        gsap.registerPlugin(TextPlugin, ScrollTrigger);
         if (!$loaderPlayed) {
-            gsap.registerPlugin(TextPlugin, ScrollTrigger);
             let loaderTimeline = gsap.timeline({
                 onComplete: () => {
                     $loaderPlayed = true;
@@ -72,69 +74,11 @@
                 ease: 'sine',
                 duration: 1,
             });
-            // let loaderTextTimeline = gsap.timeline({
-            // });
-            // // loaderTimeline.pause();
-            // // loaderTextTimeline.pause();
-            //
-            // loaderTextTimeline.to('.loader-text', {
-            //     text: 'Cooking...',
-            //     duration: 1,
-            //     ease: 'none',
-            // });
-            // loaderTextTimeline.to('.loader-text', {
-            //     text: 'Baking...',
-            //     duration: 1,
-            //     ease: 'none',
-            // });
-            // loaderTextTimeline.to('.loader-text', {
-            //     text: 'Eating...',
-            //     duration: 1,
-            //     ease: 'none',
-            // });
-            // loaderTextTimeline.to('.loader-text', {
-            //     text: 'Loading...',
-            //     duration: 1,
-            //     ease: 'none',
-            // });
-            //
-            // loaderTimeline.to('.loader-image', {
-            //     scale: 1,
-            //     duration: 0.35,
-            //     ease: 'expoScale(0.5,7,none)',
-            //     stagger: 1,
-            // })
-            // loaderTimeline.to('.loader-image', {
-            //     yPercent: -80,
-            //     duration: 0.25,
-            //     ease: 'expoScale(0.5,7,none)',
-            //     stagger: 0.1,
-            // });
-            // loaderTimeline.to('.loader-image', {
-            //     yPercent: 120,
-            //     duration: 0.65,
-            //     ease: "expoScale(0.2,2,none)",
-            //     stagger: -0.1,
-            // }, '<+0.76');
-            // loaderTimeline.to('.loader', {
-            //     yPercent: 100,
-            //     duration: 0.75,
-            // }, '<+0.7');
-            // loaderTimeline.to('.loader-text', {
-            //     opacity: 0,
-            //     duration: 0.75,
-            // }, '<');
-            // loaderTimeline.to('.main-content', {
-            //     translateY: 0,
-            //     duration: 0.75,
-            // }, '<');
         } else {
             gsap.set('.loader-main-div', {
                 display: 'none',
             })
         }
-
-
     })
 </script>
 
@@ -201,7 +145,7 @@
 
 <!-- Landing Page -->
 <div class="min-h-screen w-full flex flex-col items-center justify-center bg-surface main-content">
-    <div class="h-screen w-full absolute top-0 overflow-hidden">
+    <div class="h-screen w-full fixed top-0 overflow-hidden">
         <AICanvasClaude2/>
     </div>
     <div class="h-screen min-h-fit w-[325px] sm:w-[375px] bg-surface relative flex flex-col">
@@ -251,11 +195,15 @@
         <div class="absolute left-0 top-0 h-[33vh] w-[20px] bg-primary"></div>
         <p class="absolute left-[20px] top-6 regular-font text-[16px] font-thin rotate-180 text-on-surface"
            style="writing-mode: vertical-rl;">DEPARTURE</p>
-        <div class="absolute left-0 bottom-0 min-h-[30vh] max-h-[40vh] w-[20px] bg-primary"></div>
-        <div class="absolute right-0 bottom-0 min-h-[30vh] max-h-[40vh] w-[20px] bg-primary"></div>
+        <div class="absolute left-0 bottom-[-2rem] min-h-[35vh] max-h-[40vh] w-[20px] bg-primary z-10"></div>
+        <div class="absolute right-0 bottom-[-2rem] min-h-[35vh] max-h-[40vh] w-[20px] bg-primary z-10"></div>
     </div>
 </div>
 
+<LandingSection/>
+<LandingSection/>
+<LandingSection/>
+<Footer/>
 
 <style>
     .content {
