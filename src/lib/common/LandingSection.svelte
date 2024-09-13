@@ -3,7 +3,7 @@
     import tempImg1 from "$lib/assets/images/eventImages/6.jpg";
 
     export let eventCategory = "Cultural", firstEventTag = "celebrate&nbsp;creativity",
-        secondEventTag = "celebrate&nbsp;creativity", firstEventSubTag = "Falak 23", secondEventSubTag = "Falak 23",
+        secondEventTag = "Craft&nbsp;Comedy", firstEventSubTag = "Falak 23", secondEventSubTag = "Falak 23",
         firstEventImg, secondEventImg;
 </script>
 <div class="h-[200px] w-[325px] sm:w-[375px] bg-on-surface overflow-hidden flex flex-col justify-center items-center

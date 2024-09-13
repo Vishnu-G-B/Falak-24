@@ -201,8 +201,8 @@
 </div>
 
 <LandingSection/>
-<LandingSection/>
-<LandingSection/>
+<LandingSection eventCategory="Sports"/>
+<LandingSection eventCategory="E-Sports"/>
 <Footer/>
 
 <style>
