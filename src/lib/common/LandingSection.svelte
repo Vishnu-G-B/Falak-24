@@ -74,6 +74,6 @@
 
 <style>
     .hover-svg:before {
-        background-image: url("src/lib/assets/images/hover.svg");
+        background-image: url("../assets/images/hover.svg");
     }
 </style>

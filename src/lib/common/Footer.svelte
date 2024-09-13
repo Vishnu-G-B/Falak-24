@@ -1,6 +1,10 @@
 <script>
     import barcodeImg from "$lib/assets/images/colorInvertedBarcode.svg";
     import horizontalBarcode from "$lib/assets/images/footerBarcode.svg";
+    import instagram from "$lib/assets/images/instagram.svg";
+    import twitter from "$lib/assets/images/twitterx.svg";
+    import linkedin from "$lib/assets/images/linkedin.svg";
+    import meta from "$lib/assets/images/meta.svg";
 </script>
 
 <div class="h-[380px] w-[325px] sm:w-[375px] bg-primary relative mx-auto mt-1">
@@ -30,16 +34,16 @@
     <div class="w-full h-fit flex justify-center items-center mt-7">
         <div class="h-fit w-3/4 flex justify-center items-center gap-2">
             <button class="h-[48px] w-[48px] bg-surface p-1.5">
-                <img src="src/lib/assets/images/instagram.svg" alt="instagram logo" class="w-full h-full object-cover">
+                <img src="{instagram}" alt="instagram logo" class="w-full h-full object-cover">
             </button>
             <button class="h-[48px] w-[48px] bg-surface p-1.5">
-                <img src="src/lib/assets/images/twitterx.svg" alt="instagram logo" class="w-full h-full object-cover">
+                <img src="{twitter}" alt="instagram logo" class="w-full h-full object-cover">
             </button>
             <button class="h-[48px] w-[48px] bg-surface p-1.5">
-                <img src="src/lib/assets/images/linkedin.svg" alt="instagram logo" class="w-full h-full object-cover">
+                <img src="{linkedin}" alt="instagram logo" class="w-full h-full object-cover">
             </button>
             <button class="h-[48px] w-[48px] bg-surface p-1.5">
-                <img src="src/lib/assets/images/meta.svg" alt="instagram logo" class="w-full h-full object-cover">
+                <img src="{meta}" alt="instagram logo" class="w-full h-full object-cover">
             </button>
         </div>
     </div>
