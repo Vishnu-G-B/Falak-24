@@ -60,14 +60,14 @@
                 duration: 0.35,
                 stagger: 0.1,
             }, '<');
-            loaderTimeline.to('.loader-page-heading-3', {
-                translateY: '100%',
-                translateX: '80%',
-                rotate: '45deg',
-                ease: 'sine',
-                duration: 0.35,
-                stagger: 0.1,
-            });
+            // loaderTimeline.to('.loader-page-heading-3', {
+            //     translateY: '100%',
+            //     translateX: '80%',
+            //     rotate: '45deg',
+            //     ease: 'sine',
+            //     duration: 0.35,
+            //     stagger: 0.1,
+            // });
             loaderTimeline.to('.loader-main-div', {
                 translateY: '100%',
                 display: 'hidden',
