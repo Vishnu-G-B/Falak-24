@@ -1,6 +1,6 @@
 <script>
-    import barcodeImg from "$lib/assets/images/colorInvertedBarcode.svg";
-    import tempImg1 from "$lib/assets/images/6.jpg";
+    import barcodeImg from "$lib/assets/images/svgs/colorInvertedBarcode.svg";
+    import tempImg1 from "$lib/assets/images/eventImages/6.jpg";
 
     export let eventCategory = "Cultural", firstEventTag = "celebrate&nbsp;creativity",
         secondEventTag = "celebrate&nbsp;creativity", firstEventSubTag = "Falak 23", secondEventSubTag = "Falak 23",
@@ -74,6 +74,6 @@
 
 <style>
     .hover-svg:before {
-        background-image: url("../assets/images/hover.svg");
+        background-image: url("../assets/images/svgs/hover.svg");
     }
 </style>

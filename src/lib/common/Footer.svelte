@@ -1,10 +1,10 @@
 <script>
-    import barcodeImg from "$lib/assets/images/colorInvertedBarcode.svg";
-    import horizontalBarcode from "$lib/assets/images/footerBarcode.svg";
-    import instagram from "$lib/assets/images/instagram.svg";
-    import twitter from "$lib/assets/images/twitterx.svg";
-    import linkedin from "$lib/assets/images/linkedin.svg";
-    import meta from "$lib/assets/images/meta.svg";
+    import barcodeImg from "$lib/assets/images/svgs/colorInvertedBarcode.svg";
+    import horizontalBarcode from "$lib/assets/images/svgs/footerBarcode.svg";
+    import instagram from "$lib/assets/images/icons/instagram.svg";
+    import twitter from "$lib/assets/images/icons/twitterx.svg";
+    import linkedin from "$lib/assets/images/icons/linkedin.svg";
+    import meta from "$lib/assets/images/icons/meta.svg";
 </script>
 
 <div class="h-[380px] w-[325px] sm:w-[375px] bg-primary relative mx-auto mt-1">

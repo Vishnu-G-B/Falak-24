@@ -1,5 +1,5 @@
 <script>
-    import barcode from "$lib/assets/images/updated_2.svg";
+    import barcode from "$lib/assets/images/svgs/updated_2.svg";
     import {gsap} from "gsap/dist/gsap";
 
     export let prefix;

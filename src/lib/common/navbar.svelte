@@ -1,7 +1,7 @@
 <script>
     import {onMount} from 'svelte';
     import {isNavbarOpen, toggleNavbar} from '$lib/stores/navStore.js';
-    import horizontalBarcode from "$lib/assets/images/horizontalBarCode.svg?raw";
+    import horizontalBarcode from "$lib/assets/images/svgs/horizontalBarCode.svg?raw";
     import {browser} from '$app/environment';
     import {goto} from "$app/navigation";
     import {gsap} from "gsap";
