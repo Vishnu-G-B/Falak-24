@@ -95,13 +95,13 @@
             <p class="regular-font text-lg text-on-surface/80">
                 {eventDesc}
             </p>
-            {#if (prizePool !== 0 && prizePool != null)}
+            {#if (prizePool != 0 && prizePool != null)}
                 <div class="w-full flex flex-col items-start pt-2 bg-surface -translate-x-[25px] z-[2] mt-5">
                     <p class="brand-font text-4xl text-on-surface">PRIZE POOL</p>
                 </div>
             {/if}
             <div class="w-full h-fit flex flex-row items-center justify-around">
-                {#if (prizePool !== 0 && prizePool != null)}
+                {#if (prizePool != 0 && prizePool != null)}
                     <div class="w-fit h-fit flex flex-row items-center justify-center gap-1">
                         <div class="h-3 w-3 bg-yellow-700 rounded-full"></div>
                         <p class="regular-font text-lg text-on-surface/80">

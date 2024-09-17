@@ -148,6 +148,6 @@
 </div>
 
 <div id="scroll-indicator"
-     class="fixed -bottom-40 left-1/2 transform -translate-x-1/2 bg-primary text-on-surface py-2 px-4 rounded-full shadow-lg sm:text-2xl font-bold">
+     class="fixed -bottom-40 z-10 left-1/2 transform -translate-x-1/2 bg-primary text-on-surface py-2 px-4 rounded-full shadow-lg sm:text-2xl font-bold">
     Main Events
 </div>
