@@ -1,10 +1,10 @@
 <script>
-    import barcodeImg from "$lib/assets/images/colorInvertedBarcode.svg";
-    import horizontalBarcode from "$lib/assets/images/footerBarcode.svg";
-    import instagram from "$lib/assets/images/instagram.svg";
-    import twitter from "$lib/assets/images/twitterx.svg";
-    import linkedin from "$lib/assets/images/linkedin.svg";
-    import meta from "$lib/assets/images/meta.svg";
+    import barcodeImg from "$lib/assets/images/svgs/updated_2.svg";
+    import horizontalBarcode from "$lib/assets/images/svgs/footerBarcode.svg";
+    import instagram from "$lib/assets/images/icons/instagram.svg";
+    import twitter from "$lib/assets/images/icons/twitterx.svg";
+    import linkedin from "$lib/assets/images/icons/linkedin.svg";
+    import meta from "$lib/assets/images/icons/meta.svg";
 </script>
 
 <div class="h-[380px] w-[325px] sm:w-[375px] bg-primary relative mx-auto mt-1">
@@ -12,7 +12,7 @@
     <!--    <div class="h-1/4 w-full flex justify-center overflow-hidden -mb-10">-->
     <!--        <img src="{barcodeImg}" alt="barcode" class="h-full w-[85%] object-cover">-->
     <!--    </div>-->
-    <div class="h-fit w-full text-surface brand-font text-[4.3rem] sm:text-[5rem] text-center uppercase tracking-wide">
+    <div class="h-fit w-full text-on-surface brand-font text-[4.3rem] sm:text-[5rem] text-center uppercase tracking-wide">
         Falak&nbsp;Festival
     </div>
     <div class="h-[55px] w-[89%] mx-auto -mt-6 sm:-mt-8">

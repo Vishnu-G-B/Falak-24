@@ -132,7 +132,7 @@
                 <div class="grid__item-img" style="background-image:url(src/lib/assets/images/5.jpg);"></div>
             </div>
             <div class="grid__item pos-6">
-                <div class="grid__item-img" style="background-image:url(src/lib/assets/images/6.jpg);"></div>
+                <div class="grid__item-img" style="background-image:url(../assets/images/eventImages/6.jpg);"></div>
             </div>
             <div class="grid__item pos-7">
                 <div class="grid__item-img" style="background-image:url(src/lib/assets/images/7.jpg);"></div>

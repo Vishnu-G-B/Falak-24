@@ -22,7 +22,7 @@
     }
 
     $: if (snackStatus) {
-        if(browser) {
+        if (browser) {
             if (snackStatus === '1') {
                 backgroundColor = '#ffb4ab';
                 foregroundColor = '#690005'
@@ -37,6 +37,7 @@
 
 </script>
 
-<div class="fixed w-[325px] sm:w-[375px] h-auto left-1/2 z-[999] -top-[100%] transform -translate-x-1/2 flex items-center justify-center p-2 snackbar" style="background-color: {backgroundColor}">
+<div class="fixed w-[325px] sm:w-[375px] h-auto left-1/2 z-[999] -top-[100%] transform -translate-x-1/2 flex items-center justify-center p-2 snackbar"
+     style="background-color: {backgroundColor}">
     <p class="text-3xl brand-font uppercase" style="color: {foregroundColor}">{details}</p>
 </div>

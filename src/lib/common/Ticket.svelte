@@ -61,7 +61,7 @@
                 {#if showBuyButton}
                     <img src="{footerImg}" alt="gif" class="h-[37px] w-[40%] sm:w-full">
                     <div class="px-3 py-2 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface group-hover:bg-surface  duration-300 ease transition-all"
-                        on:click={handleBuy}>
+                         on:click={handleBuy}>
                         Buy &nbsp;&nbsp;<span
                             class="bg-surface p-2 group-hover:bg-primary duration-300 ease transition-all">₹{price}</span>
                     </div>
