@@ -44,7 +44,7 @@
     }
 
     export let prefix;
-    export let eventName, eventDate, eventDesc, firstPrize, secondPrize, thirdPrize, rulebookLink;
+    export let eventName, eventDate, eventDesc, prizePool, rulebookLink;
     export let eventTagline = "&nbsp;".repeat(100);
 </script>
 <div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[475px] eventdiv">
@@ -71,8 +71,8 @@
 
         </div>
         <div class="w-full h-fit flex flex-row items-center justify-between gap-5 px-10
-                    absolute bottom-7 left-1/2 transform -translate-x-1/2">
-            <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface">Register</button>
+                    absolute bottom-7 left-1/2 transform -translate-x-1/2 z-10">
+            <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface" disabled>Register</button>
             <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface"
                     on:click={() => {showDetail(prefix)}}>Details
             </button>
@@ -95,42 +95,49 @@
             <p class="regular-font text-lg text-on-surface/80">
                 {eventDesc}
             </p>
-            {#if (firstPrize != 0)}
+            {#if (prizePool !== 0 && prizePool != null)}
                 <div class="w-full flex flex-col items-start pt-2 bg-surface -translate-x-[25px] z-[2] mt-5">
                     <p class="brand-font text-4xl text-on-surface">PRIZE POOL</p>
                 </div>
             {/if}
             <div class="w-full h-fit flex flex-row items-center justify-around">
-                {#if (firstPrize != 0)}
+                {#if (prizePool !== 0 && prizePool != null)}
                     <div class="w-fit h-fit flex flex-row items-center justify-center gap-1">
                         <div class="h-3 w-3 bg-yellow-700 rounded-full"></div>
-                        <p class="regular-font text-lg text-on-surface/80">₹{firstPrize}</p>
+                        <p class="regular-font text-lg text-on-surface/80">
+                            Winners will draw from a prize pool of ₹{prizePool}</p>
                     </div>
                 {/if}
-                {#if (secondPrize != 0)}
-                    <div class="w-fit h-fit flex flex-row items-center justify-center gap-1">
-                        <div class="h-3 w-3 bg-gray-500 rounded-full"></div>
-                        <p class="regular-font text-lg text-on-surface/80">₹{secondPrize}</p>
-                    </div>
-                {/if}
-                {#if (thirdPrize != 0)}
-                    <div class="w-fit h-fit flex flex-row items-center justify-center gap-1">
-                        <div class="h-3 w-3 bg-yellow-950 rounded-full"></div>
-                        <p class="regular-font text-lg text-on-surface/80">₹{thirdPrize}</p>
-                    </div>
-                {/if}
+                <!--{#if (secondPrize != 0)}-->
+                <!--    <div class="w-fit h-fit flex flex-row items-center justify-center gap-1">-->
+                <!--        <div class="h-3 w-3 bg-gray-500 rounded-full"></div>-->
+                <!--        <p class="regular-font text-lg text-on-surface/80">₹{secondPrize}</p>-->
+                <!--    </div>-->
+                <!--{/if}-->
+                <!--{#if (thirdPrize != 0)}-->
+                <!--    <div class="w-fit h-fit flex flex-row items-center justify-center gap-1">-->
+                <!--        <div class="h-3 w-3 bg-yellow-950 rounded-full"></div>-->
+                <!--        <p class="regular-font text-lg text-on-surface/80">₹{thirdPrize}</p>-->
+                <!--    </div>-->
+                <!--{/if}-->
             </div>
-            {#if (rulebookLink != "none")}
-                <div class="h-full w-full flex flex-row items-end justify-between gap-5 z-[2] -translate-y-[38px]">
+
+            <div class="h-full w-full flex flex-row items-end justify-between gap-5 z-[2] -translate-y-[38px]">
+                {#if (rulebookLink != "none")}
                     <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface"
                             on:click={window.open(rulebookLink,"_blank")}>
                         Rulebook
                     </button>
+                {:else}
                     <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface"
-                            on:click={() => {hideDetail(prefix)}}>Back
+                            disabled>
+                        Rulebook
                     </button>
-                </div>
-            {/if}
+                {/if}
+                <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface"
+                        on:click={() => {hideDetail(prefix)}}>Back
+                </button>
+            </div>
         </div>
         <div class="absolute left-0 bg-primary w-[14px] h-full"></div>
         <div class="absolute top-0 bg-primary h-[14px] w-full"></div>

@@ -5,6 +5,9 @@
     import twitter from "$lib/assets/images/icons/twitterx.svg";
     import linkedin from "$lib/assets/images/icons/linkedin.svg";
     import meta from "$lib/assets/images/icons/meta.svg";
+    import {goto} from "$app/navigation";
+    import {signIn} from "@auth/sveltekit/client";
+    import {page} from "$app/stores";
 </script>
 
 <div class="h-[380px] w-[325px] sm:w-[375px] bg-primary relative mx-auto mt-1">
@@ -19,8 +22,14 @@
         <img src="{barcodeImg}" alt="barcode" class="w-full h-full object-cover">
     </div>
     <button class="h-fit w-[90%] mx-auto flex justify-between items-center border-2 border-black bg-surface text-on-surface
-                    hover:bg-on-surface hover:text-black py-2 px-3 group mt-4">
-        <span class="regular-font ">Login and participate NOW!!</span>
+                    hover:bg-on-surface hover:text-black py-2 px-3 group mt-4" on:click={async () => {
+                        if($page.data.session) {
+                            goto('/tickets');
+                        } else {
+                            await signIn('google', {callbackUrl: `${$page.url.pathname}?status=2&details=Signed%20In`})
+                        }
+                    }}>
+        <span class="regular-font ">Login And Participate Now</span>
         <span class="border-l border-l-on-surface pl-2.5 group-hover:border-l-surface ">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
                    class="overflow-visible astro-GCN2MC3V">

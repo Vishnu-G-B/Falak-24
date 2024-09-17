@@ -1,9 +1,13 @@
 <script>
     import footerImg from "$lib/assets/images/footer.gif";
     import {createEventDispatcher} from "svelte";
+    import {page} from "$app/stores";
+    import {signIn} from "@auth/sveltekit/client";
+    import HelperAnimations from "$lib/common/HelperAnimations.svelte";
 
     const showMoreDispatch = createEventDispatcher();
     const buyDispatch = createEventDispatcher();
+    let helperAnimations;
 
     function handleShowMore() {
         showMoreDispatch('showMoreClick');
@@ -19,6 +23,7 @@
     export let includesArray;
     export let price;
 </script>
+<HelperAnimations bind:this={helperAnimations}/>
 
 <div class="w-[300px] h-[525px] sm:w-[325px] sm:h-[550px] relative bg-surface shadow-2xl flex-shrink-0">
     <div class="absolute top-0 h-full w-full bg-surface flex flex-col p-3">
@@ -60,11 +65,24 @@
             <div class="h-full w-full flex flex-row items-end justify-between gap-2 group cursor-pointer">
                 {#if showBuyButton}
                     <img src="{footerImg}" alt="gif" class="h-[37px] w-[40%] sm:w-full">
-                    <div class="px-3 py-2 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface group-hover:bg-surface  duration-300 ease transition-all"
-                         on:click={handleBuy}>
-                        Buy &nbsp;&nbsp;<span
-                            class="bg-surface p-2 group-hover:bg-primary duration-300 ease transition-all">₹{price}</span>
-                    </div>
+                    {#if $page.data.session}
+                        <button class="px-3 py-2 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface group-hover:bg-surface relative duration-300 ease transition-all"
+                                on:click={() => {helperAnimations.animateLoadingPhase('ticket-buy'); handleBuy();}}>
+                            <p class="ticket-buy-button-inner-text">Buy <span
+                                    class="ml-2 bg-surface p-2 group-hover:bg-primary duration-300 ease transition-all">₹{price}</span>
+                            </p>
+                            <div class="h-full w-full flex-col items-center justify-center ticket-buy-loader-refresh hidden scale-0 absolute top-0 left-0">
+                                <div class="rounded-full bg-on-surface h-8 w-8 ticket-buy-loader-refresh-dot"></div>
+                            </div>
+                        </button>
+                    {:else}
+                        <button class="px-3 py-2 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface group-hover:bg-surface duration-300 ease transition-all"
+                                on:click={async () => {
+                                    await signIn('google', {callbackUrl: `${$page.url.pathname}?status=2&details=Signed%20In`})
+                                }}>
+                            Login
+                        </button>
+                    {/if}
                 {:else}
                     <img src="{footerImg}" alt="gif" class=" h-[33.7%] w-[40%] sm:h-1/5 sm:w-full">
                     <button class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface"

@@ -57,10 +57,10 @@
                 id: `${section.id}`,
                 // markers: true,
                 trigger: `#${section.id}`,
-                start: "top-=20% top",
-                end: "bottom bottom",
+                start: "top center+=19%",
+                end: "bottom top",
                 onEnter: () => updateIndicator(section.text, section.id),
-                onEnterBack: () => updateIndicator(section.text, section.id)
+                onEnterBack: () => updateIndicator(section.text, section.id),
             });
         });
 
@@ -69,6 +69,7 @@
                 duration: 1,
                 text: {
                     padSpace: true,
+                    preserveSpaces: true,
                     value: text,
                     delimiter: ""
                 },
@@ -78,6 +79,7 @@
             //     duration: 1,
             //     text: {
             //         padSpace: true,
+            //         preserveSpaces: true,
             //         value: text,
             //         delimiter: ""
             //     },
@@ -93,7 +95,7 @@
 <div class="h-screen w-full fixed top-0">
     <AICanvasClaude2/>
 </div>
-<div class="brand-font text-[9rem] sm:text-[40vh] xl:text-[45vh] text-on-surface overflow-hidden h-fit w-fit flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="brand-font text-[6rem] sm:text-[45vh] xl:text-[45vh] text-on-surface overflow-hidden h-fit w-[90%] sm:w-fit text-center justify-center items-center flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
     <div class="h-fit w-full flex flex-row items-center justify-between">
         <p class="text-xl lg:text-2xl xl:text-3xl regular-font cultural-pass-text-main"></p>
         <p class="text-xl lg:text-2xl xl:text-3xl regular-font sports-pass-text-main"></p>
@@ -110,18 +112,16 @@
         <p class="text-xl lg:text-2xl xl:text-3xl regular-font esports-pass-text-main"></p>
     </div>
 </div>
-<div class="flex flex-col mt-20 flex-wrap items-center justify-center min-h-screen relative w-full overflow-hidden">
+<div class="flex flex-col mt-20 flex-wrap gap-[20rem] items-center justify-center min-h-screen relative w-full overflow-hidden">
     <div id="main-events"
-         class="flex flex-col items-center gap-5 justify-center min-h-screen relative w-full overflow-hidden mb-[20rem]">
+         class="flex flex-col items-center gap-5 justify-center min-h-screen relative w-full overflow-hidden">
         {#each data.main_events as mainevent}
             <EventCard
                     prefix={'h'+mainevent.EventPriority}
                     eventName={mainevent.EventName}
                     eventDate={mainevent.eventDate}
                     eventDesc={mainevent.EventDescription}
-                    firstPrize={mainevent.FirstPrize}
-                    secondPrize={mainevent.SecondPrize}
-                    thirdPrize={mainevent.ThirdPrize}
+                    prizePool={mainevent.PrizePool}
                     rulebookLink={mainevent.RulebookLink}
                     eventTagline={(mainevent.EventTagline === 'none' || mainevent.EventTagline === null) ? '\u00A0' : mainevent.EventTagline}
             />
@@ -132,8 +132,7 @@
         {#each data.cultural_events as mainevent}
             <EventCard prefix={'h'+mainevent.EventPriority} eventName={mainevent.EventName}
                        eventDate={mainevent.eventDate} eventDesc={mainevent.EventDescription}
-                       firstPrize={mainevent.FirstPrize} secondPrize={mainevent.SecondPrize}
-                       thirdPrize={mainevent.ThirdPrize} rulebookLink={mainevent.RulebookLink}
+                       prizePool={mainevent.PrizePool} rulebookLink={mainevent.RulebookLink}
                        eventTagline={(mainevent.EventTagline == 'none' || mainevent.EventTagline == null) ?'\u00A0':mainevent.EventTagline}/>
         {/each}
     </div>
@@ -142,8 +141,7 @@
         {#each data.esports_events as mainevent}
             <EventCard prefix={'h'+mainevent.EventPriority} eventName={mainevent.EventName}
                        eventDate={mainevent.eventDate} eventDesc={mainevent.EventDescription}
-                       firstPrize={mainevent.FirstPrize} secondPrize={mainevent.SecondPrize}
-                       thirdPrize={mainevent.ThirdPrize} rulebookLink={mainevent.RulebookLink}
+                       prizePool={mainevent.PrizePool} rulebookLink={mainevent.RulebookLink}
                        eventTagline={(mainevent.EventTagline == 'none' || mainevent.EventTagline == null) ?'\u00A0':mainevent.EventTagline}/>
         {/each}
     </div>
