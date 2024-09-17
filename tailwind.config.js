@@ -10,7 +10,11 @@ export default {
                 "kahki": "#BEB7A4",
                 "dark-cyan": "#2D898B",
                 "persian-green": "#549F93",
-                "amarnath-pink": "#DDA3B2"
+                "amarnath-pink": "#DDA3B2",
+                "error": '#ffb4ab',
+                "on-error": '#690005',
+                'success': '#d4edda',
+                'on-success': '#155724',
             },
             fontFamily: {
                 tripSans: ["TripSans", "sans-serif"],

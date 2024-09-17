@@ -6,6 +6,7 @@
     import {gsap} from "gsap/dist/gsap";
     import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     import {onMount} from "svelte";
+    import InfoSnackbar from "$lib/common/InfoSnackbar.svelte";
 
     onMount(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -19,6 +20,7 @@
     })
 </script>
 
+<InfoSnackbar/>
 <Navbar/>
 <PageTransistion/>
 <div class="main-wrapper bg-surface min-h-screen">
