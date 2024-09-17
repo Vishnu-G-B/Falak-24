@@ -6,6 +6,7 @@
     import {enhance} from "$app/forms";
     import AICanvasClaude2 from "$lib/common/AICanvasClaude2.svelte";
     import {goto} from "$app/navigation";
+    import HelperAnimations from "$lib/common/HelperAnimations.svelte";
 
     export let form;
     export let data;
@@ -15,6 +16,7 @@
     let userName;
     let userLearnerId;
     let userPhoneNumber;
+    let helperAnimations;
 
     let errors = {userNameError: '', userPhoneNumberError: '', userLearnerIdError: '', isMaheError: ''};
 
@@ -176,6 +178,7 @@
     }
 
     function checkUserName() {
+        clearFormErrorName();
         if (userName.length >= 2 && userName.match(/^[A-Za-z\s]*$/)) {
             errors.userNameError = '';
         } else {
@@ -184,6 +187,7 @@
     }
 
     function checkMobileNumber() {
+        clearFormErrorMobile();
         if (userPhoneNumber?.toString().length === 10) {
             errors.userPhoneNumberError = '';
         } else {
@@ -216,6 +220,7 @@
     }
 
     function hideForm() {
+        helperAnimations.stopLoadingPhase('ticket-buy');
         let dataTimeline = gsap.timeline();
         dataTimeline.to('.data-form', {
             top: "100%",
@@ -244,10 +249,15 @@
     }
 </script>
 
+<svelte:head>
+    <title>TICKETS</title>
+</svelte:head>
+<HelperAnimations bind:this={helperAnimations}/>
+
 <div class="min-h-screen w-full flex flex-col flex-shrink-0 items-center justify-center gap-2 relative overflow-hidden">
     <div class="h-screen w-full fixed top-[100%] backdrop-blur-2xl hidden data-form items-center justify-center z-[3] px-4 pt-4">
         <button class="h-screen w-full bg-transparent absolute top-0" on:click={hideForm}></button>
-        <div class="h-fit w-fit relative border-2 border-on-surface bg-surface flex flex-col items-start justify-center z-[6] px-5 pt-5 gap-5">
+        <div class="h-fit w-fit relative border-4 border-primary bg-surface flex flex-col items-start justify-center z-[6] px-5 pt-5 gap-5">
             <div class="h-fit w-fit flex flex-col gap-1">
                 <p class="brand-font text-primary text-[40px] leading-8 tracking-wide">PLEASE ENTER YOUR DETAILS!</p>
                 <p class="regular-font text-on-surface/70 text-lg leading-5 tracking-wide text-left mt-1">Your
@@ -258,7 +268,16 @@
             </div>
             <div class="h-fit w-full flex flex-col gap-2">
                 <form action="?/registerUserAndProceed" method="post" use:enhance={(event)=>{
+                    helperAnimations.animateLoadingPhase('user-register');
                     attemptPayment(event)
+                    return async ({result}) => {
+                        form = result.data;
+                        console.log(result.data);
+                        if(result.type === 'success') {
+                            await goto(result.data.redirect);
+                        }
+                        helperAnimations.stopLoadingPhase('user-register');
+                    }
                 }} class="h-fit w-full">
                     <div class="form__group field">
                         <input type="input" class="form__field regular-font" placeholder="Full Name" required=""
@@ -308,9 +327,14 @@
                         </div>
                     {/if}
                     {#if isMahe !== "-1" && isMahe !== undefined}
-                        <button class="w-full h-fit bg-primary text-on-primary text-3xl py-1 brand-font mt-4"
+                        <button class="w-full h-fit bg-primary text-on-surface text-3xl py-1 brand-font mt-4 pt-2 uppercase relative"
                                 type="submit">
-                            Submit
+                            <p class="user-register-button-inner-text">
+                                Submit
+                            </p>
+                            <div class="h-full w-full flex-col items-center justify-center user-register-loader-refresh hidden scale-0 absolute top-0 left-0">
+                                <div class="rounded-full bg-on-surface h-8 w-8 user-register-loader-refresh-dot"></div>
+                            </div>
                         </button>
                         <p class="text-lg regular-font text-primary/70 text-center">Click Outside To Close</p>
                     {/if}

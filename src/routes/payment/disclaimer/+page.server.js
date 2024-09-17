@@ -11,13 +11,13 @@ const userDatabase = client.db("User");
 const user = userDatabase.collection("us_user_data");
 
 export const load = async (event) => {
-    const session = await event.locals.getSession();
+    const session = await event.locals.auth();
     if (!session?.user) {
-        redirect(302, '/passes?signedOut');
+        redirect(302, '/tickets?status=1&details=Signed%20Out');
     } else {
         let foundUser = await user.findOne({email: session.user.email})
         if (!foundUser) {
-            redirect(302, '/passes');
+            redirect(302, '/tickets?status=1&details=User%20Not%20Registered');
         } else {
             let ownedPasses = await passes.find({
                 email: session.user.email,

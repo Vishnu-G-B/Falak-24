@@ -86,6 +86,11 @@
     })
 </script>
 
+<svelte:head>
+    <title>HOME - FALAK24</title>
+</svelte:head>
+
+
 <!--LOADER-->
 <div class="h-screen w-full fixed top-0 bg-primary z-[200] loader-main-div">
     <div class="h-full w-full flex flex-col items-center justify-center relative">
