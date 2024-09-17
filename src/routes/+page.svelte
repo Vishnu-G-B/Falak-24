@@ -10,6 +10,10 @@
     import AICanvasClaude2 from "$lib/common/AICanvasClaude2.svelte";
     import LandingSection from "$lib/common/LandingSection.svelte";
     import Footer from '$lib/common/Footer.svelte';
+    import cultural1 from "$lib/assets/images/eventImages/proshowLanding1.webp";
+    import cultural2 from "$lib/assets/images/eventImages/proshowLanding2.webp";
+    import sports1 from "$lib/assets/images/eventImages/sportsLanding1.webp";
+    import esports1 from "$lib/assets/images/eventImages/EsportsLanding1.webp";
 
     onMount(() => {
         gsap.registerPlugin(TextPlugin, ScrollTrigger);
@@ -200,9 +204,9 @@
     </div>
 </div>
 
-<LandingSection/>
-<LandingSection eventCategory="Sports"/>
-<LandingSection eventCategory="E-Sports"/>
+<LandingSection firstEventImg="{cultural1}" secondEventImg="{cultural2}" firstEventSubTag="Solstice 24"/>
+<LandingSection eventCategory="Sports" firstEventImg="{sports1}" firstEventTag="Elevate Your Game"/>
+<LandingSection eventCategory="E-Sports" firstEventImg="{esports1}" firstEventTag="Pixels and Precision"/>
 <Footer/>
 
 <style>
