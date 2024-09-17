@@ -88,18 +88,17 @@ export const actions = {
                             is_mahe: isMahe === 'true',
                         })
                     }
-                    console.log("NOT FOUND");
                     // if (redirectToEvents === 'true') {
                     // redirect(302, '/events/compete')
                     // } else {
-                    redirect(302, '/payment/disclaimer');
+                    return {redirect: '/payment/disclaimer'};
                     // }
                     // redirect(302, `/payment/${redirectToken}`);
                 } else {
                     // if (redirectToEvents === 'true') {
                     //     redirect(302, '/events/compete')
                     // } else {
-                    redirect(302, '/payment/disclaimer');
+                    return {redirect: '/payment/disclaimer'};
                     // }
                     // redirect(302, `/payment/${redirectToken}`);
                 }

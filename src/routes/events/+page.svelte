@@ -132,8 +132,7 @@
         {#each data.cultural_events as mainevent}
             <EventCard prefix={'h'+mainevent.EventPriority} eventName={mainevent.EventName}
                        eventDate={mainevent.eventDate} eventDesc={mainevent.EventDescription}
-                       firstPrize={mainevent.FirstPrize} secondPrize={mainevent.SecondPrize}
-                       thirdPrize={mainevent.ThirdPrize} rulebookLink={mainevent.RulebookLink}
+                       prizePool={mainevent.PrizePool} rulebookLink={mainevent.RulebookLink}
                        eventTagline={(mainevent.EventTagline == 'none' || mainevent.EventTagline == null) ?'\u00A0':mainevent.EventTagline}/>
         {/each}
     </div>
@@ -142,8 +141,7 @@
         {#each data.esports_events as mainevent}
             <EventCard prefix={'h'+mainevent.EventPriority} eventName={mainevent.EventName}
                        eventDate={mainevent.eventDate} eventDesc={mainevent.EventDescription}
-                       firstPrize={mainevent.FirstPrize} secondPrize={mainevent.SecondPrize}
-                       thirdPrize={mainevent.ThirdPrize} rulebookLink={mainevent.RulebookLink}
+                       prizePool={mainevent.PrizePool} rulebookLink={mainevent.RulebookLink}
                        eventTagline={(mainevent.EventTagline == 'none' || mainevent.EventTagline == null) ?'\u00A0':mainevent.EventTagline}/>
         {/each}
     </div>
