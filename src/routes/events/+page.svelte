@@ -54,35 +54,23 @@
 
         sections.forEach((section, index) => {
             ScrollTrigger.create({
-                id: `${section.id}`,
-                markers: true,
                 trigger: `#${section.id}`,
-                start: "top-=20% top",
-                end: "bottom bottom",
-                onEnter: () => updateIndicator(section.text, section.id),
-                onEnterBack: () => updateIndicator(section.text, section.id)
+                start: "top top",
+                end: "bottom center",
+                onEnter: () => updateIndicator(section.text),
+                onEnterBack: () => updateIndicator(section.text)
             });
         });
 
-        function updateIndicator(text, id) {
+        function updateIndicator(text) {
             gsap.to("#scroll-indicator", {
                 duration: 1,
                 text: {
-                    padSpace: true,
                     value: text,
                     delimiter: ""
                 },
                 ease: "power2.out"
             });
-            // gsap.to(".page-heading-parent", {
-            //     duration: 1,
-            //     text: {
-            //         padSpace: true,
-            //         value: text,
-            //         delimiter: ""
-            //     },
-            //     ease: "power2.out"
-            // })
         }
     })
 
@@ -98,7 +86,7 @@
         <p class="text-xl lg:text-2xl xl:text-3xl regular-font cultural-pass-text-main"></p>
         <p class="text-xl lg:text-2xl xl:text-3xl regular-font sports-pass-text-main"></p>
     </div>
-    <div class="h-fit w-fit overflow-hidden flex flex-row items-center justify-center leading-[1] page-heading-parent">
+    <div class="h-fit w-fit overflow-hidden flex flex-row items-center justify-center leading-[1]">
         <span class="main-page-heading -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">E</span><span
             class="main-page-heading -translate-y-[400px] -translate-x-[80%] -rotate-[45deg]">V</span><span
             class="main-page-heading -translate-y-[600px] -translate-x-[80%] -rotate-[45deg]">E</span><span
@@ -112,7 +100,7 @@
 </div>
 <div class="flex flex-col mt-20 flex-wrap items-center justify-center min-h-screen relative w-full overflow-hidden">
     <div id="main-events"
-         class="flex flex-col items-center gap-5 justify-center min-h-screen relative w-full overflow-hidden mb-[20rem]">
+         class="flex flex-col items-center gap-5 justify-center min-h-screen relative w-full overflow-hidden">
         {#each data.main_events as mainevent}
             <EventCard
                     prefix={'h'+mainevent.EventPriority}
