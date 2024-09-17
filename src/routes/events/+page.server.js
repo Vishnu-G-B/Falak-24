@@ -47,7 +47,7 @@ export const load = async (event) => {
             .sort(sortByDate);
 
         // console.log(main_events);
-        // console.log(cultural_events);
+        console.log(cultural_events);
         // console.log(esports_events);
 
         return {
@@ -55,6 +55,7 @@ export const load = async (event) => {
             cultural_events,
             esports_events,
         }
+
 
     } catch
         (error) {
