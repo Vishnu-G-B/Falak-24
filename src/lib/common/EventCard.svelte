@@ -105,7 +105,7 @@
                     <div class="w-fit h-fit flex flex-row items-center justify-center gap-1">
                         <div class="h-3 w-3 bg-yellow-700 rounded-full"></div>
                         <p class="regular-font text-lg text-on-surface/80">
-                            Winners will draw from a prize pool of ₹{prizePool}</p>
+                            Winners will draw from a prize pool of upto ₹{prizePool}</p>
                     </div>
                 {/if}
                 <!--{#if (secondPrize != 0)}-->
