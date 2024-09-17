@@ -3,14 +3,21 @@
     import {createEventDispatcher} from "svelte";
 
     const showMoreDispatch = createEventDispatcher();
+    const buyDispatch = createEventDispatcher();
 
     function handleShowMore() {
         showMoreDispatch('showMoreClick');
     }
 
+    function handleBuy() {
+        buyDispatch('buyClicked');
+    }
+
     export let mainTitle;
-    export let isPassHeading;
+    export let description;
     export let showBuyButton;
+    export let includesArray;
+    export let price;
 </script>
 
 <div class="w-[300px] h-[525px] sm:w-[325px] sm:h-[550px] relative bg-surface shadow-2xl flex-shrink-0">
@@ -33,17 +40,33 @@
             </p>
         </div>
         <div class="w-full h-full flex flex-col items-center justify-between relative p-5">
-            <p class="text-xl regular-font text-on-surface">
-                Step into a vibrant celebration of talent, culture, and creativity. Open to all—join the experience!
-                Coming Soon!
-            </p>
-            <div class="h-full w-full flex flex-row items-end justify-between gap-2">
-                <img src="{footerImg}" alt="gif" class=" h-[33.7%] w-[40%] sm:h-1/5 sm:w-full">
+            {#if description}
+                <p class="text-xl regular-font text-on-surface">
+                    Step into a vibrant celebration of talent, culture, and creativity. Open to all—join the experience!
+                    Coming Soon!
+                </p>
+            {:else}
+                <div class="h-fit w-full flex flex-col items-start justify-center py-2">
+                    {#each includesArray as includeValue}
+                        <div class="relative brand-font text-2xl tracking-wide text-on-surface flex flex-row items-center justify-start gap-1">
+                            <div
+                                    class="h-3 w-3 rounded-full bg-green-600"
+                            ></div>
+                            <p>{includeValue}</p>
+                        </div>
+                    {/each}
+                </div>
+            {/if}
+            <div class="h-full w-full flex flex-row items-end justify-between gap-2 group cursor-pointer">
                 {#if showBuyButton}
-                    <div class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface">
-                        Buy Ticket
+                    <img src="{footerImg}" alt="gif" class="h-[37px] w-[40%] sm:w-full">
+                    <div class="px-3 py-2 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface group-hover:bg-surface  duration-300 ease transition-all"
+                        on:click={handleBuy}>
+                        Buy &nbsp;&nbsp;<span
+                            class="bg-surface p-2 group-hover:bg-primary duration-300 ease transition-all">₹{price}</span>
                     </div>
                 {:else}
+                    <img src="{footerImg}" alt="gif" class=" h-[33.7%] w-[40%] sm:h-1/5 sm:w-full">
                     <button class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface"
                             on:click={handleShowMore}>
                         See All Passes
