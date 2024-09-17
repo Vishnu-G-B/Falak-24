@@ -26,4 +26,3 @@
 <div class="main-wrapper bg-surface min-h-screen">
     <slot/>
 </div>
-

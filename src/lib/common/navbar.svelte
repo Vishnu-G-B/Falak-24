@@ -33,7 +33,6 @@
     }
 
     onMount(() => {
-        console.log($page.data.session)
         setupAnimation();
 
         if (browser) {
@@ -87,9 +86,14 @@
             <ul class="py-6 w-full">
                 <li class="w-full flex justify-center items-center">
                     <button on:click={() => {handleNavigation("/")}} aria-current="page"
-                            class="text-5xl block text-center py-1 underline text-alt cursor-pointer uppercase">Home
+                            class="text-5xl block text-center py-1 underline cursor-pointer uppercase">Home
                     </button>
                 </li>
+                <!--                <li class="w-full flex justify-center items-center">-->
+                <!--                    <button on:click={() => {handleNavigation("/events")}} aria-current="page"-->
+                <!--                            class="text-5xl block text-center py-1 cursor-pointer uppercase">Events-->
+                <!--                    </button>-->
+                <!--                </li>-->
                 <li class="w-full flex justify-center items-center">
                     <button class="text-5xl block text-center py-1 hover:text-alt cursor-pointer uppercase">Coming
                         Soon...

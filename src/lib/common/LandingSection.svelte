@@ -3,8 +3,8 @@
     import tempImg1 from "$lib/assets/images/eventImages/6.jpg";
 
     export let eventCategory = "Cultural", firstEventTag = "celebrate&nbsp;creativity",
-        secondEventTag = "celebrate&nbsp;creativity", firstEventSubTag = "Falak 23", secondEventSubTag = "Falak 23",
-        firstEventImg, secondEventImg;
+        secondEventTag = "Craft&nbsp;Comedy", firstEventSubTag = "Falak 23", secondEventSubTag = "Falak 23",
+        firstEventImg = tempImg1, secondEventImg = tempImg1;
 </script>
 <div class="h-[200px] w-[325px] sm:w-[375px] bg-on-surface overflow-hidden flex flex-col justify-center items-center
             relative mx-auto mt-2">
@@ -31,14 +31,14 @@
                 {@html firstEventTag}
             </div>
             <div class="w-[85%] h-auto overflow-hidden group relative">
-                <div class="px-6 absolute bottom-6 left-0 z-[11] before:block before:bg-primary before:h-1 before:w-2/3">
+                <div class="px-3 absolute bottom-4 left-0 z-[11] before:block before:bg-primary before:h-1 before:w-2/3">
                     <div class="px-3 py-1 bg-on-surface text-black regular-font">
                         {firstEventSubTag}
                     </div>
                 </div>
                 <div class="w-full h-full before:hidden group-hover:before:block before:absolute
                         before:left-0 before:top-0 before:w-full before:h-full before:z-10 before:bg-cover hover-svg">
-                    <img src="{tempImg1}" alt="temp"
+                    <img src="{firstEventImg}" alt="temp" loading="lazy"
                          class="grayscale group-hover:grayscale-0 group-hover:scale-125 object-cover
                             transition-all duration-300 ease-in-out">
                 </div>
@@ -53,14 +53,14 @@
                 {@html secondEventTag}
             </div>
             <div class="w-[85%] h-auto overflow-hidden group relative">
-                <div class="px-6 absolute bottom-6 left-0 z-[11] before:block before:bg-primary before:h-1 before:w-2/3">
+                <div class="px-3 absolute bottom-4 left-0 z-[11] before:block before:bg-primary before:h-1 before:w-2/3">
                     <div class="px-3 py-1 bg-on-surface text-black regular-font">
                         {secondEventSubTag}
                     </div>
                 </div>
                 <div class="w-full h-full before:hidden group-hover:before:block before:absolute
                         before:left-0 before:top-0 before:w-full before:h-full before:z-10 before:bg-cover hover-svg">
-                    <img src="{tempImg1}" alt="temp"
+                    <img src="{secondEventImg}" alt="temp" loading="lazy"
                          class="grayscale group-hover:grayscale-0 group-hover:scale-125 object-cover
                             transition-all duration-300 ease-in-out">
                 </div>
