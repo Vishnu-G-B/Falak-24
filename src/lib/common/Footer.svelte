@@ -37,13 +37,13 @@
                 <img src="{instagram}" alt="instagram logo" class="w-full h-full object-cover">
             </button>
             <button class="h-[48px] w-[48px] bg-surface p-1.5">
-                <img src="{twitter}" alt="instagram logo" class="w-full h-full object-cover">
+                <img src="{twitter}" alt="twitter logo" class="w-full h-full object-cover">
             </button>
             <button class="h-[48px] w-[48px] bg-surface p-1.5">
-                <img src="{linkedin}" alt="instagram logo" class="w-full h-full object-cover">
+                <img src="{linkedin}" alt="linkedin logo" class="w-full h-full object-cover">
             </button>
             <button class="h-[48px] w-[48px] bg-surface p-1.5">
-                <img src="{meta}" alt="instagram logo" class="w-full h-full object-cover">
+                <img src="{meta}" alt="meta logo" class="w-full h-full object-cover">
             </button>
         </div>
     </div>

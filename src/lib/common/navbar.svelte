@@ -6,6 +6,7 @@
     import {goto} from "$app/navigation";
     import {gsap} from "gsap";
     import {page} from "$app/stores";
+    import {signIn, signOut} from "@auth/sveltekit/client";
 
     let heightTimeline;
     let containerHeight;
@@ -32,6 +33,7 @@
     }
 
     onMount(() => {
+        console.log($page.data.session)
         setupAnimation();
 
         if (browser) {
@@ -89,7 +91,8 @@
                     </button>
                 </li>
                 <li class="w-full flex justify-center items-center">
-                    <button class="text-5xl block text-center py-1 hover:text-alt cursor-pointer uppercase">Coming Soon...
+                    <button class="text-5xl block text-center py-1 hover:text-alt cursor-pointer uppercase">Coming
+                        Soon...
                     </button>
                 </li>
                 <!--                <li class="">-->
@@ -106,7 +109,23 @@
         <div class="w-1/2 h-full px-5 py-2">
             <!-- Logo placeholder -->
             <!--            <img src="{logo}">-->
-
+            <button class="bg-primary text-on-surface relative regular-font text-xl text-center py-1.5 corner-br px-5
+                           hover:bg-surface hover:text-on-surface duration-300 ease-in transition-all
+                           -mr-3"
+                    style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);"
+                    on:click={async () => {
+                        if($page.data.session?.user){
+                            await signOut({ callbackUrl: '/?status=1&details=Signed%20Out%20Successfully'});
+                        } else {
+                            await signIn('google', {callbackUrl: `${$page.url.pathname}?status=2&details=Signed%20In`})
+                        }
+                    }}>
+                {#if $page.data.session?.user}
+                    Sign Out
+                {:else}
+                    Sign In
+                {/if}
+            </button>
         </div>
         <div class="w-1/2 h-full flex justify-between items-center sm:pl-5">
             <button class="bg-primary text-on-surface relative regular-font text-xl text-center py-1.5 corner-br px-5

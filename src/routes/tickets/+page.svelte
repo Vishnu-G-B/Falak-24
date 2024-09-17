@@ -24,6 +24,11 @@
         'sports': 0,
         'esports': 0,
     };
+    let carouselStatus = {
+        'cultural': false,
+        'sports': false,
+        'esports': false,
+    };
     let animationPlaying = false;
 
     onMount(() => {
@@ -96,7 +101,7 @@
     }
 
     function slideRight(prefix) {
-        if (!animationPlaying) {
+        if (!animationPlaying && carouselStatus[prefix]) {
             if (currentIndex[prefix] !== culturalPasses.length) {
                 let slideRightTimeline = gsap.timeline({
                     onComplete: () => {
@@ -144,6 +149,7 @@
     }
 
     export function openTickets(prefix) {
+        carouselStatus[prefix] = true;
         let ticketTimeline = gsap.timeline();
         for (let i = 2; i <= culturalPasses.length + 1; i++) {
             ticketTimeline.to(`.${prefix}-carousel-${i}`, {
@@ -182,11 +188,25 @@
     <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets"
          style="perspective: 800px">
         <div class="w-full p-0 lg:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[25] flex items-center justify-between">
-            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl -translate-x-[100%] cultural-controller-left"
+            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl -translate-x-[100%] cultural-controller-left flex items-center justify-center"
                     on:click={() => {slideLeft('cultural')}}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g>
+                        <path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20Z"/>
+                        <polygon
+                                points="12.707 8.707 11.293 7.293 6.586 12 11.293 16.707 12.707 15.293 10.414 13 16 13 16 11 10.414 11 12.707 8.707"/>
+                    </g>
+                </svg>
             </button>
-            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl translate-x-[100%] cultural-controller-right"
+            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl translate-x-[100%] cultural-controller-right flex items-center justify-center"
                     on:click={() => {slideRight('cultural')}}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g>
+                        <path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20Z"/>
+                        <polygon
+                                points="11.293 8.707 13.586 11 8 11 8 13 13.586 13 11.293 15.293 12.707 16.707 17.414 12 12.707 7.293 11.293 8.707"/>
+                    </g>
+                </svg>
             </button>
         </div>
         <!--        <div class="h-fit w-fit main-page-ticket absolute origin-bottom-left">-->
@@ -208,11 +228,25 @@
     <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets"
          style="perspective: 800px">
         <div class="w-full p-0 lg:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[25] flex items-center justify-between">
-            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl sports-controller-left"
+            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl -translate-x-[100%] cultural-controller-left flex items-center justify-center"
                     on:click={() => {slideLeft('sports')}}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g>
+                        <path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20Z"/>
+                        <polygon
+                                points="12.707 8.707 11.293 7.293 6.586 12 11.293 16.707 12.707 15.293 10.414 13 16 13 16 11 10.414 11 12.707 8.707"/>
+                    </g>
+                </svg>
             </button>
-            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl sports-controller-right"
+            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl translate-x-[100%] cultural-controller-right flex items-center justify-center"
                     on:click={() => {slideRight('sports')}}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g>
+                        <path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20Z"/>
+                        <polygon
+                                points="11.293 8.707 13.586 11 8 11 8 13 13.586 13 11.293 15.293 12.707 16.707 17.414 12 12.707 7.293 11.293 8.707"/>
+                    </g>
+                </svg>
             </button>
         </div>
         <div class="h-fit w-fit sports-heading-ticket sports-ticket-div absolute sports-carousel-1 origin-bottom-left"
@@ -231,11 +265,25 @@
     <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets"
          style="perspective: 800px">
         <div class="w-full p-0 lg:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[25] flex items-center justify-between">
-            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl esports-controller-left"
+            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl -translate-x-[100%] cultural-controller-left flex items-center justify-center"
                     on:click={() => {slideLeft('esports')}}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g>
+                        <path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20Z"/>
+                        <polygon
+                                points="12.707 8.707 11.293 7.293 6.586 12 11.293 16.707 12.707 15.293 10.414 13 16 13 16 11 10.414 11 12.707 8.707"/>
+                    </g>
+                </svg>
             </button>
-            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl esports-controller-right"
+            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl translate-x-[100%] cultural-controller-right flex items-center justify-center"
                     on:click={() => {slideRight('esports')}}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g>
+                        <path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20Z"/>
+                        <polygon
+                                points="11.293 8.707 13.586 11 8 11 8 13 13.586 13 11.293 15.293 12.707 16.707 17.414 12 12.707 7.293 11.293 8.707"/>
+                    </g>
+                </svg>
             </button>
         </div>
         <div class="h-fit w-fit sports-heading-ticket sports-ticket-div absolute esports-carousel-1 origin-bottom-left "
