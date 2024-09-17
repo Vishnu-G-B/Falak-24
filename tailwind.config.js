@@ -13,6 +13,8 @@ export default {
                 "amarnath-pink": "#DDA3B2",
                 "error": '#ffb4ab',
                 "on-error": '#690005',
+                'success': '#d4edda',
+                'on-success': '#155724',
             },
             fontFamily: {
                 tripSans: ["TripSans", "sans-serif"],
