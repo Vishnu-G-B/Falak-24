@@ -47,7 +47,7 @@
     export let eventName, eventDate, eventDesc, firstPrize, secondPrize, thirdPrize, rulebookLink;
     export let eventTagline = "&nbsp;".repeat(100);
 </script>
-<div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[375px] h-[435px] eventdiv">
+<div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[475px] eventdiv">
     <div class="w-full h-full absolute flex flex-col flex-shrink-0 overflow-hidden bg-surface z-[2] {prefix}-main-div origin-bottom-left">
         <div class="flex flex-col items-start justify-center mt-6 pl-6 pr-6 h-full">
             <div class="w-full absolute left-0 -bottom-[28%] sm:-bottom-[40%]">
@@ -65,15 +65,17 @@
             <div class="w-full flex flex-col items-start pt-2 bg-surface -translate-x-[25px] z-[2] mt-5">
                 <p class="brand-font text-6xl text-on-surface">{eventName}</p>
             </div>
-            <div class="h-full w-full flex flex-col items-start justify-between z-[2]">
+            <div class="h-full w-full flex flex-col items-start justify-between z-[2] relative">
                 <p class="regular-font text-xl text-on-surface/80">{@html eventTagline}</p>
-                <div class="h-full w-full flex flex-row items-center justify-between gap-5 mt-10">
-                    <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface">Register</button>
-                    <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface"
-                            on:click={() => {showDetail(prefix)}}>Details
-                    </button>
-                </div>
             </div>
+
+        </div>
+        <div class="w-full h-fit flex flex-row items-center justify-between gap-5 px-10
+                    absolute bottom-7 left-1/2 transform -translate-x-1/2">
+            <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface">Register</button>
+            <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface"
+                    on:click={() => {showDetail(prefix)}}>Details
+            </button>
         </div>
         <div class="absolute left-0 bg-primary w-[14px] h-full"></div>
         <div class="absolute top-0 bg-primary h-[14px] w-full"></div>
