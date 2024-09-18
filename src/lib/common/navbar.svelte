@@ -8,7 +8,6 @@
     import {TextPlugin} from "gsap/dist/TextPlugin";
     import {page} from "$app/stores";
     import {signIn, signOut} from "@auth/sveltekit/client";
-    import Loader from './loader.svelte';
 
     let heightTimeline;
     let containerHeight;
@@ -90,16 +89,17 @@
                 display: "flex",
                 opacity: 1,
                 duration: 0.3,
+                ease: "power1.inOut",
+            });
+            gsap.to("#loading-text-div", {
+                duration: 0.3,
+                ease: "power1.inOut",
                 text: {
                     value: textMappings[path],
                     delimiter: "",
                 },
-                ease: "power1.inOut",
             })
-            setTimeout(async () => {
-                console.log('World!');
-                await goto(path);
-            }, 10000);
+            await goto(path);
         }
     }
 </script>
@@ -108,8 +108,9 @@
     <div bind:this={containerHeight} class="h-0 w-full overflow-hidden relative">
         <div class="h-full w-full bg-on-surface text-primary brand-font uppercase px-6 border-b-4 border-solid border-surface relative">
             <div id="loading-text" class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2
-                        w-full h-full bg-on-surface  justify-center items-center
+                        w-full h-full bg-on-surface justify-center items-center
                         text-7xl hidden opacity-0 flex-col opacity-1 brand-font">
+                <div id="loading-text-div"></div>
                 <div class="loader"></div>
             </div>
             {@html horizontalBarcode}
@@ -318,6 +319,7 @@
         width: 48px;
         height: 48px;
         position: relative;
+        z-index: 999;
     }
 
     .loader:before {
