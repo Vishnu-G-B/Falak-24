@@ -203,7 +203,7 @@
             <Ticket mainTitle="TICKETS" isPassHeading="{false}" showBuyButton="{false}" description="{true}"
                     descriptionText="Your Owned Tickets Will Be Shown Here."
                     secondaryDescriptionText="{(data.passes.length === 0) ? 'Currently you do not own any tickets': `Currently you have ${data.passes.length} ticket(s)`}"
-                    disableActionButton="{data.passes.length === 0}"
+                    disableActionButton="{data.passes.length === 0}" showGenerateButton="{true}"
                     on:showMoreClick={() => {openTickets('cultural')}}/>
         </div>
         {#if data.passes.length !== 0}
@@ -213,7 +213,8 @@
                     <!--                 style="transform: translate(-{80 * (index+1)}%, -{20 * (index+1)}%) rotate(-{20 * (index+1)}deg); z-index: {culturalPasses.length - index+1}">-->
                     <Ticket mainTitle="{culturalTicket.pass_name.toUpperCase()}" isPassHeading="{false}"
                             showBuyButton="{false}"
-                            description="{true}" descriptionText="" enlargeSecondary="{true}" secondaryDescriptionText="{culturalTicket.token}"
+                            description="{true}" descriptionText="" enlargeSecondary="{true}"
+                            secondaryDescriptionText="{culturalTicket.token}"
                             noButton="{true}" disableActionButton="{false}"/>
                 </div>
             {/each}
