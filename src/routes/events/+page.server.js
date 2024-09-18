@@ -34,6 +34,7 @@ export const load = async (event) => {
         //     }
         // });
 
+
         const sortByDate = (a, b) => new Date(a.EventDate) - new Date(b.EventDate);
 
         const main_events = eventList
@@ -43,8 +44,11 @@ export const load = async (event) => {
             .filter(event => event.EventPriority >= 2000 && event.EventPriority < 3000)
             .sort(sortByDate);
         const esports_events = eventList
-            .filter(event => event.EventPriority >= 3000)
+            .filter(event => event.EventPriority >= 3000 && event.EventPriority < 4000)
             .sort(sortByDate);
+        const sports_events = eventList
+            .filter(event => event.EventPriority >= 4000)
+            .sort(sortByDate)
 
         // console.log(main_events);
         // console.log(cultural_events);
@@ -54,7 +58,9 @@ export const load = async (event) => {
             main_events,
             cultural_events,
             esports_events,
+            sports_events
         }
+
 
     } catch
         (error) {
