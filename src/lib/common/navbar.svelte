@@ -5,6 +5,7 @@
     import {browser} from '$app/environment';
     import {goto} from "$app/navigation";
     import {gsap} from "gsap";
+    import {TextPlugin} from "gsap/dist/TextPlugin";
     import {page} from "$app/stores";
     import {signIn, signOut} from "@auth/sveltekit/client";
 
@@ -34,6 +35,7 @@
 
     onMount(() => {
         setupAnimation();
+        gsap.registerPlugin(TextPlugin);
 
         if (browser) {
             const showMinimalNavThreshold = 60;
@@ -71,32 +73,64 @@
     }
 
     async function handleNavigation(path) {
-        $isNavbarOpen = false;
         if ($page.url.pathname !== path) {
-            gsap.set(minimalNav, {opacity: 0})
+            gsap.set(minimalNav, {opacity: 0});
+            gsap.to(".nav-links", {
+                opacity: 0,
+                duration: 0.1,
+                ease: "power1.inOut",
+            });
+            let textMappings = {
+                "/": "Home",
+                "/events": "Events",
+                "/my-tickets": "My Tickets",
+            }
+            gsap.to("#loading-text", {
+                display: "flex",
+                opacity: 1,
+                duration: 0.3,
+                ease: "power1.inOut",
+            });
+            gsap.to("#loading-text-div", {
+                duration: 0.3,
+                ease: "power1.inOut",
+                text: {
+                    value: textMappings[path],
+                    delimiter: "",
+                },
+            })
             await goto(path);
         }
     }
 </script>
 
 <div class="fixed w-[325px] sm:w-[375px] h-auto left-1/2 z-[999] top-0 transform -translate-x-1/2 border-solid border-0 border-surface">
-    <div bind:this={containerHeight} class="h-0 w-full overflow-hidden">
-        <div class="h-full w-full bg-on-surface text-primary brand-font uppercase px-6 border-b-4 border-solid border-surface">
+    <div bind:this={containerHeight} class="h-0 w-full overflow-hidden relative">
+        <div class="h-full w-full bg-on-surface text-primary brand-font uppercase px-6 border-b-4 border-solid border-surface relative">
+            <div id="loading-text" class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2
+                        w-full h-full bg-on-surface justify-center items-center
+                        text-7xl hidden opacity-0 flex-col opacity-1 brand-font">
+                <div id="loading-text-div"></div>
+                <div class="loader"></div>
+            </div>
             {@html horizontalBarcode}
             <ul class="py-6 w-full">
-                <li class="w-full flex justify-center items-center">
+                <li class="nav-links w-full flex justify-center items-center">
                     <button on:click={() => {handleNavigation("/")}} aria-current="page"
-                            class="text-5xl block text-center py-1 underline cursor-pointer uppercase">Home
+                            class="text-5xl block text-center py-1 {($page.url.pathname === '/') ? 'underline' : ''} cursor-pointer uppercase">
+                        Home
                     </button>
                 </li>
-                <li class="w-full flex justify-center items-center">
+                <li class="nav-links w-full flex justify-center items-center">
                     <button on:click={() => {handleNavigation("/events")}} aria-current="page"
-                            class="text-5xl block text-center py-1 cursor-pointer uppercase">Events
+                            class="text-5xl block text-center py-1 {($page.url.pathname === '/events') ? 'underline' : ''} cursor-pointer uppercase">
+                        Events
                     </button>
                 </li>
-                <li class="w-full flex justify-center items-center">
+                <li class="nav-links w-full flex justify-center items-center">
                     <button on:click={() => {handleNavigation("/my-tickets")}} aria-current="page"
-                            class="text-5xl block text-center py-1 cursor-pointer uppercase">My Tickets
+                            class="text-5xl block text-center py-1 {($page.url.pathname === '/my-tickets') ? 'underline' : ''} cursor-pointer uppercase">
+                        My Tickets
                     </button>
                 </li>
 
@@ -279,5 +313,71 @@
     .corner-br {
         -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - .625rem), calc(100% - .625rem) 100%, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% calc(100% - .625rem), calc(100% - .625rem) 100%, 0 100%)
+    }
+
+    .loader {
+        width: 48px;
+        height: 48px;
+        position: relative;
+        z-index: 999;
+    }
+
+    .loader:before {
+        content: '';
+        width: 48px;
+        height: 5px;
+        background: #0156cf;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        border-radius: 50%;
+        animation: shadow324 0.5s linear infinite;
+    }
+
+    .loader:after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: #0156cf;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 4px;
+        animation: jump7456 0.5s linear infinite;
+    }
+
+    @keyframes jump7456 {
+        15% {
+            border-bottom-right-radius: 3px;
+        }
+
+        25% {
+            transform: translateY(9px) rotate(22.5deg);
+        }
+
+        50% {
+            transform: translateY(18px) scale(1, .9) rotate(45deg);
+            border-bottom-right-radius: 40px;
+        }
+
+        75% {
+            transform: translateY(9px) rotate(67.5deg);
+        }
+
+        100% {
+            transform: translateY(0) rotate(90deg);
+        }
+    }
+
+    @keyframes shadow324 {
+
+        0%,
+        100% {
+            transform: scale(1, 1);
+        }
+
+        50% {
+            transform: scale(1.2, 1);
+        }
     }
 </style>

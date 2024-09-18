@@ -13,7 +13,9 @@
     import cultural1 from "$lib/assets/images/eventImages/proshowLanding1.webp";
     import cultural2 from "$lib/assets/images/eventImages/proshowLanding2.webp";
     import sports1 from "$lib/assets/images/eventImages/sportsLanding1.webp";
+    import sports2 from "$lib/assets/images/eventImages/sportsLanding2.webp"
     import esports1 from "$lib/assets/images/eventImages/EsportsLanding1.webp";
+    import esports2 from "$lib/assets/images/eventImages/EsportsLanding2.webp";
 
     onMount(() => {
         gsap.registerPlugin(TextPlugin, ScrollTrigger);
@@ -210,8 +212,10 @@
 </div>
 
 <LandingSection firstEventImg="{cultural1}" secondEventImg="{cultural2}" firstEventSubTag="Solstice 24"/>
-<LandingSection eventCategory="Sports" firstEventImg="{sports1}" firstEventTag="Elevate Your Game"/>
-<LandingSection eventCategory="E-Sports" firstEventImg="{esports1}" firstEventTag="Pixels and Precision"/>
+<LandingSection eventCategory="Sports" firstEventImg="{sports1}" firstEventTag="Elevate Your Game"
+                secondEventImg="{sports2}" secondEventTag="Reach for Victory"/>
+<LandingSection eventCategory="E-Sports" firstEventImg="{esports1}" firstEventTag="Pixels and Precision"
+                secondEventImg="{esports2}" secondEventTag="The New Colosseum"/>
 <Footer/>
 
 <style>

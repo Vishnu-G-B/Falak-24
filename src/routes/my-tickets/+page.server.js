@@ -12,8 +12,8 @@ const user = userDatabase.collection("us_user_data");
 
 export const load = async (event) => {
     const session = await event.locals.auth();
-    if (!session.user) {
-        redirect(302, '/passes?status=1&details=Sign%20In%20To%20Access');
+    if (!session?.user) {
+        redirect(302, '/tickets?status=1&details=Sign%20In%20To%20Access');
     }
 
     let foundPasses = await passes.find({email: session.user.email, banned: false}, {projection: {_id: 0}}).toArray();

@@ -1,7 +1,67 @@
 <script>
     import barcode from "$lib/assets/images/svgs/updated_2.svg";
     import {gsap} from "gsap/dist/gsap";
+    import {onMount} from "svelte";
 
+    let config1 =
+        {
+            "colors":
+                [
+                    {
+                        "color": "#0156CF",
+                        "enabled": true
+                    },
+                    {
+                        "color": "#DDA3B2",
+                        "enabled": true
+                    },
+                    {
+                        "color": "#ffafcc",
+                        "enabled": true
+                    },
+                    {
+                        "color": "#bde0fe",
+                        "enabled": true
+                    },
+                    {
+                        "color": "#a2d2ff",
+                        "enabled": false
+                    }
+                ],
+            "speed":
+                4,
+            "horizontalPressure":
+                3,
+            "verticalPressure":
+                3,
+            "waveFrequencyX":
+                2,
+            "waveFrequencyY":
+                4,
+            "waveAmplitude":
+                5,
+            "shadows":
+                0,
+            "highlights":
+                2,
+            "colorBrightness":
+                1,
+            "colorSaturation":
+                3,
+            "wireframe":
+                false,
+            "colorBlending":
+                5,
+            "backgroundColor":
+                "#003FFF",
+            "backgroundAlpha":
+                1,
+            "resolution":
+                1
+        };
+
+    onMount(() => {
+    })
 
     function showDetail(prefix) {
         let showDetailTimeline = gsap.timeline();
@@ -77,7 +137,7 @@
                     on:click={() => {showDetail(prefix)}}>Details
             </button>
         </div>
-        <div class="absolute left-0 bg-primary w-[14px] h-full"></div>
+        <div id="left-border" class="absolute left-0 bg-primary w-[14px] h-full"></div>
         <div class="absolute top-0 bg-primary h-[14px] w-full"></div>
         <div class="absolute bottom-0 bg-primary h-[14px] w-full"></div>
         <div class="absolute right-0 bg-primary w-[14px] h-full"></div>
