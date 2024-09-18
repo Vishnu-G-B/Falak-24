@@ -96,7 +96,7 @@
                 </li>
                 <li class="w-full flex justify-center items-center">
                     <button on:click={() => {handleNavigation("/my-tickets")}} aria-current="page"
-                            class="text-5xl block text-center py-1 cursor-pointer uppercase">Events
+                            class="text-5xl block text-center py-1 cursor-pointer uppercase">My Tickets
                     </button>
                 </li>
 
