@@ -4,16 +4,22 @@
     import {gsap} from "gsap/dist/gsap.js";
     import {TextPlugin} from "gsap/dist/TextPlugin";
     import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
+    import {ScrollToPlugin} from "gsap/dist/ScrollToPlugin";
     import {onMount} from "svelte";
     import barcode from "$lib/assets/images/svgs/updated_2.svg";
 
+    let subnavOpen = false;
+
     onMount(() => {
-        gsap.registerPlugin(TextPlugin, ScrollTrigger);
+        gsap.registerPlugin(TextPlugin, ScrollTrigger, ScrollToPlugin);
         gsap.set('.eventdiv', {
             y: -100,
             scale: 0.8,
             opacity: 0
         });
+        gsap.set("#svgButton", {
+            transformPerspective: 600, transformOrigin: "50% 50%"
+        })
 
         let onLoadTimeline = gsap.timeline();
         onLoadTimeline.to('.main-page-heading', {
@@ -48,10 +54,10 @@
         }, '<')
 
         const sections = [
-            {id: "main-events", text: "Main Events"},
-            {id: "cultural-events", text: "Cultural Events"},
-            // {id: "sports-events", text: "Sports Events"},
-            {id: "esports-events", text: "E-Sports Events"}
+            {id: "main-events", text: "Main&nbsp;Events"},
+            {id: "cultural-events", text: "Cultural&nbsp;Events"},
+            // {id: "sports-events", text: "Sports&nbsp;Events"},
+            {id: "esports-events", text: "E-Sports&nbsp;Events"}
         ];
 
         sections.forEach((section, index) => {
@@ -127,6 +133,43 @@
             zIndex: 2,
             ease: 'sine',
         }, '<');
+    }
+
+    function togglesubnav() {
+        if (!subnavOpen) {
+            gsap.to(".subnav", {
+                height: "150px",
+                duration: 0.3,
+                ease: 'power2.inOut',
+            });
+            gsap.to("#svgButton", {
+                rotation: 180,
+                force3D: true,
+                duration: 0.3,
+                ease: 'power2.inOut',
+            })
+            subnavOpen = !subnavOpen;
+        } else {
+            gsap.to(".subnav", {
+                height: "0px",
+                duration: 0.3,
+                ease: 'power2.inOut',
+            });
+            gsap.to("#svgButton", {
+                rotation: 0,
+                force3D: true,
+                duration: 0.3,
+                ease: 'power2.inOut',
+            })
+            subnavOpen = !subnavOpen;
+        }
+    }
+
+    function handleScroll(idName) {
+        gsap.to(window, {
+            duration: 3,
+            scrollTo: "#" + idName,
+        });
     }
 
     export let data;
@@ -258,22 +301,27 @@
     </div>
 </div>
 
-<div class="fixed bottom-5 z-10 left-1/2 transform -translate-x-1/2 bg-primary text-on-surface py-2 px-4 rounded-full
-            shadow-lg font-bold flex justify-center items-center gap-4">
-    <div id="scroll-indicator" class="regular-font text-xl sm:text-2xl text-center">
-        Main Events
+<div class="fixed bottom-5 z-10 left-1/2 transform -translate-x-1/2 bg-primary text-on-surface py-2 px-2 rounded-full
+            shadow-lg font-bold flex justify-center items-center gap-2 w-[220px] sm:w-[250px]">
+    <div id="scroll-indicator"
+         class="regular-font text-xl sm:text-2xl text-center ">
+        Main&nbsp;Events
     </div>
-    <!--    <button class="h-[24px] w-[24px] object-cover">-->
-    <!--        <svg fill="#ffffff" height="100%" width="100%" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"-->
-    <!--             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g>-->
-    <!--            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>-->
-    <!--            <g id="SVGRepo_iconCarrier">-->
-    <!--                <path id="XMLID_224_"-->
-    <!--                      d="M325.606,229.393l-150.004-150C172.79,76.58,168.974,75,164.996,75c-3.979,0-7.794,1.581-10.607,4.394 l-149.996,150c-5.858,5.858-5.858,15.355,0,21.213c5.857,5.857,15.355,5.858,21.213,0l139.39-139.393l139.397,139.393 C307.322,253.536,311.161,255,315,255c3.839,0,7.678-1.464,10.607-4.394C331.464,244.748,331.464,235.251,325.606,229.393z">-->
-    <!--            </path> </g></svg>-->
-    <!--    </button>-->
+    <button class=" h-[24px] w-[24px] border-l-2 border-solid border-on-surface pl-2" on:click={togglesubnav}>
+        <svg fill="#ffffff" height="100%" width="100%" version="1.1" id="svgButton" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                    <path id="XMLID_224_"
+                          d="M325.606,229.393l-150.004-150C172.79,76.58,168.974,75,164.996,75c-3.979,0-7.794,1.581-10.607,4.394 l-149.996,150c-5.858,5.858-5.858,15.355,0,21.213c5.857,5.857,15.355,5.858,21.213,0l139.39-139.393l139.397,139.393 C307.322,253.536,311.161,255,315,255c3.839,0,7.678-1.464,10.607-4.394C331.464,244.748,331.464,235.251,325.606,229.393z">
+                </path> </g></svg>
+    </button>
 </div>
 
-<div class="">
-
+<div class="subnav fixed bottom-20 z-10 left-1/2 transform -translate-x-1/2 bg-primary text-on-surface rounded-3xl
+            w-[230px] h-[0px] px-2 flex flex-col justify-center items-center gap-2 overflow-hidden
+            shadow-lg font-bold regular-font text-xl sm:text-2xl text-center">
+    <button class="subnavText" on:click={() => {handleScroll("main-events")}}>Main Events</button>
+    <button class="subnavText" on:click={() => {handleScroll("cultural-events")}}>Cultural Events</button>
+    <button class="subnavText" on:click={() => {handleScroll("esports-events")}}>E-Sports Events</button>
 </div>
