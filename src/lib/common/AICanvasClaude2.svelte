@@ -189,11 +189,11 @@
             on:mousemove={handleMouseMove}
             class="h-screen w-full bg-surface"
     ></canvas>
-    {#if selectedPlane}
-        <div class="absolute top-4 right-4 bg-white p-4 rounded shadow">
-            <h3>Selected Plane: {selectedPlane.name}</h3>
-            <p>Position: ({selectedPlane.x.toFixed(2)}, {selectedPlane.y.toFixed(2)})</p>
-            <p>Speed: {Math.sqrt(selectedPlane.vx ** 2 + selectedPlane.vy ** 2).toFixed(2)}</p>
-        </div>
-    {/if}
+    <!--{#if selectedPlane}-->
+    <!--    <div class="absolute top-4 right-4 bg-white p-4 rounded shadow">-->
+    <!--        <h3>Selected Plane: {selectedPlane.name}</h3>-->
+    <!--        <p>Position: ({selectedPlane.x.toFixed(2)}, {selectedPlane.y.toFixed(2)})</p>-->
+    <!--        <p>Speed: {Math.sqrt(selectedPlane.vx ** 2 + selectedPlane.vy ** 2).toFixed(2)}</p>-->
+    <!--    </div>-->
+    <!--{/if}-->
 </div>

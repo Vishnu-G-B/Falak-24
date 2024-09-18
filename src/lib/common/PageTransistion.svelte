@@ -1,6 +1,8 @@
 <script>
     import {gsap} from "gsap/dist/gsap";
     import {onNavigate} from "$app/navigation";
+    import {isNavbarOpen, toggleNavbar} from '$lib/stores/navStore.js';
+
 
     onNavigate(() => {
         return new Promise((resolve) => {
@@ -8,10 +10,18 @@
                 onComplete: () => {
                     closeTransition.play(0);
                     gsap.set(".minimalNav", {opacity: 1})
+                    gsap.set(".nav-links", {
+                        opacity: 1,
+                    });
+                    gsap.set("#loading-text", {
+                        display: "none",
+                        opacity: 0,
+                    });
                     resolve();
                 }
             });
             let closeTransition = gsap.timeline({paused: true});
+            $isNavbarOpen = false;
             transition.to('.main-transition', {
                 translateY: 0,
                 opacity: 1,

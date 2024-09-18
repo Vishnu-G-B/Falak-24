@@ -38,7 +38,7 @@
                 </div>
                 <div class="w-full h-full before:hidden group-hover:before:block before:absolute
                         before:left-0 before:top-0 before:w-full before:h-full before:z-10 before:bg-cover hover-svg">
-                    <img src="{firstEventImg}" alt="temp" loading="lazy"
+                    <img src="{firstEventImg}" alt="temp"
                          class="grayscale group-hover:grayscale-0 group-hover:scale-125 object-cover
                             transition-all duration-300 ease-in-out">
                 </div>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="w-full h-full before:hidden group-hover:before:block before:absolute
                         before:left-0 before:top-0 before:w-full before:h-full before:z-10 before:bg-cover hover-svg">
-                    <img src="{secondEventImg}" alt="temp" loading="lazy"
+                    <img src="{secondEventImg}" alt="temp"
                          class="grayscale group-hover:grayscale-0 group-hover:scale-125 object-cover
                             transition-all duration-300 ease-in-out">
                 </div>
