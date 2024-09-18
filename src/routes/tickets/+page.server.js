@@ -16,7 +16,6 @@ export const load = async (event) => {
         let userData = await user.findOne({
             email: session.user.email,
         }, {projection: {_id: 0}});
-        console.log(userData);
         if (userData) {
             return {registered: true, userData: userData}
         } else {

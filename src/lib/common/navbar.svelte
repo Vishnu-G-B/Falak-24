@@ -89,16 +89,22 @@
                             class="text-5xl block text-center py-1 underline cursor-pointer uppercase">Home
                     </button>
                 </li>
-                <!--                <li class="w-full flex justify-center items-center">-->
-                <!--                    <button on:click={() => {handleNavigation("/events")}} aria-current="page"-->
-                <!--                            class="text-5xl block text-center py-1 cursor-pointer uppercase">Events-->
-                <!--                    </button>-->
-                <!--                </li>-->
                 <li class="w-full flex justify-center items-center">
-                    <button class="text-5xl block text-center py-1 hover:text-alt cursor-pointer uppercase">Coming
-                        Soon...
+                    <button on:click={() => {handleNavigation("/events")}} aria-current="page"
+                            class="text-5xl block text-center py-1 cursor-pointer uppercase">Events
                     </button>
                 </li>
+                <li class="w-full flex justify-center items-center">
+                    <button on:click={() => {handleNavigation("/my-tickets")}} aria-current="page"
+                            class="text-5xl block text-center py-1 cursor-pointer uppercase">My Tickets
+                    </button>
+                </li>
+
+                <!--                <li class="w-full flex justify-center items-center">-->
+                <!--                    <button class="text-5xl block text-center py-1 hover:text-alt cursor-pointer uppercase">Coming-->
+                <!--                        Soon...-->
+                <!--                    </button>-->
+                <!--                </li>-->
                 <!--                <li class="">-->
                 <!--                    <a href="/practical" class="text-5xl block text-center py-1 hover:text-alt">Practical</a>-->
                 <!--                </li>-->
