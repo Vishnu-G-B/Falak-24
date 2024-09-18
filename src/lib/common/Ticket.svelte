@@ -4,6 +4,7 @@
     import {page} from "$app/stores";
     import {signIn} from "@auth/sveltekit/client";
     import HelperAnimations from "$lib/common/HelperAnimations.svelte";
+    import {goto} from "$app/navigation";
 
     const showMoreDispatch = createEventDispatcher();
     const buyDispatch = createEventDispatcher();
@@ -23,6 +24,7 @@
     export let secondaryDescriptionText = "";
     export let disableActionButton = false;
     export let noButton = false;
+    export let showGenerateButton = false;
     export let enlargeSecondary = false;
     export let showBuyButton;
     export let includesArray;
@@ -73,10 +75,10 @@
                     {/each}
                 </div>
             {/if}
-            <div class="h-full w-full flex flex-row items-end justify-between gap-2 group cursor-pointer">
+            <div class="h-full w-full flex flex-row items-end justify-center gap-2 group cursor-pointer">
                 {#if !noButton && !disableActionButton}
                     {#if showBuyButton}
-                        <img src="{footerImg}" alt="gif" class="h-[37px] w-[40%] sm:w-full">
+                        <img src="{footerImg}" alt="gif" class="h-[37px] w-[40%] sm:w-[55%]">
                         {#if $page.data.session}
                             <button class="px-3 py-2 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface group-hover:bg-surface relative duration-300 ease transition-all"
                                     on:click={() => {helperAnimations.animateLoadingPhase('ticket-buy'); handleBuy();}}>
@@ -96,16 +98,26 @@
                             </button>
                         {/if}
                     {:else}
-                        <img src="{footerImg}" alt="gif" class=" h-[31px] w-[40%] sm:w-full">
+                        {#if !showGenerateButton}
+                            <img src="{footerImg}" alt="gif" class=" h-[31px] w-[40%] sm:w-[50%]">
+                        {:else}
+                            <button class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface"
+                                    on:click={async () => {goto('/payment/m-check')}}>
+                                Generate Pass
+                            </button>
+                        {/if}
                         <button class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface"
                                 on:click={handleShowMore}>
-                            See All Passes
+                            See All Tickets
                         </button>
                     {/if}
                 {:else if noButton && !disableActionButton}
                     <img src="{footerImg}" alt="gif" class="h-[31px] w-full">
                 {:else}
-                    <img src="{footerImg}" alt="gif" class=" h-[31px] w-[40%] sm:w-full">
+                    <button class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface"
+                            on:click={async () => {goto('/payment/m-check')}}>
+                        Generate Pass
+                    </button>
                     <button class="px-3 py-1 h-fit w-fit text-nowrap bg-primary/50 cursor-not-allowed regular-font text-on-surface"
                             disabled>
                         See All Tickets

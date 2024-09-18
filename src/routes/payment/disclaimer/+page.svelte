@@ -21,12 +21,12 @@
                 <p class="regular-font text-xl text-on-surface text-left">Please make your payment on the site that
                     opens next</p>
             </li>
-            <li>
-                <p class="regular-font text-xl text-on-surface text-left">Please save the receipt that is generated.</p>
+            <li class="text-on-surface">
+                <p class="regular-font text-xl text-on-surface text-left">Please come back to this page after making
+                    your payment to generate your passes</p>
             </li>
             <li>
-                <p class="regular-font text-xl text-on-surface text-left">Your pass will be generated automatically
-                    within two days</p>
+                <p class="regular-font text-xl text-on-surface text-left">Please save the receipt that is generated.</p>
             </li>
             <li>
                 <p class="regular-font text-xl text-on-surface text-left">We are sorry for this inconvenience.</p>
