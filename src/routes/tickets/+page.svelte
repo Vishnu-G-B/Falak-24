@@ -79,7 +79,6 @@
         onLoadTimeline.to('.cultural-controller-right', {
             translateX: 0,
         }, "<");
-
     })
 
     function getTranslatePercentage(element) {
