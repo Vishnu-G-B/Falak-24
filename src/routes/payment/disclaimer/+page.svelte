@@ -1,4 +1,6 @@
-<script></script>
+<script>
+    import {goto} from "$app/navigation";
+</script>
 
 <svelte:head>
     <title>DISCLAIMER!</title>
@@ -36,8 +38,9 @@
             </li>
         </ul>
         <button class="w-full h-fit bg-primary py-1 brand-font text-3xl pt-2 text-on-surface flex items-center justify-center"
-                on:click={() => {
+                on:click={async () => {
             window.open('https://payment.manipal.edu/falak-Login', '_blank');
+            await goto('/payment/m-check');
         }}>
             CONTINUE
         </button>
