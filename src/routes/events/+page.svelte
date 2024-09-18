@@ -49,13 +49,13 @@
         const sections = [
             {id: "main-events", text: "Main Events"},
             {id: "cultural-events", text: "Cultural Events"},
+            {id: "sports-events", text: "Sports Events"},
             {id: "esports-events", text: "E-Sports Events"}
         ];
 
         sections.forEach((section, index) => {
             ScrollTrigger.create({
                 id: `${section.id}`,
-                // markers: true,
                 trigger: `#${section.id}`,
                 start: "top center+=19%",
                 end: "bottom top",
@@ -68,8 +68,8 @@
             gsap.to("#scroll-indicator", {
                 duration: 1,
                 text: {
-                    padSpace: true,
-                    preserveSpaces: true,
+                    // padSpace: true,
+                    // preserveSpaces: true,
                     value: text,
                     delimiter: ""
                 },
@@ -95,10 +95,10 @@
 <div class="h-screen w-full fixed top-0">
     <AICanvasClaude2/>
 </div>
-<div class="brand-font text-[6rem] sm:text-[45vh] xl:text-[45vh] text-on-surface overflow-hidden h-fit w-[90%] sm:w-fit text-center justify-center items-center flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="brand-font text-[9rem] sm:text-[45vh] xl:text-[45vh] text-on-surface overflow-hidden h-fit w-[90%] sm:w-fit text-center justify-center items-center flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
     <div class="h-fit w-full flex flex-row items-center justify-between">
-        <p class="text-xl lg:text-2xl xl:text-3xl regular-font cultural-pass-text-main"></p>
-        <p class="text-xl lg:text-2xl xl:text-3xl regular-font sports-pass-text-main"></p>
+        <p class="text-2xl lg:text-2xl xl:text-3xl regular-font cultural-pass-text-main"></p>
+        <p class="text-2xl lg:text-2xl xl:text-3xl regular-font sports-pass-text-main"></p>
     </div>
     <div class="h-fit w-fit overflow-hidden flex flex-row items-center justify-center leading-[1] page-heading-parent">
         <span class="main-page-heading -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">E</span><span
@@ -109,7 +109,7 @@
             class="main-page-heading -translate-y-[1200px] -translate-x-[80%] -rotate-[45deg]">S</span>
     </div>
     <div class="h-fit w-full flex flex-row items-center justify-center -mt-5">
-        <p class="text-xl lg:text-2xl xl:text-3xl regular-font esports-pass-text-main"></p>
+        <p class="text-2xl lg:text-2xl xl:text-3xl regular-font esports-pass-text-main"></p>
     </div>
 </div>
 <div class="flex flex-col mt-20 flex-wrap gap-[20rem] items-center justify-center min-h-screen relative w-full overflow-hidden">
@@ -136,6 +136,15 @@
                        eventTagline={(mainevent.EventTagline == 'none' || mainevent.EventTagline == null) ?'\u00A0':mainevent.EventTagline}/>
         {/each}
     </div>
+    <!--    <div id="sports-events"-->
+    <!--         class="flex flex-col items-center gap-5 justify-center min-h-screen relative w-full overflow-hidden">-->
+    <!--        {#each data.sports_events as mainevent}-->
+    <!--            <EventCard prefix={'h'+mainevent.EventPriority} eventName={mainevent.EventName}-->
+    <!--                       eventDate={mainevent.eventDate} eventDesc={mainevent.EventDescription}-->
+    <!--                       prizePool={mainevent.PrizePool} rulebookLink={mainevent.RulebookLink}-->
+    <!--                       eventTagline={(mainevent.EventTagline == 'none' || mainevent.EventTagline == null) ?'\u00A0':mainevent.EventTagline}/>-->
+    <!--        {/each}-->
+    <!--    </div>-->
     <div id="esports-events"
          class="flex flex-col items-center gap-5 justify-center min-h-screen relative w-full overflow-hidden">
         {#each data.esports_events as mainevent}
@@ -147,7 +156,20 @@
     </div>
 </div>
 
-<div id="scroll-indicator"
-     class="fixed -bottom-40 z-10 left-1/2 transform -translate-x-1/2 bg-primary text-on-surface py-2 px-4 rounded-full shadow-lg sm:text-2xl font-bold">
-    Main Events
+<div class="fixed bottom-5 z-10 left-1/2 transform -translate-x-1/2 bg-primary text-on-surface py-2 px-4 rounded-full
+            shadow-lg font-bold flex justify-center items-center gap-4">
+    <div id="scroll-indicator" class="regular-font text-xl sm:text-3xl text-center">
+        Main Events
+    </div>
+    <div class="h-[24px] w-[24px] object-cover">
+        <svg fill="#ffffff" height="100%" width="100%" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <path id="XMLID_224_"
+                      d="M325.606,229.393l-150.004-150C172.79,76.58,168.974,75,164.996,75c-3.979,0-7.794,1.581-10.607,4.394 l-149.996,150c-5.858,5.858-5.858,15.355,0,21.213c5.857,5.857,15.355,5.858,21.213,0l139.39-139.393l139.397,139.393 C307.322,253.536,311.161,255,315,255c3.839,0,7.678-1.464,10.607-4.394C331.464,244.748,331.464,235.251,325.606,229.393z">
+            </path> </g></svg>
+    </div>
 </div>
+
+<div></div>
