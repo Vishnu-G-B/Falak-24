@@ -21,14 +21,17 @@
                 }
             });
             let closeTransition = gsap.timeline({paused: true});
-            $isNavbarOpen = false;
             transition.to('.main-transition', {
                 translateY: 0,
                 opacity: 1,
                 display: 'flex',
                 duration: 0.8,
                 ease: "sine.inOut",
+                onComplete: () => {
+                    $isNavbarOpen = false;
+                }
             });
+
             closeTransition.to('.main-transition', {
                 translateY: '100%',
                 // opacity: 0,
