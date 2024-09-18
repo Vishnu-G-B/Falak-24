@@ -34,6 +34,7 @@ export const load = async (event) => {
         //     }
         // });
 
+
         const sortByDate = (a, b) => new Date(a.EventDate) - new Date(b.EventDate);
 
         const main_events = eventList

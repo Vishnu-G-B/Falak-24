@@ -5,6 +5,7 @@
     import {TextPlugin} from "gsap/dist/TextPlugin";
     import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     import {onMount} from "svelte";
+    import barcode from "$lib/assets/images/svgs/updated_2.svg";
 
     onMount(() => {
         gsap.registerPlugin(TextPlugin, ScrollTrigger);
@@ -49,7 +50,7 @@
         const sections = [
             {id: "main-events", text: "Main Events"},
             {id: "cultural-events", text: "Cultural Events"},
-            {id: "sports-events", text: "Sports Events"},
+            // {id: "sports-events", text: "Sports Events"},
             {id: "esports-events", text: "E-Sports Events"}
         ];
 
@@ -86,7 +87,47 @@
             //     ease: "power2.out"
             // })
         }
-    })
+    });
+
+    function showDetail(prefix) {
+        let showDetailTimeline = gsap.timeline();
+        showDetailTimeline.to(`.${prefix}-main-div`, {
+            translateX: '80%',
+            translateY: '20%',
+            rotate: '20deg',
+            opacity: 0,
+            zIndex: 1,
+            ease: 'sine',
+        });
+        showDetailTimeline.to(`.${prefix}-description-div`, {
+            translateX: '0%',
+            translateY: '0%',
+            rotate: '0deg',
+            opacity: 1,
+            zIndex: 2,
+            ease: 'sine',
+        }, '<');
+    }
+
+    function hideDetail(prefix) {
+        let hideDetailTimeline = gsap.timeline();
+        hideDetailTimeline.to(`.${prefix}-description-div`, {
+            translateX: '-80%',
+            translateY: '-20%',
+            rotate: '-20deg',
+            opacity: 0,
+            zIndex: 1,
+            ease: 'sine',
+        });
+        hideDetailTimeline.to(`.${prefix}-main-div`, {
+            translateX: '0%',
+            translateY: '0%',
+            rotate: '0deg',
+            opacity: 1,
+            zIndex: 2,
+            ease: 'sine',
+        }, '<');
+    }
 
     export let data;
 </script>
@@ -112,20 +153,81 @@
         <p class="text-2xl lg:text-2xl xl:text-3xl regular-font esports-pass-text-main"></p>
     </div>
 </div>
-<div class="flex flex-col mt-20 flex-wrap gap-[20rem] items-center justify-center min-h-screen relative w-full overflow-hidden">
+<div class="flex flex-col mt-10 flex-wrap gap-[20rem] items-center justify-center min-h-screen relative w-full
+            overflow-hidden mb-14">
     <div id="main-events"
          class="flex flex-col items-center gap-5 justify-center min-h-screen relative w-full overflow-hidden">
-        {#each data.main_events as mainevent}
-            <EventCard
-                    prefix={'h'+mainevent.EventPriority}
-                    eventName={mainevent.EventName}
-                    eventDate={mainevent.eventDate}
-                    eventDesc={mainevent.EventDescription}
-                    prizePool={mainevent.PrizePool}
-                    rulebookLink={mainevent.RulebookLink}
-                    eventTagline={(mainevent.EventTagline === 'none' || mainevent.EventTagline === null) ? '\u00A0' : mainevent.EventTagline}
-            />
-        {/each}
+
+        <div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[70vh] sm:h-[80vh] eventdiv">
+            <div class="w-full h-full absolute flex flex-col flex-shrink-0 overflow-hidden bg-surface z-[2] p-main-div origin-bottom-left">
+                <div class="flex flex-col items-start justify-center mt-6 pl-6 pr-6 h-full">
+                    <div class="w-full absolute left-0 -bottom-[28%] sm:-bottom-[32%]">
+                        <img src="{barcode}" alt="" class="object-fill fill-on-surface/20 w-full">
+                    </div>
+                    <p class="text-[10px] text-on-surface regular-font font-thin">WHEN</p>
+                    <div class="flex flex-row items-end justify-between w-full mt-5">
+                        <div class="flex flex-col items-start justify-center">
+                            <p class="text-5xl text-on-surface/70 brand-font">OCTOBER</p>
+                            <p class="text-5xl text-on-surface/70 brand-font">2024</p>
+                        </div>
+                        <p class="text-8xl text-on-surface/70 brand-font leading-[1]">4</p>
+                    </div>
+                    <div class="h-[20px] w-full bg-primary mt-4"></div>
+                    <div class="w-full flex flex-col items-start pt-2 bg-surface -translate-x-[25px] z-[2] mt-5">
+                        <p class="brand-font text-6xl text-on-surface">Pro-Show</p>
+                    </div>
+                    <div class="h-full w-full flex flex-col items-start justify-between z-[2] relative">
+                        <p class="regular-font text-xl text-on-surface/80"></p>
+                    </div>
+
+                </div>
+                <div class="w-full h-fit flex flex-row items-center justify-between gap-5 px-10
+                    absolute bottom-7 left-1/2 transform -translate-x-1/2 z-10">
+                    <button class="h-fit w-full bg-primary p-1 regular-font text-on-surface"
+                            on:click={() => {showDetail("p")}}>
+                        Details
+                    </button>
+                </div>
+                <div class="absolute left-0 bg-primary w-[14px] h-full"></div>
+                <div class="absolute top-0 bg-primary h-[14px] w-full"></div>
+                <div class="absolute bottom-0 bg-primary h-[14px] w-full"></div>
+                <div class="absolute right-0 bg-primary w-[14px] h-full"></div>
+            </div>
+            <div class="w-full h-full absolute flex-shrink-0 flex flex-col overflow-hidden bg-surface p-description-div origin-bottom-left"
+                 style="transform: translate3d(-80%, -20%, 0) rotate(-20deg); opacity: 0;">
+                <div class="flex flex-col items-start justify-start mt-3 px-4 pb-4 pt-1 h-full w-full">
+                    <div class="w-full absolute left-0 -bottom-[28%] sm:-bottom-[32%]">
+                        <img src="{barcode}" alt="" class="object-fill fill-on-surface/20 w-full">
+                    </div>
+                    <div class="w-full h-full flex justify-center items-center bg-surface text-center text-on-surface
+                                text-6xl brand-font px-2">
+                        Details will be announced soon!
+                    </div>
+                </div>
+                <div class="w-full h-fit flex flex-row items-center justify-between gap-5 px-10
+                    absolute bottom-7 left-1/2 transform -translate-x-1/2 z-10">
+                    <button class="h-fit w-full bg-primary p-1 regular-font text-on-surface"
+                            on:click={() => {hideDetail("p")}}>
+                        Back
+                    </button>
+                </div>
+                <div class="absolute left-0 bg-primary w-[14px] h-full"></div>
+                <div class="absolute top-0 bg-primary h-[14px] w-full"></div>
+                <div class="absolute bottom-0 bg-primary h-[14px] w-full"></div>
+                <div class="absolute right-0 bg-primary w-[14px] h-full"></div>
+            </div>
+        </div>
+        <!--{#each data.main_events as mainevent}-->
+        <!--    <EventCard-->
+        <!--            prefix={'h'+mainevent.EventPriority}-->
+        <!--            eventName={mainevent.EventName}-->
+        <!--            eventDate={mainevent.eventDate}-->
+        <!--            eventDesc={mainevent.EventDescription}-->
+        <!--            prizePool={mainevent.PrizePool}-->
+        <!--            rulebookLink={mainevent.RulebookLink}-->
+        <!--            eventTagline={(mainevent.EventTagline === 'none' || mainevent.EventTagline === null) ? '\u00A0' : mainevent.EventTagline}-->
+        <!--    />-->
+        <!--{/each}-->
     </div>
     <div id="cultural-events"
          class="flex flex-col items-center gap-5 justify-center min-h-screen relative w-full overflow-hidden">
@@ -158,18 +260,20 @@
 
 <div class="fixed bottom-5 z-10 left-1/2 transform -translate-x-1/2 bg-primary text-on-surface py-2 px-4 rounded-full
             shadow-lg font-bold flex justify-center items-center gap-4">
-    <div id="scroll-indicator" class="regular-font text-xl sm:text-3xl text-center">
+    <div id="scroll-indicator" class="regular-font text-xl sm:text-2xl text-center">
         Main Events
     </div>
-    <div class="h-[24px] w-[24px] object-cover">
-        <svg fill="#ffffff" height="100%" width="100%" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-                <path id="XMLID_224_"
-                      d="M325.606,229.393l-150.004-150C172.79,76.58,168.974,75,164.996,75c-3.979,0-7.794,1.581-10.607,4.394 l-149.996,150c-5.858,5.858-5.858,15.355,0,21.213c5.857,5.857,15.355,5.858,21.213,0l139.39-139.393l139.397,139.393 C307.322,253.536,311.161,255,315,255c3.839,0,7.678-1.464,10.607-4.394C331.464,244.748,331.464,235.251,325.606,229.393z">
-            </path> </g></svg>
-    </div>
+    <!--    <button class="h-[24px] w-[24px] object-cover">-->
+    <!--        <svg fill="#ffffff" height="100%" width="100%" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"-->
+    <!--             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g>-->
+    <!--            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>-->
+    <!--            <g id="SVGRepo_iconCarrier">-->
+    <!--                <path id="XMLID_224_"-->
+    <!--                      d="M325.606,229.393l-150.004-150C172.79,76.58,168.974,75,164.996,75c-3.979,0-7.794,1.581-10.607,4.394 l-149.996,150c-5.858,5.858-5.858,15.355,0,21.213c5.857,5.857,15.355,5.858,21.213,0l139.39-139.393l139.397,139.393 C307.322,253.536,311.161,255,315,255c3.839,0,7.678-1.464,10.607-4.394C331.464,244.748,331.464,235.251,325.606,229.393z">-->
+    <!--            </path> </g></svg>-->
+    <!--    </button>-->
 </div>
 
-<div></div>
+<div class="">
+
+</div>
