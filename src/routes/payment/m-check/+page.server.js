@@ -1,6 +1,7 @@
 import {MongoClient} from "mongodb";
 import * as dotenv from 'dotenv';
 import {redirect} from "@sveltejs/kit";
+import {v4 as uuidv4} from "uuid";
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ const user = userDatabase.collection("us_user_data");
 
 let passMapping = {
     'CULTURAL': 'Flagship',
+    'ESPORTS': 'Esports',
 }
 
 export const load = async (event) => {
