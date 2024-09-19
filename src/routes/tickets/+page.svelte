@@ -99,9 +99,7 @@
     let animationPlaying = false;
 
     onMount(() => {
-        if ()
-
-            gsap.registerPlugin(TextPlugin);
+        gsap.registerPlugin(TextPlugin);
 
         let onLoadTimeline = gsap.timeline();
         // onLoadTimeline.pause();
