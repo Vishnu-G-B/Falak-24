@@ -63,6 +63,6 @@
         <img src="{horizontalBarcode}" alt="footer barcode" class="w-full h-full z-10 object-contain">
     </div>
 </div>
-<div class="bg-surface h-[350px] w-[325px] sm:w-[375px] relative mx-auto z-[1]">
+<div class="bg-transparent h-[350px] w-[325px] sm:w-[375px] relative mx-auto z-[1]">
 
 </div>
