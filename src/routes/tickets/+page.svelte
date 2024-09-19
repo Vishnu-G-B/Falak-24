@@ -99,7 +99,9 @@
     let animationPlaying = false;
 
     onMount(() => {
-        gsap.registerPlugin(TextPlugin);
+        if ()
+
+            gsap.registerPlugin(TextPlugin);
 
         let onLoadTimeline = gsap.timeline();
         // onLoadTimeline.pause();
@@ -215,8 +217,13 @@
     }
 
     export function openTickets(prefix) {
+        animationPlaying = true;
         carouselStatus[prefix] = true;
-        let ticketTimeline = gsap.timeline();
+        let ticketTimeline = gsap.timeline({
+            onComplete: () => {
+                animationPlaying = false;
+            }
+        });
         for (let i = 2; i <= culturalPasses.length + 1; i++) {
             ticketTimeline.to(`.${prefix}-carousel-${i}`, {
                 translateX: `${-80 * (i - 1)}%`,

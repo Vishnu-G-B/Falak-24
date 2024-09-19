@@ -43,6 +43,10 @@ export const actions = {
     checkPaymentAndGeneratePass: async (event) => {
         const session = await event.locals.auth();
         let foundUser = await user.findOne({email: session.user.email});
+        if (!foundUser) {
+            redirect(302, '/tickets?status=1&details=User%20Not%20Registered');
+        }
+        console.log(foundUser.userPhoneNumber);
         let payments = await fetchPaymentLogs(1, foundUser.userPhoneNumber);
         if (!payments) {
             redirect(302, '/payment/m-check?status=1&details=No%20Payments%20Found');
