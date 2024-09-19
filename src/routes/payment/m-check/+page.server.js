@@ -12,8 +12,16 @@ const passes = money.collection("mo_passes");
 const user = userDatabase.collection("us_user_data");
 
 let passMapping = {
-    'CULTURAL': 'Flagship',
-    'ESPORTS': 'Esports',
+    'MAHE Pass': 'Flagship',
+    'Solo Dance': 'Solo Dance NM',
+    'Group Dance': 'Group Dance NM',
+    'eSports': 'Esports',
+    'Fashion Show': 'Fashion Show',
+    'Battle Of Bands': 'BOB NM',
+    'Drama': 'Drama NM',
+    'Photography': 'Photo-Op NM',
+    'Short Film Making': 'Film Making NM',
+    'Ad Design': 'Ad Design NM',
 }
 
 export const load = async (event) => {
@@ -44,7 +52,7 @@ export const actions = {
                 for (let i = 0; i < payments.data.docs.length; i++) {
                     let foundPass = await passes.findOne({
                         email: session.user.email,
-                        pass_name: passMapping[payments.data.docs[i].event_type],
+                        pass_name: passMapping[payments.data.docs[i].event_name],
                         banned: false,
                     });
                     if (!foundPass) {
