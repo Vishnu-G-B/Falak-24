@@ -37,7 +37,7 @@ export const actions = {
         let foundUser = await user.findOne({email: session.user.email});
         let payments = await fetchPaymentLogs(1, foundUser.userPhoneNumber);
         if (payments.data.totalDocs === 0) {
-            redirect(302, '/m-check?status=1&details=No%20Payments%20Found');
+            redirect(302, '/payment/m-check?status=1&details=No%20Payments%20Found');
         } else {
             if (payments.data.totalPages === 1) {
                 for (let i = 0; i < payments.data.docs.length; i++) {
