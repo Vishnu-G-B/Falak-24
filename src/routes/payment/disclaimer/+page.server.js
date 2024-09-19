@@ -25,9 +25,6 @@ export const load = async (event) => {
                 pass_name: {$nin: ['CC__v1', 'staff__v1']}
             }).toArray()
             console.log(ownedPasses);
-            if (ownedPasses.length === 2) {
-                redirect(302, '/?status=2?details=Passes%20Already%20Owned');
-            }
         }
     }
 }
