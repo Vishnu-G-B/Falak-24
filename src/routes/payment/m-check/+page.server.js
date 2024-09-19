@@ -58,6 +58,7 @@ export const actions = {
             if (payments.data.totalPages === 1) {
                 for (let i = 0; i < payments.data.docs.length; i++) {
                     console.log(payments.data.docs[i].event_name);
+                    console.log(passMapping[payments.data.docs[i].event_name]);
                     let foundPass = await passes.findOne({
                         email: session.user.email,
                         pass_name: passMapping[payments.data.docs[i].event_name],
