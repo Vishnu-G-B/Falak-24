@@ -3,6 +3,7 @@
     import {onMount} from "svelte";
     import {gsap} from "gsap/dist/gsap";
     import {TextPlugin} from "gsap/dist/TextPlugin";
+    import {page} from "$app/stores";
     import {enhance} from "$app/forms";
     import AICanvasClaude2 from "$lib/common/AICanvasClaude2.svelte";
     import {goto} from "$app/navigation";
@@ -24,7 +25,7 @@
         {
             name: 'FLAGSHIP',
             price: 699,
-            points: ['Only for MAHE Students'],
+            points: ['Only for MAHE Students', 'Includes proshow + all the events for MAHE students'],
         },
         {
             name: 'SOLO DANCE',
@@ -99,6 +100,11 @@
     let animationPlaying = false;
 
     onMount(() => {
+
+        let register = $page.url.searchParams.get('register');
+        if (register === 'true') {
+            showDataForm();
+        }
         gsap.registerPlugin(TextPlugin);
 
         let onLoadTimeline = gsap.timeline();
@@ -166,16 +172,16 @@
         };
     }
 
-    function slideRight(prefix) {
+    function slideRight(prefix, toCheck) {
         if (!animationPlaying && carouselStatus[prefix]) {
-            if (currentIndex[prefix] !== culturalPasses.length) {
+            if (currentIndex[prefix] !== toCheck.length) {
                 let slideRightTimeline = gsap.timeline({
                     onComplete: () => {
                         animationPlaying = false;
                     }
                 });
                 animationPlaying = true;
-                for (let i = 0; i <= culturalPasses.length; i++) {
+                for (let i = 0; i <= toCheck.length; i++) {
                     let translateValues = getTranslatePercentage(document.getElementsByClassName(`${prefix}-carousel-${i + 1}`));
                     console.log(translateValues);
                     slideRightTimeline.to(`.${prefix}-carousel-${i + 1}`, {
@@ -190,7 +196,7 @@
         }
     }
 
-    function slideLeft(prefix) {
+    function slideLeft(prefix, toCheck) {
         if (!animationPlaying) {
             if (currentIndex[prefix] !== 0) {
                 let slideLeftTimeline = gsap.timeline({
@@ -199,7 +205,7 @@
                     }
                 });
                 animationPlaying = true;
-                for (let i = 0; i <= culturalPasses.length; i++) {
+                for (let i = 0; i <= toCheck.length; i++) {
                     let translateValues = getTranslatePercentage(document.getElementsByClassName(`${prefix}-carousel-${i + 1}`));
                     console.log(translateValues);
                     slideLeftTimeline.to(`.${prefix}-carousel-${i + 1}`, {
@@ -214,7 +220,7 @@
         }
     }
 
-    export function openTickets(prefix) {
+    export function openTickets(prefix, toCheck) {
         animationPlaying = true;
         carouselStatus[prefix] = true;
         let ticketTimeline = gsap.timeline({
@@ -222,7 +228,7 @@
                 animationPlaying = false;
             }
         });
-        for (let i = 2; i <= culturalPasses.length + 1; i++) {
+        for (let i = 2; i <= toCheck.length + 1; i++) {
             ticketTimeline.to(`.${prefix}-carousel-${i}`, {
                 translateX: `${-80 * (i - 1)}%`,
                 translateY: `${-20 * (i - 1)}%`,
@@ -430,7 +436,7 @@
          style="perspective: 800px">
         <div class="w-full p-0 lg:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[25] flex items-center justify-between">
             <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl -translate-x-[100%] cultural-controller-left flex items-center justify-center"
-                    on:click={() => {slideLeft('cultural')}}>
+                    on:click={() => {slideLeft('cultural', culturalPasses)}}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <g>
                         <path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20Z"/>
@@ -440,7 +446,7 @@
                 </svg>
             </button>
             <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl translate-x-[100%] cultural-controller-right flex items-center justify-center"
-                    on:click={() => {slideRight('cultural')}}>
+                    on:click={() => {slideRight('cultural', culturalPasses)}}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <g>
                         <path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20Z"/>
@@ -456,7 +462,7 @@
         <div class="h-fit w-fit cultural-heading-ticket cultural-ticket-div absolute cultural-carousel-1 origin-bottom-left -translate-y-[100%]"
              style="z-index: {culturalPasses.length + 2};">
             <Ticket mainTitle="CULTURAL" isPassHeading="{false}" showBuyButton="{false}" description="{true}"
-                    on:showMoreClick={() => {openTickets('cultural')}}/>
+                    on:showMoreClick={() => {openTickets('cultural', culturalPasses)}}/>
         </div>
         {#each culturalPasses as culturalTicket, index}
             <div class="h-fit w-fit cultural-content-ticket cultural-ticket-div absolute cultural-carousel-{index+2} origin-bottom-left -translate-y-[100%]"
@@ -509,7 +515,7 @@
          style="perspective: 800px">
         <div class="w-full p-0 lg:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[25] flex items-center justify-between">
             <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl -translate-x-[100%] cultural-controller-left flex items-center justify-center"
-                    on:click={() => {slideLeft('esports')}}>
+                    on:click={() => {slideLeft('esports', esportsPasses)}}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <g>
                         <path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20Z"/>
@@ -519,7 +525,7 @@
                 </svg>
             </button>
             <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl translate-x-[100%] cultural-controller-right flex items-center justify-center"
-                    on:click={() => {slideRight('esports')}}>
+                    on:click={() => {slideRight('esports', esportsPasses)}}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <g>
                         <path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20Z"/>
@@ -532,7 +538,7 @@
         <div class="h-fit w-fit sports-heading-ticket sports-ticket-div absolute esports-carousel-1 origin-bottom-left "
              style="z-index: {esportsPasses.length + 2};">
             <Ticket mainTitle="E-SPORTS" isPassHeading="{false}" showBuyButton="{false}" description="{true}"
-                    on:showMoreClick={() => {openTickets('esports')}}/>
+                    on:showMoreClick={() => {openTickets('esports', esportsPasses)}}/>
         </div>
         {#each esportsPasses as culturalTicket, index}
             <div class="h-fit w-fit esports-content-ticket esports-ticket-div absolute esports-carousel-{index+2} origin-bottom-left"
