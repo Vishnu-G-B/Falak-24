@@ -24,7 +24,7 @@
                 relative">
         <div class="h-1/2 w-full flex flex-col justify-center items-center relative pt-10 bg-surface">
             <div class="h-fit w-fit absolute top-5 left-8 text-center regular-font text-[1.2rem] sm:text-xl text-on-surface">
-                04/10/2024
+                &nbsp;
             </div>
             <div class="h-fit w-[80%] text-on-surface text-left regular-font text-[1.6rem] sm:text-[2rem] ml-2 mb-2
                         capitalize">
@@ -46,7 +46,7 @@
         </div>
         <div class="h-1/2 w-full flex flex-col justify-center items-center relative pt-10 bg-surface">
             <div class="h-fit w-fit absolute top-5 left-8 text-center regular-font text-[1.2rem] sm:text-xl text-on-surface">
-                04/10/2024
+                &nbsp;
             </div>
             <div class="h-fit w-[80%] text-on-surface text-left regular-font text-[1.6rem] sm:text-[2rem] ml-2 mb-2
                         capitalize">

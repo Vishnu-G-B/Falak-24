@@ -42,22 +42,25 @@
     </button>
     <div class="w-full h-fit flex justify-center items-center mt-7">
         <div class="h-fit w-3/4 flex justify-center items-center gap-2">
-            <button class="h-[48px] w-[48px] bg-surface p-1.5">
+            <button class="h-[48px] w-[48px] bg-surface p-1.5"
+                    on:click={() => {window.open("https://www.instagram.com/falak.mitblr?igsh=MTZlZjZ2bzRkemlzaA==","_blank")}}>
                 <img src="{instagram}" alt="instagram logo" class="w-full h-full object-cover">
             </button>
-            <button class="h-[48px] w-[48px] bg-surface p-1.5">
-                <img src="{twitter}" alt="twitter logo" class="w-full h-full object-cover">
+            <!--            <button class="h-[48px] w-[48px] bg-surface p-1.5">-->
+            <!--                <img src="{twitter}" alt="twitter logo" class="w-full h-full object-cover">-->
+            <!--            </button>-->
+            <button class="h-[48px] w-[48px] bg-surface p-1.5"
+                    on:click={() => {window.open("https://www.linkedin.com/company/falakmitb/","_blank")}}>
+                <img src="{linkedin}" alt="linkedin logo" class="w-full h-full object-cover"
+                >
             </button>
-            <button class="h-[48px] w-[48px] bg-surface p-1.5">
-                <img src="{linkedin}" alt="linkedin logo" class="w-full h-full object-cover">
-            </button>
-            <button class="h-[48px] w-[48px] bg-surface p-1.5">
-                <img src="{meta}" alt="meta logo" class="w-full h-full object-cover">
-            </button>
+            <!--            <button class="h-[48px] w-[48px] bg-surface p-1.5">-->
+            <!--                <img src="{meta}" alt="meta logo" class="w-full h-full object-cover">-->
+            <!--            </button>-->
         </div>
     </div>
-    <div class="h-[400px] w-[90%] absolute -bottom-[21rem] left-1/2 transform -translate-x-1/2 z-10">
-        <img src="{horizontalBarcode}" alt="footer barcode" class="w-full h-full object-cover z-10">
+    <div class="h-[400px] w-[90%] absolute -bottom-[21rem] left-1/2 transform -translate-x-1/2 z-10 overflow-visible">
+        <img src="{horizontalBarcode}" alt="footer barcode" class="w-full h-full z-10 object-contain">
     </div>
 </div>
 <div class="bg-surface h-[350px] w-[325px] sm:w-[375px] relative mx-auto z-[1]">

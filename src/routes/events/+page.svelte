@@ -60,38 +60,40 @@
             {id: "esports-events", text: "E-Sports&nbsp;Events"}
         ];
 
+        let currentSection = sections[0];
+
         sections.forEach((section, index) => {
             ScrollTrigger.create({
-                id: `${section.id}`,
                 trigger: `#${section.id}`,
-                start: "top center+=19%",
-                end: "bottom top",
-                onEnter: () => updateIndicator(section.text, section.id),
-                onEnterBack: () => updateIndicator(section.text, section.id),
+                start: "top center",
+                end: "bottom center",
+                onEnter: () => updateIndicator(section),
+                onEnterBack: () => updateIndicator(section),
+                onLeave: () => {
+                    if (index < sections.length - 1) {
+                        updateIndicator(sections[index + 1]);
+                    }
+                },
+                onLeaveBack: () => {
+                    if (index > 0) {
+                        updateIndicator(sections[index - 1]);
+                    }
+                }
             });
         });
 
-        function updateIndicator(text, id) {
-            gsap.to("#scroll-indicator", {
-                duration: 1,
-                text: {
-                    // padSpace: true,
-                    // preserveSpaces: true,
-                    value: text,
-                    delimiter: ""
-                },
-                ease: "power2.out"
-            });
-            // gsap.to(".page-heading-parent", {
-            //     duration: 1,
-            //     text: {
-            //         padSpace: true,
-            //         preserveSpaces: true,
-            //         value: text,
-            //         delimiter: ""
-            //     },
-            //     ease: "power2.out"
-            // })
+        function updateIndicator(section) {
+            if (section !== currentSection) {
+                currentSection = section;
+                gsap.to("#scroll-indicator", {
+                    duration: 0.5,
+                    text: {
+                        value: section.text,
+                        delimiter: ""
+                    },
+                    ease: "power2.out"
+                });
+            }
         }
     });
 

@@ -84,6 +84,7 @@
                 "/": "Home",
                 "/events": "Events",
                 "/my-tickets": "My Tickets",
+                "/tickets": "Tickets",
             }
             gsap.to("#loading-text", {
                 display: "flex",
