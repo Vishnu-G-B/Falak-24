@@ -48,6 +48,7 @@ export const actions = {
         }
         console.log(foundUser.userPhoneNumber);
         let payments = await fetchPaymentLogs(1, foundUser.userPhoneNumber);
+        console.log(payments);
         if (!payments) {
             redirect(302, '/payment/m-check?status=1&details=No%20Payments%20Found');
         }
