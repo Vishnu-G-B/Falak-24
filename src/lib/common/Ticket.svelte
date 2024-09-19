@@ -64,15 +64,12 @@
                     {/if}
                 </p>
             {:else}
-                <div class="h-fit w-full flex flex-col items-start justify-center py-2">
-                    {#each includesArray as includeValue}
-                        <div class="relative brand-font text-2xl tracking-wide text-on-surface flex flex-row items-center justify-start gap-1">
-                            <div
-                                    class="h-3 w-3 rounded-full bg-green-600"
-                            ></div>
-                            <p>{includeValue}</p>
-                        </div>
-                    {/each}
+                <div class="h-fit w-full flex flex-col items-center justify-center py-2 regular-font text-lg px-5">
+                    <ul class="list-disc marker:text-green-600 marker:text-2xl text-on-surface">
+                        {#each includesArray as includeValue}
+                            <li>{includeValue}</li>
+                        {/each}
+                    </ul>
                 </div>
             {/if}
             <div class="h-full w-full flex flex-row items-end justify-center gap-2 group cursor-pointer">
