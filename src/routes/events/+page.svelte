@@ -293,6 +293,10 @@
             <EventCard prefix={'h'+mainevent.EventPriority} eventName={mainevent.EventName}
                        eventDate={mainevent.eventDate} eventDesc={mainevent.EventDescription}
                        prizePool={mainevent.PrizePool} rulebookLink={"none"}
+                       userSignedIn="{data.userSignedIn}"
+                       eventPriority="{mainevent.EventPriority}"
+                       passRequiredM="{mainevent.passRequiredM}"
+                       passRequiredNM="{mainevent.passRequiredNM}"
                        eventTagline={(mainevent.EventTagline == 'none' || mainevent.EventTagline == null) ?'\u00A0':mainevent.EventTagline}/>
         {/each}
     </div>
