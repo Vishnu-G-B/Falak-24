@@ -47,7 +47,7 @@
                 </div>
             </div>
             <p class="text-xl regular-font text-surface bg-on-surface p-2 translate-y-[12px] -translate-x-[20px]
-                        sm:-translate-x-[24px] text-nowrap">
+                        sm:-translate-x-[24px] text-nowrap absolute top-[12px] right-0">
                 FLK 24
             </p>
         </div>
