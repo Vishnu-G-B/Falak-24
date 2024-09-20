@@ -2,6 +2,9 @@
     import barcode from "$lib/assets/images/svgs/updated_2.svg";
     import {gsap} from "gsap/dist/gsap";
     import {onMount} from "svelte";
+    import {redirect} from "@sveltejs/kit";
+    import {goto} from "$app/navigation";
+    import {browser} from "$app/environment";
 
     let config1 =
         {
@@ -101,13 +104,25 @@
             zIndex: 2,
             ease: 'sine',
         }, '<');
+    };
+
+    function handleRegisterClick() {
+        if (browser) {
+            const urlParams = new URLSearchParams(window.location.search);
+            window.history.pushState({}, document.title, window.location.pathname + "?status=1&details=Registrations%20Open%20Soon");
+            setTimeout(() => {
+                if (urlParams.has('details')) {
+                    window.history.pushState({}, document.title, window.location.pathname);
+                }
+            }, 2000);
+        }
     }
 
     export let prefix;
     export let eventName, eventDate, eventDesc, prizePool, rulebookLink;
     export let eventTagline = "&nbsp;".repeat(100);
 </script>
-<div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[475px] eventdiv">
+<div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[500px] eventdiv">
     <div class="w-full h-full absolute flex flex-col flex-shrink-0 overflow-hidden bg-surface z-[2] {prefix}-main-div origin-bottom-left">
         <div class="flex flex-col items-start justify-center mt-6 pl-6 pr-6 h-full">
             <div class="w-full absolute left-0 -bottom-[28%] sm:-bottom-[40%]">
@@ -132,7 +147,10 @@
         </div>
         <div class="w-full h-fit flex flex-row items-center justify-between gap-5 px-10
                     absolute bottom-7 left-1/2 transform -translate-x-1/2 z-10">
-            <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface" disabled>Register</button>
+            <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface"
+                    on:click={handleRegisterClick}>
+                Register
+            </button>
             <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface"
                     on:click={() => {showDetail(prefix)}}>Details
             </button>
