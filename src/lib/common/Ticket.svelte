@@ -41,7 +41,7 @@
                     LANDING
                 </p>
                 <div class="flex flex-col">
-                    <p class="text-7xl sm:text-8xl brand-font text-on-surface bg-surface w-full -translate-x-[14px] z-[2] pt-2">
+                    <p class="text-7xl sm:text-8xl brand-font text-on-surface bg-surface w-full -translate-x-[12px] z-[2] pt-2">
                         {mainTitle}
                     </p>
                 </div>
