@@ -83,5 +83,5 @@
 
 <div class="fixed w-[325px] sm:w-[375px] h-auto left-1/2 z-[999] -top-[100%] transform -translate-x-1/2 flex items-center justify-center p-2 snackbar"
      style="background-color: {backgroundColor}">
-    <p class="text-3xl brand-font uppercase pt-1" style="color: {foregroundColor}">{details}</p>
+    <p class="text-3xl brand-font uppercase pt-1 text-center" style="color: {foregroundColor}">{details}</p>
 </div>
