@@ -2,11 +2,11 @@
     import barcode from "$lib/assets/images/svgs/updated_2.svg";
     import {gsap} from "gsap/dist/gsap";
     import {createEventDispatcher, onMount} from "svelte";
-    import {signIn} from "@auth/sveltekit/client";
-    import {page} from "$app/stores";
     import {goto} from "$app/navigation";
     import {enhance} from "$app/forms";
     import {browser} from "$app/environment";
+    import {page} from "$app/stores";
+    import {signIn} from "@auth/sveltekit/client";
 
     const registerDispatch = createEventDispatcher();
 
@@ -114,13 +114,13 @@
         }, '<');
     };
 
-    function handleRegisterClick() {
+    function handleRegisterClick(status) {
         if (browser) {
             const urlParams = new URLSearchParams(window.location.search);
-            window.history.replaceState({}, document.title, window.location.pathname + "?status=1&details=Registrations%20Open%20Soon");
+            window.history.pushState({}, document.title, window.location.pathname + status);
             setTimeout(() => {
                 if (urlParams.has('details')) {
-                    window.history.replaceState({}, document.title, window.location.pathname);
+                    window.history.pushState({}, document.title, window.location.pathname);
                 }
             }, 2000);
         }
@@ -165,14 +165,20 @@
         </div>
         <div class="w-full h-fit flex flex-row items-center justify-between gap-5 px-10
                     absolute bottom-7 left-1/2 transform -translate-x-1/2 z-10">
-            {#if userSignedIn}
+            {#if $page.data.session}
                 <form action="?/attemptRegistration" method="post" class="h-fit w-1/2" use:enhance={async (event) => {
                     attemptRegistration(event);
                     return async ({result}) => {
                         form = result.data;
                         console.log(result.data);
                         if(result.type === 'success') {
-                            await goto(result.data.redirectTo);
+                            if(result.data.success === false) {
+                                handleRegisterClick(result.data.state);
+                            } else {
+                                await goto(result.data.redirectTo);
+                            }
+                        } else if (result.type === 'redirect') {
+                            await goto(result.location);
                         }
                     }
                 }}>
