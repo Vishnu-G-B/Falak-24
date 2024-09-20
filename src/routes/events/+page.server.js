@@ -98,6 +98,9 @@ export const load = async (event) => {
 export const actions = {
     attemptRegistration: async (event) => {
         const session = await event.locals.auth();
+        if (!session?.user) {
+            return {success: false, state: '?status=1&details=Sign%20In%20To%20Access'};
+        }
         let foundUser = await user.findOne({email: session.user.email});
         if (!foundUser) {
             redirect(302, '/tickets?status=1&details=User%20Not%Registered&register=true');

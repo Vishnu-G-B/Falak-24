@@ -140,7 +140,7 @@
     function togglesubnav() {
         if (!subnavOpen) {
             gsap.to(".subnav", {
-                height: "150px",
+                height: "175px",
                 duration: 0.3,
                 ease: 'power2.inOut',
             });
@@ -203,7 +203,7 @@
     <div id="main-events"
          class="flex flex-col items-center gap-5 justify-center min-h-screen relative w-full overflow-hidden">
 
-        <div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[70vh] sm:h-[80vh] eventdiv">
+        <div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[475px] eventdiv">
             <div class="w-full h-full absolute flex flex-col flex-shrink-0 overflow-hidden bg-surface z-[2] p-main-div origin-bottom-left">
                 <div class="flex flex-col items-start justify-center mt-6 pl-6 pr-6 h-full">
                     <div class="w-full absolute left-0 -bottom-[28%] sm:-bottom-[32%]">
@@ -333,10 +333,10 @@
 </div>
 
 <div class="subnav fixed bottom-20 z-10 left-1/2 transform -translate-x-1/2 bg-primary text-on-surface rounded-3xl
-            w-[230px] h-[0px] px-2 py-0 flex flex-col justify-center items-center gap-2 overflow-hidden
+            w-[230px] h-[0px] px-2 flex flex-col justify-center items-center gap-2 overflow-hidden
             shadow-lg font-bold regular-font text-xl sm:text-2xl text-center">
-    <button class="subnavText" on:click={() => {handleScroll("main-events")}}>Main Events</button>
+    <button class="subnavText mt-2" on:click={() => {handleScroll("main-events")}}>Main Events</button>
     <button class="subnavText" on:click={() => {handleScroll("cultural-events")}}>Cultural Events</button>
     <button class="subnavText" on:click={() => {handleScroll("sports-events")}}>Sports Events</button>
-    <button class="subnavText" on:click={() => {handleScroll("esports-events")}}>E-Sports Events</button>
+    <button class="subnavText mb-2" on:click={() => {handleScroll("esports-events")}}>E-Sports Events</button>
 </div>
