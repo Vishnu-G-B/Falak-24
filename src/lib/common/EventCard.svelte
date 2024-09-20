@@ -1,10 +1,18 @@
 <script>
     import barcode from "$lib/assets/images/svgs/updated_2.svg";
     import {gsap} from "gsap/dist/gsap";
-    import {onMount} from "svelte";
-    import {redirect} from "@sveltejs/kit";
+    import {createEventDispatcher, onMount} from "svelte";
+    import {signIn} from "@auth/sveltekit/client";
+    import {page} from "$app/stores";
     import {goto} from "$app/navigation";
+    import {enhance} from "$app/forms";
     import {browser} from "$app/environment";
+
+    const registerDispatch = createEventDispatcher();
+
+    function handleRegister(details) {
+        registerDispatch('registerClick', details);
+    }
 
     let config1 =
         {
@@ -109,20 +117,30 @@
     function handleRegisterClick() {
         if (browser) {
             const urlParams = new URLSearchParams(window.location.search);
-            window.history.pushState({}, document.title, window.location.pathname + "?status=1&details=Registrations%20Open%20Soon");
+            window.history.replaceState({}, document.title, window.location.pathname + "?status=1&details=Registrations%20Open%20Soon");
             setTimeout(() => {
                 if (urlParams.has('details')) {
-                    window.history.pushState({}, document.title, window.location.pathname);
+                    window.history.replaceState({}, document.title, window.location.pathname);
                 }
             }, 2000);
         }
     }
 
+    function attemptRegistration({formData}) {
+        formData.set('passRequiredNM', passRequiredNM);
+        formData.set('passRequiredM', passRequiredM);
+        formData.set('eventPriority', eventPriority);
+        formData.set('eventName', eventName);
+    }
+
+    export let form;
     export let prefix;
-    export let eventName, eventDate, eventDesc, prizePool, rulebookLink;
+    export let eventName, eventDate, eventDesc, prizePool, rulebookLink, userSignedIn;
+    export let passRequiredNM, passRequiredM, eventPriority;
     export let eventTagline = "&nbsp;".repeat(100);
 </script>
-<div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[500px] eventdiv">
+
+<div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[475px] eventdiv">
     <div class="w-full h-full absolute flex flex-col flex-shrink-0 overflow-hidden bg-surface z-[2] {prefix}-main-div origin-bottom-left">
         <div class="flex flex-col items-start justify-center mt-6 pl-6 pr-6 h-full">
             <div class="w-full absolute left-0 -bottom-[28%] sm:-bottom-[40%]">
@@ -147,10 +165,29 @@
         </div>
         <div class="w-full h-fit flex flex-row items-center justify-between gap-5 px-10
                     absolute bottom-7 left-1/2 transform -translate-x-1/2 z-10">
-            <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface"
-                    on:click={handleRegisterClick}>
-                Register
-            </button>
+            {#if userSignedIn}
+                <form action="?/attemptRegistration" method="post" class="h-fit w-1/2" use:enhance={async (event) => {
+                    attemptRegistration(event);
+                    return async ({result}) => {
+                        form = result.data;
+                        console.log(result.data);
+                        if(result.type === 'success') {
+                            await goto(result.data.redirectTo);
+                        }
+                    }
+                }}>
+                    <button class="h-fit w-full bg-primary p-1 regular-font text-on-surface">
+                        Register
+                    </button>
+                </form>
+            {:else}
+                <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface"
+                        on:click={async () => {
+                            await signIn('google', {callbackUrl: `${$page.url.pathname}?status=2&details=Signed%20In`})
+                        }}>
+                    Login
+                </button>
+            {/if}
             <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface"
                     on:click={() => {showDetail(prefix)}}>Details
             </button>

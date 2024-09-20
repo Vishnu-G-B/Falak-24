@@ -19,6 +19,10 @@
     }
 
     export let mainTitle;
+    export let isCompeteCard = false;
+    export let competeDataList = [];
+    export let isTeamLeader = false;
+    export let isTeamEvent = false;
     export let description;
     export let descriptionText = "Step into a vibrant celebration of talent, culture, and creativity. Open to all—join the experience! Coming Soon!";
     export let secondaryDescriptionText = "";
@@ -52,7 +56,7 @@
             </p>
         </div>
         <div class="w-full h-full flex flex-col items-center justify-between relative p-5">
-            {#if description}
+            {#if description && !isCompeteCard}
                 <p class="text-xl regular-font text-on-surface">
                     {descriptionText} <br>
                     {#if enlargeSecondary}
@@ -63,6 +67,14 @@
                         {secondaryDescriptionText}
                     {/if}
                 </p>
+            {:else if isCompeteCard}
+                <div class="h-fit w-full flex flex-col items-center justify-center py-2 regular-font text-lg px-5">
+                    <ul class="list-disc marker:text-green-600 marker:text-2xl text-on-surface">
+                        {#each competeDataList as line}
+                            <li>{line}</li>
+                        {/each}
+                    </ul>
+                </div>
             {:else}
                 <div class="h-fit w-full flex flex-col items-center justify-center py-2 regular-font text-lg px-5">
                     <ul class="list-disc marker:text-green-600 marker:text-2xl text-on-surface">
@@ -73,7 +85,7 @@
                 </div>
             {/if}
             <div class="h-full w-full flex flex-row items-end justify-center gap-2 group cursor-pointer">
-                {#if !noButton && !disableActionButton}
+                {#if !noButton && !disableActionButton && !isCompeteCard}
                     {#if showBuyButton}
                         <img src="{footerImg}" alt="gif" class="h-[37px] w-[40%] sm:w-[55%]">
                         {#if $page.data.session}
@@ -110,6 +122,17 @@
                     {/if}
                 {:else if noButton && !disableActionButton}
                     <img src="{footerImg}" alt="gif" class="h-[31px] w-full">
+                {:else if isCompeteCard}
+                    <button class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface"
+                            on:click={async () => {goto('/payment/m-check')}}>
+                        Details
+                    </button>
+                    {#if isTeamLeader && isTeamEvent}
+                        <button class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface"
+                                on:click={async () => {goto('/event/compete/manage')}}>
+                            Manage
+                        </button>
+                    {/if}
                 {:else}
                     <button class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface"
                             on:click={async () => {goto('/payment/m-check')}}>
