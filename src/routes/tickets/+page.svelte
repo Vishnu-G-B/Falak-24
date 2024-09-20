@@ -79,6 +79,64 @@
         }
     ];
 
+    let sportsPasses = [
+        {
+            name: 'FOOTBALL',
+            price: 7000,
+            points: ['For both MAHE and NON-MAHE Students', 'Only the team leader needs to buy a pass']
+        },
+        {
+            name: 'MENS BASKETBALL',
+            price: 5000,
+            points: ['For both MAHE and NON-MAHE Students', 'Only the team leader needs to buy a pass']
+        },
+        {
+            name: 'WOMENS BASKETBALL',
+            price: 3000,
+            points: ['For both MAHE and NON-MAHE Students', 'Only the team leader needs to buy a pass']
+        },
+        {
+            name: 'CRICKET',
+            price: 7000,
+            points: ['For both MAHE and NON-MAHE Students', 'Only the team leader needs to buy a pass']
+        },
+        {
+            name: 'VOLLEYBALL',
+            price: 5000,
+            points: ['For both MAHE and NON-MAHE Students', 'Only the team leader needs to buy a pass']
+        },
+        {
+            name: 'ATHLETICS',
+            price: 300,
+            points: ['For both MAHE and NON-MAHE Students']
+        },
+        {
+            name: 'MENS BADMINTON',
+            price: 500,
+            points: ['For both MAHE and NON-MAHE Students']
+        },
+        {
+            name: 'WOMENS BADMINTON',
+            price: 300,
+            points: ['For both MAHE and NON-MAHE Students']
+        },
+        {
+            name: 'MIXED BADMINTON',
+            price: 800,
+            points: ['For both MAHE and NON-MAHE Students']
+        },
+        {
+            name: 'TABLE TENNIS',
+            price: 500,
+            points: ['For both MAHE and NON-MAHE Students']
+        },
+        {
+            name: 'CHESS',
+            price: 500,
+            points: ['For both MAHE and NON-MAHE Students']
+        }
+    ];
+
     let esportsPasses = [
         {
             name: 'FLAGSHIP',
@@ -100,7 +158,8 @@
     let animationPlaying = false;
 
     onMount(() => {
-
+        sportsPasses.length;
+        sportsPasses[0];
         let register = $page.url.searchParams.get('register');
         if (register === 'true') {
             showDataForm();
@@ -474,43 +533,45 @@
             </div>
         {/each}
     </div>
-    <!--    <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets"-->
-    <!--         style="perspective: 800px">-->
-    <!--        <div class="w-full p-0 lg:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[25] flex items-center justify-between">-->
-    <!--            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl -translate-x-[100%] cultural-controller-left flex items-center justify-center"-->
-    <!--                    on:click={() => {slideLeft('sports')}}>-->
-    <!--                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">-->
-    <!--                    <g>-->
-    <!--                        <path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20Z"/>-->
-    <!--                        <polygon-->
-    <!--                                points="12.707 8.707 11.293 7.293 6.586 12 11.293 16.707 12.707 15.293 10.414 13 16 13 16 11 10.414 11 12.707 8.707"/>-->
-    <!--                    </g>-->
-    <!--                </svg>-->
-    <!--            </button>-->
-    <!--            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl translate-x-[100%] cultural-controller-right flex items-center justify-center"-->
-    <!--                    on:click={() => {slideRight('sports')}}>-->
-    <!--                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">-->
-    <!--                    <g>-->
-    <!--                        <path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20Z"/>-->
-    <!--                        <polygon-->
-    <!--                                points="11.293 8.707 13.586 11 8 11 8 13 13.586 13 11.293 15.293 12.707 16.707 17.414 12 12.707 7.293 11.293 8.707"/>-->
-    <!--                    </g>-->
-    <!--                </svg>-->
-    <!--            </button>-->
-    <!--        </div>-->
-    <!--        <div class="h-fit w-fit sports-heading-ticket sports-ticket-div absolute sports-carousel-1 origin-bottom-left"-->
-    <!--             style="z-index: {culturalPasses.length + 2};">-->
-    <!--            <Ticket mainTitle="SPORTS" isPassHeading="{false}" showBuyButton="{false}"-->
-    <!--                    on:showMoreClick={() => {openTickets('sports')}}/>-->
-    <!--        </div>-->
-    <!--        {#each culturalPasses as cultrualTicket, index}-->
-    <!--            <div class="h-fit w-fit sports-content-ticket sports-ticket-div absolute sports-carousel-{index+2} origin-bottom-left"-->
-    <!--                 style="transform: translate3d({12 * (index+1)}%, 0, {-8 * (index+1)}em); z-index: {culturalPasses.length - index+1}">-->
-    <!--                &lt;!&ndash;                 style="transform: translate(-{80 * (index+1)}%, -{20 * (index+1)}%) rotate(-{20 * (index+1)}deg); z-index: {culturalPasses.length - index+1}">&ndash;&gt;-->
-    <!--                <Ticket mainTitle="SPORTS" isPassHeading="{false}" showBuyButton="{false}"/>-->
-    <!--            </div>-->
-    <!--        {/each}-->
-    <!--    </div>-->
+    <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets"
+         style="perspective: 800px">
+        <div class="w-full p-0 lg:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[25] flex items-center justify-between">
+            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl -translate-x-[100%] cultural-controller-left flex items-center justify-center"
+                    on:click={() => {slideLeft('sports', sportsPasses)}}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g>
+                        <path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20Z"/>
+                        <polygon
+                                points="12.707 8.707 11.293 7.293 6.586 12 11.293 16.707 12.707 15.293 10.414 13 16 13 16 11 10.414 11 12.707 8.707"/>
+                    </g>
+                </svg>
+            </button>
+            <button class="h-8 w-8 rounded-full bg-on-surface/50 backdrop-blur-xl translate-x-[100%] cultural-controller-right flex items-center justify-center"
+                    on:click={() => {slideRight('sports', sportsPasses)}}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g>
+                        <path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20Z"/>
+                        <polygon
+                                points="11.293 8.707 13.586 11 8 11 8 13 13.586 13 11.293 15.293 12.707 16.707 17.414 12 12.707 7.293 11.293 8.707"/>
+                    </g>
+                </svg>
+            </button>
+        </div>
+        <div class="h-fit w-fit sports-heading-ticket sports-ticket-div absolute sports-carousel-1 origin-bottom-left"
+             style="z-index: {sportsPasses.length + 2};">
+            <Ticket mainTitle="SPORTS" isPassHeading="{false}" showBuyButton="{false}" description="{true}"
+                    on:showMoreClick={() => {openTickets('sports', sportsPasses)}}/>
+        </div>
+        {#each sportsPasses as culturalTicket, index}
+            <div class="h-fit w-fit sports-content-ticket sports-ticket-div absolute sports-carousel-{index+2} origin-bottom-left"
+                 style="transform: translate3d({12 * (index+1)}%, 0, {-8 * (index+1)}em); z-index: {sportsPasses.length - index+1}">
+        <!--        &lt;!&ndash;                 style="transform: translate(-{80 * (index+1)}%, -{20 * (index+1)}%) rotate(-{20 * (index+1)}deg); z-index: {culturalPasses.length - index+1}">&ndash;&gt;-->
+                <Ticket mainTitle="{culturalTicket.name}" isPassHeading="{false}" showBuyButton="{true}"
+                        price="{culturalTicket.price}" includesArray="{culturalTicket.points}" description="{false}"
+                        on:buyClicked={() => {showDataForm()}}/>
+            </div>
+        {/each}
+    </div>
     <div class="h-[110vh] w-full flex flex-col items-center justify-center relative cultural-tickets"
          style="perspective: 800px">
         <div class="w-full p-0 lg:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[25] flex items-center justify-between">
