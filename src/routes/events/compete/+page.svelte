@@ -361,12 +361,12 @@
                     class="main-page-heading -translate-y-[1200px] -translate-x-[80%] -rotate-[45deg]">T</span>
                 <span class="main-page-heading -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">E</span>
             </div>
-            <div class="h-fit w-full flex flex-col min-w-[647px]:flex-row items-center justify-between flex-wrap gap-2">
-                <button class="bg-primary text-on-surface w-full relative regular-font text-lg sm:text-xl text-center py-1.5 corner-br
+            <div class="h-fit w-full max-w-[250px] flex flex-col min-w-[647px]:flex-row items-center justify-between flex-wrap gap-2">
+                <button class="bg-primary text-on-surface h-full w-full relative regular-font text-lg sm:text-xl text-center py-1.5 corner-br
                            hover:bg-surface hover:text-on-surface duration-300 ease-in transition-all
                            -mr-3"
                         on:click={() => {showDataForm('register')}}
-                        style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);">
+>
                     Register for an event
                 </button>
                 <button class="bg-primary text-on-surface w-full relative regular-font text-lg sm:text-xl text-center py-1.5 corner-br
