@@ -63,7 +63,7 @@
             points: ['Only for NON-MAHE Students'],
         },
         {
-            name: 'PHOTO-OP',
+            name: 'PHOTOGRAPHY COMPETITION',
             price: 147.50,
             points: ['Only for NON-MAHE Students'],
         },
