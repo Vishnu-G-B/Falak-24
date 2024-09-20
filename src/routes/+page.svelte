@@ -211,11 +211,11 @@
     </div>
 </div>
 
-<LandingSection firstEventImg="{cultural1}" secondEventImg="{cultural2}" firstEventSubTag="Solstice 24"/>
+<LandingSection firstEventImg="{cultural1}" secondEventImg="{cultural2}" firstEventSubTag="Solstice 24" redirectLink="#cultural-events"/>
 <LandingSection eventCategory="Sports" firstEventImg="{sports1}" firstEventTag="Elevate Your Game"
-                secondEventImg="{sports2}" secondEventTag="Reach for Victory"/>
+                secondEventImg="{sports2}" secondEventTag="Reach for Victory" redirectLink="#sports-events"/>
 <LandingSection eventCategory="E-Sports" firstEventImg="{esports1}" firstEventTag="Pixels and Precision"
-                secondEventImg="{esports2}" secondEventTag="The New Colosseum"/>
+                secondEventImg="{esports2}" secondEventTag="The New Colosseum" redirectLink="#esports-events"/>
 <Footer/>
 
 <style>
