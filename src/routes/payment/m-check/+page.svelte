@@ -1,6 +1,7 @@
 <script>
     import HelperAnimations from "$lib/common/HelperAnimations.svelte";
     import {enhance} from "$app/forms";
+    import {goto} from "$app/navigation";
 
     let helperAnimations;
 </script>
@@ -36,7 +37,8 @@
             <button class="bg-primary text-on-surface w-full relative regular-font text-xl text-center py-1.5 corner-br px-5
                            hover:bg-surface hover:text-on-surface duration-300 ease-in transition-all
                            -mr-3"
-                    style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);">
+                    style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);"
+                    on:click={() => {goto('/tickets')}}>
                 Go Back
             </button>
         </div>
