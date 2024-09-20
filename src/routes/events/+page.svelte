@@ -56,7 +56,7 @@
         const sections = [
             {id: "main-events", text: "Main&nbsp;Events"},
             {id: "cultural-events", text: "Cultural&nbsp;Events"},
-            // {id: "sports-events", text: "Sports&nbsp;Events"},
+            {id: "sports-events", text: "Sports&nbsp;Events"},
             {id: "esports-events", text: "E-Sports&nbsp;Events"}
         ];
 
@@ -283,15 +283,15 @@
                        eventTagline={(mainevent.EventTagline == 'none' || mainevent.EventTagline == null) ?'\u00A0':mainevent.EventTagline}/>
         {/each}
     </div>
-    <!--    <div id="sports-events"-->
-    <!--         class="flex flex-col items-center gap-5 justify-center min-h-screen relative w-full overflow-hidden">-->
-    <!--        {#each data.sports_events as mainevent}-->
-    <!--            <EventCard prefix={'h'+mainevent.EventPriority} eventName={mainevent.EventName}-->
-    <!--                       eventDate={mainevent.eventDate} eventDesc={mainevent.EventDescription}-->
-    <!--                       prizePool={mainevent.PrizePool} rulebookLink={mainevent.RulebookLink}-->
-    <!--                       eventTagline={(mainevent.EventTagline == 'none' || mainevent.EventTagline == null) ?'\u00A0':mainevent.EventTagline}/>-->
-    <!--        {/each}-->
-    <!--    </div>-->
+    <div id="sports-events"
+         class="flex flex-col items-center gap-5 justify-center min-h-screen relative w-full overflow-hidden">
+        {#each data.sports_events as mainevent}
+            <EventCard prefix={'h'+mainevent.EventPriority} eventName={mainevent.EventName}
+                       eventDate={mainevent.eventDate} eventDesc={mainevent.EventDescription}
+                       prizePool={mainevent.PrizePool} rulebookLink={"none"}
+                       eventTagline={(mainevent.EventTagline == 'none' || mainevent.EventTagline == null) ?'\u00A0':mainevent.EventTagline}/>
+        {/each}
+    </div>
     <div id="esports-events"
          class="flex flex-col items-center gap-5 justify-center min-h-screen relative w-full overflow-hidden">
         {#each data.esports_events as mainevent}
@@ -321,9 +321,10 @@
 </div>
 
 <div class="subnav fixed bottom-20 z-10 left-1/2 transform -translate-x-1/2 bg-primary text-on-surface rounded-3xl
-            w-[230px] h-[0px] px-2 flex flex-col justify-center items-center gap-2 overflow-hidden
+            w-[230px] h-[0px] px-2 py-0 flex flex-col justify-center items-center gap-2 overflow-hidden
             shadow-lg font-bold regular-font text-xl sm:text-2xl text-center">
     <button class="subnavText" on:click={() => {handleScroll("main-events")}}>Main Events</button>
     <button class="subnavText" on:click={() => {handleScroll("cultural-events")}}>Cultural Events</button>
+    <button class="subnavText" on:click={() => {handleScroll("sports-events")}}>Sports Events</button>
     <button class="subnavText" on:click={() => {handleScroll("esports-events")}}>E-Sports Events</button>
 </div>

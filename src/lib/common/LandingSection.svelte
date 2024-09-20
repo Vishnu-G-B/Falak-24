@@ -1,10 +1,12 @@
 <script>
     import barcodeImg from "$lib/assets/images/svgs/colorInvertedBarcode.svg";
     import tempImg1 from "$lib/assets/images/eventImages/6.jpg";
+    import {goto} from "$app/navigation";
 
     export let eventCategory = "Cultural", firstEventTag = "celebrate&nbsp;creativity",
         secondEventTag = "Craft&nbsp;Comedy", firstEventSubTag = "Falak 23", secondEventSubTag = "Falak 23",
-        firstEventImg = tempImg1, secondEventImg = tempImg1;
+        firstEventImg = tempImg1, secondEventImg = tempImg1, redirectLink = "";
+
 </script>
 <div class="h-[200px] w-[325px] sm:w-[375px] bg-on-surface overflow-hidden flex flex-col justify-center items-center
             relative mx-auto mt-2">
@@ -22,7 +24,8 @@
 <div class="h-[85vh] min-h-fit w-[325px] sm:w-[375px] bg-surface relative flex flex-col mx-auto">
     <div class="h-full w-full flex flex-col justify-center items-center bg-surface
                 relative">
-        <div class="h-1/2 w-full flex flex-col justify-center items-center relative pt-10 bg-surface">
+        <button class="h-1/2 w-full flex flex-col justify-center items-center relative pt-10 bg-surface"
+                on:click={() => {goto(`/events`)}}>
             <div class="h-fit w-fit absolute top-5 left-8 text-center regular-font text-[1.2rem] sm:text-xl text-on-surface">
                 &nbsp;
             </div>
@@ -43,8 +46,9 @@
                             transition-all duration-300 ease-in-out">
                 </div>
             </div>
-        </div>
-        <div class="h-1/2 w-full flex flex-col justify-center items-center relative pt-10 bg-surface">
+        </button>
+        <button class="h-1/2 w-full flex flex-col justify-center items-center relative pt-10 bg-surface"
+                on:click={() => {goto(`/events`)}}>
             <div class="h-fit w-fit absolute top-5 left-8 text-center regular-font text-[1.2rem] sm:text-xl text-on-surface">
                 &nbsp;
             </div>
@@ -65,7 +69,7 @@
                             transition-all duration-300 ease-in-out">
                 </div>
             </div>
-        </div>
+        </button>
     </div>
     <div class="absolute -bottom-8 w-full h-[2rem] bg-surface"></div>
     <div class="absolute right-0 top-0 h-[105%] w-[20px] z-10 bg-primary"></div>
