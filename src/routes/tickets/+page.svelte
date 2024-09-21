@@ -48,7 +48,7 @@
             points: ['Only for NON-MAHE Students'],
         },
         {
-            name: 'BATTLE BANDS',
+            name: 'BATTLE OF BANDS',
             price: 2950,
             points: ['Only for NON-MAHE Students'],
         },
