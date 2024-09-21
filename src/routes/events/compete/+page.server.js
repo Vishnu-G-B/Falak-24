@@ -236,7 +236,7 @@ export const actions = {
             let passFound = await passes.findOne({
                 email: session.user.email,
                 banned: false,
-                pass_name: 'Esports',
+                pass_name: 'Flagship',
             });
             if (!passFound) {
                 redirect(302, `/tickets?status=1&details=Please Buy The Flagship Pass To Join A Team`);
