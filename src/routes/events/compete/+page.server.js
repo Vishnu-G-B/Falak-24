@@ -80,7 +80,7 @@ export const actions = {
                     }
                 }
             } else if (!foundUser.is_mahe) {
-                if(requiredEvent.passRequiredNM === 'none') {
+                if (requiredEvent.passRequiredNM === 'none') {
                     hasRequiredPass = true;
                 } else {
                     for (let i = 0; i < foundPasses.length; i++) {
@@ -219,7 +219,7 @@ export const actions = {
         if (!requiredEvent.isTeamEvent) {
             return {
                 success: 'false',
-                state: '?status=1&details=Catastrophic Faliure Contact IT Department',
+                state: '?status=1&details=Catastrophic Failure Contact IT Department',
             }
         }
 
@@ -236,7 +236,7 @@ export const actions = {
             let passFound = await passes.findOne({
                 email: session.user.email,
                 banned: false,
-                pass_name: 'Esports',
+                pass_name: 'Flagship',
             });
             if (!passFound) {
                 redirect(302, `/tickets?status=1&details=Please Buy The Flagship Pass To Join A Team`);
