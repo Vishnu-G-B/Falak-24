@@ -1,6 +1,6 @@
 <script>
     import barcodeImg from "$lib/assets/images/svgs/colorInvertedBarcode.svg";
-    import tempImg1 from "$lib/assets/images/eventImages/6.jpg";
+    import tempImg1 from "$lib/assets/images/eventImages/EsportsLanding1.webp";
     import {goto} from "$app/navigation";
 
     export let eventCategory = "Cultural", firstEventTag = "celebrate&nbsp;creativity",
