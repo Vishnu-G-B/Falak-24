@@ -123,10 +123,10 @@
                 {:else if noButton && !disableActionButton}
                     <img src="{footerImg}" alt="gif" class="h-[31px] w-full">
                 {:else if isCompeteCard}
-                    <button class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface"
-                            on:click={async () => {goto('/events')}}>
-                        Details
-                    </button>
+<!--                    <button class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface"-->
+<!--                            on:click={async () => {goto('/events/compete/manage')}}>-->
+<!--                        Details-->
+<!--                    </button>-->
                     {#if isTeamLeader && isTeamEvent}
                         <button class="px-3 py-1 h-fit w-fit text-nowrap bg-primary regular-font text-on-surface"
                                 on:click={async () => {goto('/events/compete/manage')}}>
