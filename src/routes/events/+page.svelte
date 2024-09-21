@@ -215,7 +215,7 @@
                             <p class="text-5xl text-on-surface/70 brand-font">OCTOBER</p>
                             <p class="text-5xl text-on-surface/70 brand-font">2024</p>
                         </div>
-                        <p class="text-8xl text-on-surface/70 brand-font leading-[1]">7</p>
+                        <p class="text-8xl text-on-surface/70 brand-font leading-[1]">07</p>
                     </div>
                     <div class="h-[20px] w-full bg-primary mt-4"></div>
                     <div class="w-full flex flex-col items-start pt-2 bg-surface -translate-x-[25px] z-[2] mt-5">
