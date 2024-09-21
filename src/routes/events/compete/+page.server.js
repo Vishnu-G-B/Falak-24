@@ -80,7 +80,7 @@ export const actions = {
                     }
                 }
             } else if (!foundUser.is_mahe) {
-                if(requiredEvent.passRequiredNM === 'none') {
+                if (requiredEvent.passRequiredNM === 'none') {
                     hasRequiredPass = true;
                 } else {
                     for (let i = 0; i < foundPasses.length; i++) {
@@ -219,7 +219,7 @@ export const actions = {
         if (!requiredEvent.isTeamEvent) {
             return {
                 success: 'false',
-                state: '?status=1&details=Catastrophic Faliure Contact IT Department',
+                state: '?status=1&details=Catastrophic Failure Contact IT Department',
             }
         }
 

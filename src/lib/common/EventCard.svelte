@@ -14,66 +14,6 @@
         registerDispatch('registerClick', details);
     }
 
-    let config1 =
-        {
-            "colors":
-                [
-                    {
-                        "color": "#0156CF",
-                        "enabled": true
-                    },
-                    {
-                        "color": "#DDA3B2",
-                        "enabled": true
-                    },
-                    {
-                        "color": "#ffafcc",
-                        "enabled": true
-                    },
-                    {
-                        "color": "#bde0fe",
-                        "enabled": true
-                    },
-                    {
-                        "color": "#a2d2ff",
-                        "enabled": false
-                    }
-                ],
-            "speed":
-                4,
-            "horizontalPressure":
-                3,
-            "verticalPressure":
-                3,
-            "waveFrequencyX":
-                2,
-            "waveFrequencyY":
-                4,
-            "waveAmplitude":
-                5,
-            "shadows":
-                0,
-            "highlights":
-                2,
-            "colorBrightness":
-                1,
-            "colorSaturation":
-                3,
-            "wireframe":
-                false,
-            "colorBlending":
-                5,
-            "backgroundColor":
-                "#003FFF",
-            "backgroundAlpha":
-                1,
-            "resolution":
-                1
-        };
-
-    onMount(() => {
-    })
-
     function showDetail(prefix) {
         let showDetailTimeline = gsap.timeline();
         showDetailTimeline.to(`.${prefix}-main-div`, {
@@ -135,7 +75,7 @@
 
     export let form;
     export let prefix;
-    export let eventName, eventDate, eventDesc, prizePool, rulebookLink, userSignedIn;
+    export let eventName, eventDate, eventDesc, prizePool, rulebookLink;
     export let passRequiredNM, passRequiredM, eventPriority;
     export let eventTagline = "&nbsp;".repeat(100);
 </script>

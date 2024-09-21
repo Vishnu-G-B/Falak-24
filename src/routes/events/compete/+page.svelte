@@ -350,7 +350,7 @@
             </div>
         </div>
     </div>
-    <div class="h-[70vh] w-full flex flex-col items-center justify-center bg-surface">
+    <div class="h-[80vh] w-full flex flex-col items-center justify-center bg-surface">
         <div class="w-fit brand-font text-[9rem] md:text-[15rem] sm:text-[12rem] xl:text-[45vh] text-on-surface overflow-hidden h-fit sm:w-fit text-center justify-center items-center flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <div class="h-fit w-fit overflow-hidden flex flex-row items-center justify-center leading-[1] page-heading-parent">
                 <span class="main-page-heading -translate-y-[200px] -translate-x-[80%] -rotate-[45deg]">C</span><span
@@ -361,15 +361,16 @@
                     class="main-page-heading -translate-y-[1200px] -translate-x-[80%] -rotate-[45deg]">T</span>
                 <span class="main-page-heading -translate-y-[1400px] -translate-x-[80%] -rotate-[45deg]">E</span>
             </div>
-            <div class="h-fit w-full max-w-[250px] flex flex-col min-w-[647px]:flex-row items-center justify-between flex-wrap gap-2">
-                <button class="bg-primary text-on-surface h-full w-full relative regular-font text-lg sm:text-xl text-center py-1.5 corner-br
+            <div class="h-fit w-full flex flex-col sm:flex-row min-w-[647px]:flex-row items-center justify-center flex-nowrap gap-2 sm:gap-10">
+                <button class="bg-primary text-on-surface h-full w-[60%] sm:w-[230px] relative regular-font text-lg sm:text-xl text-center py-1.5 corner-br
                            hover:bg-surface hover:text-on-surface duration-300 ease-in transition-all
-                           -mr-3"
+                           -mr-3 text-nowrap"
                         on:click={() => {showDataForm('register')}}
->
+                        style="clip-path: polygon(0 0,100% 0,100% calc(100% - .625rem),calc(100% - .625rem) 100%,0 100%);"
+                >
                     Register for an event
                 </button>
-                <button class="bg-primary text-on-surface w-full relative regular-font text-lg sm:text-xl text-center py-1.5 corner-br
+                <button class="bg-primary text-on-surface h-full w-[60%] sm:w-[230px] relative regular-font text-lg sm:text-xl text-center py-1.5 corner-br
                            hover:bg-surface hover:text-on-surface duration-300 ease-in transition-all
                            -mr-3"
                         on:click={() => {showDataForm('join-code')}}
