@@ -7,6 +7,10 @@
     import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     import {onMount} from "svelte";
     import InfoSnackbar from "$lib/common/InfoSnackbar.svelte";
+    import { inject } from '@vercel/analytics';
+    import { dev } from '$app/environment';
+
+    inject({ mode: dev ? 'development' : 'production' });
 
     onMount(() => {
         gsap.registerPlugin(ScrollTrigger);
