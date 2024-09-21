@@ -71,12 +71,15 @@ export const actions = {
                     console.log(payments.data.docs[i].event_name);
                     console.log(passMapping[payments.data.docs[i].event_name]);
                     let passName = passMapping[payments.data.docs[i].event_name];
-                    let foundPass = await passes.findOne({
-                        email: session.user.email,
-                        pass_name: passName.toString(),
-                        banned: false,
-                    });
+
                     if (passName !== undefined) {
+                        let foundPass = await passes.findOne({
+                            email: session.user.email,
+                            pass_name: passName.toString(),
+                            banned: false,
+                        });
+
+                        console.log('foundPass', foundPass)
                         if (!foundPass) {
                             let generatedTokenForPass;
                             while (true) {
