@@ -131,6 +131,9 @@ export const actions = {
                 }
             }
         } else if (!foundUser.is_mahe) {
+            if(passRequiredNM === 'none') {
+                hasRequiredPass = true;
+            }
             for (let i = 0; i < foundPasses.length; i++) {
                 if (foundPasses[i].pass_name === passRequiredNM) {
                     hasRequiredPass = true;
