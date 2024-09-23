@@ -271,7 +271,9 @@
                         await goto(result.location);
                     } else if (result.type === 'success') {
                         updateUrlStatus(result.data.state);
-                        setTimeout(()=>{window.location.reload();}, 2000);
+                        if(result.data.success === true) {
+                            setTimeout(()=>{window.location.reload();}, 2000);
+                        }
                     }
                 }
             }}>
@@ -315,13 +317,15 @@
                 attemptEventRegistration(event);
                 return async ({result}) => {
                     console.log(result);
-                    helperAnimations.stopLoadingPhase('user-register');
                     if (result.type === 'redirect') {
                         await goto(result.location);
                     } else if (result.type === 'success') {
                         updateUrlStatus(result.data.state);
-                        setTimeout(()=>{window.location.reload();}, 2000);
+                        if(result.data.success === true) {
+                            setTimeout(()=>{window.location.reload();}, 2000);
+                        }
                     }
+                    helperAnimations.stopLoadingPhase('user-register');
                 }
             }}>
                     <div class="form__group field mt-2 mb-2">

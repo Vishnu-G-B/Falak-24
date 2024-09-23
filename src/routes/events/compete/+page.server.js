@@ -82,6 +82,11 @@ export const actions = {
             } else if (!foundUser.is_mahe) {
                 if (requiredEvent.passRequiredNM === 'none') {
                     hasRequiredPass = true;
+                } else if(requiredEvent.passRequiredNM === 'deny'){
+                    return {
+                        success: false,
+                        state: `?status=1&details=Not Open For NON MAHE Students`,
+                    }
                 } else {
                     for (let i = 0; i < foundPasses.length; i++) {
                         if (foundPasses[i].pass_name === requiredEvent.passRequiredNM) {
