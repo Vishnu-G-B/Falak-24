@@ -1,7 +1,7 @@
 <script>
     import barcode from "$lib/assets/images/svgs/updated_2.svg";
     import {gsap} from "gsap/dist/gsap";
-    import {createEventDispatcher, onMount} from "svelte";
+    import {createEventDispatcher} from "svelte";
     import {goto} from "$app/navigation";
     import {enhance} from "$app/forms";
     import {browser} from "$app/environment";
@@ -106,27 +106,26 @@
         <div class="w-full h-fit flex flex-row items-center justify-between gap-5 px-10
                     absolute bottom-7 left-1/2 transform -translate-x-1/2 z-10">
             {#if $page.data.session}
-                <!--                <form action="?/attemptRegistration" method="post" class="h-fit w-1/2" use:enhance={async (event) => {-->
-                <!--                    attemptRegistration(event);-->
-                <!--                    return async ({result}) => {-->
-                <!--                        form = result.data;-->
-                <!--                        console.log(result.data);-->
-                <!--                        if(result.type === 'success') {-->
-                <!--                            if(result.data.success === false) {-->
-                <!--                                handleRegisterClick(result.data.state);-->
-                <!--                            } else {-->
-                <!--                                await goto(result.data.redirectTo);-->
-                <!--                            }-->
-                <!--                        } else if (result.type === 'redirect') {-->
-                <!--                            await goto(result.location);-->
-                <!--                        }-->
-                <!--                    }-->
-                <!--                }}>-->
-                <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface"
-                        on:click={() => {handleRegisterClick("?status=1&details=Registrations%20Open%20soon!!")}}>
-                    Register
-                </button>
-                <!--                </form>-->
+                <form action="?/attemptRegistration" method="post" class="h-fit w-1/2" use:enhance={async (event) => {
+                                    attemptRegistration(event);
+                                    return async ({result}) => {
+                                        form = result.data;
+                                        console.log(result.data);
+                                        if(result.type === 'success') {
+                                            if(result.data.success === false) {
+                                                handleRegisterClick(result.data.state);
+                                            } else {
+                                                await goto(result.data.redirectTo);
+                                            }
+                                        } else if (result.type === 'redirect') {
+                                            await goto(result.location);
+                                        }
+                                    }
+                                }}>
+                    <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface">
+                        Register
+                    </button>
+                </form>
             {:else}
                 <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface"
                         on:click={async () => {
