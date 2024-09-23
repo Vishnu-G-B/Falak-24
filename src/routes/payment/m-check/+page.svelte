@@ -18,7 +18,7 @@
             <p class="brand-font text-3xl text-on-surface">MIT</p>
         </div>
         <div class="flex flex-col items-center mt-[28px] justify-center w-fit gap-5">
-            <form action="?/checkPaymentAndGeneratePass" method="post" use:enhance={(event) => {
+            <form action="/payment/m-check?/checkPaymentAndGeneratePass" method="post" use:enhance={(event) => {
                 helperAnimations.animateLoadingPhase('generate');
             }}>
                 <button class="bg-primary text-on-surface relative w-fit regular-font text-xl text-center py-1.5 corner-br px-5
