@@ -85,6 +85,7 @@
                 "/events": "Events",
                 "/my-tickets": "My Tickets",
                 "/tickets": "Tickets",
+                "/events/compete": "Compete",
             }
             gsap.to("#loading-text", {
                 display: "flex",
@@ -132,6 +133,12 @@
                     <button on:click={() => {handleNavigation("/my-tickets")}} aria-current="page"
                             class="text-5xl block text-center py-1 {($page.url.pathname === '/my-tickets') ? 'underline' : ''} cursor-pointer uppercase">
                         My Tickets
+                    </button>
+                </li>
+                <li class="nav-links w-full flex justify-center items-center">
+                    <button on:click={() => {handleNavigation("/events/compete")}} aria-current="page"
+                            class="text-5xl block text-center py-1 {($page.url.pathname === '/events/compete') ? 'underline' : ''} cursor-pointer uppercase">
+                        Compete Portal
                     </button>
                 </li>
 
