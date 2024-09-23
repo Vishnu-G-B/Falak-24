@@ -261,7 +261,7 @@
                     fields and click on submit to register!</p>
             </div>
             <div class="h-fit w-full flex flex-col gap-2">
-                <form action="?/joinTeam" method="post" use:enhance={async (event) => {
+                <form action="/events/compete?/joinTeam" method="post" use:enhance={async (event) => {
                     helperAnimations.animateLoadingPhase('user-register');
                 attemptTeamJoining(event);
                 return async ({result}) => {
@@ -271,6 +271,7 @@
                         await goto(result.location);
                     } else if (result.type === 'success') {
                         updateUrlStatus(result.data.state);
+                        setTimeout(()=>{window.location.reload();}, 2000);
                     }
                 }
             }}>
@@ -309,7 +310,7 @@
                     fields and click on submit to register!</p>
             </div>
             <div class="h-fit w-full flex flex-col gap-2">
-                <form action="?/attemptEventRegistration" method="post" use:enhance={async (event) => {
+                <form action="/events/compete?/attemptEventRegistration" method="post" use:enhance={async (event) => {
                     helperAnimations.animateLoadingPhase('user-register');
                 attemptEventRegistration(event);
                 return async ({result}) => {
@@ -319,6 +320,7 @@
                         await goto(result.location);
                     } else if (result.type === 'success') {
                         updateUrlStatus(result.data.state);
+                        setTimeout(()=>{window.location.reload();}, 2000);
                     }
                 }
             }}>
