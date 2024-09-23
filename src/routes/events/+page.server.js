@@ -103,7 +103,7 @@ export const actions = {
         }
         let foundUser = await user.findOne({email: session.user.email});
         if (!foundUser) {
-            redirect(302, '/tickets?status=1&details=User%20Not%Registered&register=true');
+            redirect(302, '/tickets?status=1&details=User%20Not%20Registered&register=true');
         }
 
         let foundPasses = await passes.find(
