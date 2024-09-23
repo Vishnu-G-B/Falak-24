@@ -15,6 +15,7 @@ let passMapping = {
     'MAHE Pass': 'Flagship',
     'Solo Dance': 'Solo Dance NM',
     'Group Dance': 'Group Dance NM',
+    'Solo Singing': 'Solo Singing NM',
     'eSports': 'Esports',
     'Fashion Show': 'Fashion Show NM',
     'Battle Of Bands': 'BOB NM',
