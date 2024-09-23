@@ -7,6 +7,7 @@
     import {browser} from "$app/environment";
     import {page} from "$app/stores";
     import {signIn} from "@auth/sveltekit/client";
+    import HelperAnimations from "$lib/common/HelperAnimations.svelte";
 
     const registerDispatch = createEventDispatcher();
 
@@ -78,7 +79,10 @@
     export let eventName, eventDate, eventDesc, prizePool, rulebookLink;
     export let passRequiredNM, passRequiredM, eventPriority;
     export let eventTagline = "&nbsp;".repeat(100);
+    let helperAnimations;
 </script>
+
+<HelperAnimations bind:this={helperAnimations}/>
 
 <div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[475px] eventdiv">
     <div class="w-full h-full absolute flex flex-col flex-shrink-0 overflow-hidden bg-surface z-[2] {prefix}-main-div origin-bottom-left">
@@ -107,6 +111,7 @@
                     absolute bottom-7 left-1/2 transform -translate-x-1/2 z-10">
             {#if $page.data.session}
                 <form action="?/attemptRegistration" method="post" class="h-fit w-1/2" use:enhance={async (event) => {
+                    helperAnimations.animateLoadingPhase('user-register');
                                     attemptRegistration(event);
                                     return async ({result}) => {
                                         form = result.data;
@@ -120,11 +125,21 @@
                                         } else if (result.type === 'redirect') {
                                             await goto(result.location);
                                         }
+                                        helperAnimations.animateLoadingPhase('user-register');
                                     }
                                 }}>
-                    <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface">
-                        Register
+                    <button class="w-full h-fit p-1 regular-font text-on-surface bg-primary relative"
+                            type="submit">
+                        <p class="user-register-button-inner-text">
+                            Register
+                        </p>
+                        <div class="h-full w-full flex-col items-center justify-center user-register-loader-refresh hidden scale-0 absolute top-0 left-0">
+                            <div class="rounded-full bg-on-surface h-8 w-8 user-register-loader-refresh-dot"></div>
+                        </div>
                     </button>
+                    <!--                    <button class="h-fit w-1/2 bg-primary ">-->
+                    <!--                        Register-->
+                    <!--                    </button>-->
                 </form>
             {:else}
                 <button class="h-fit w-1/2 bg-primary p-1 regular-font text-on-surface"
