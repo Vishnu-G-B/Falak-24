@@ -59,6 +59,49 @@ export const actions = {
         }
         console.log(foundUser.userPhoneNumber);
         let payments = await fetchPaymentLogs(1, foundUser.userPhoneNumber);
+        payments = {
+            "status": {
+                "code": 0,
+                "message": "Payment Logs."
+            },
+            "data": {
+                "docs": [
+                    {
+                        "_id": "66ed68a00d9ad066b47b4c48",
+                        "is_posted": 0,
+                        "tracking_id": "pay_OzQ0qhluWkaIMn",
+                        "order_status": "Success",
+                        "currency": "INR",
+                        "actual_amount": "116.82",
+                        "billing_name": "Shreyas Chaudhary",
+                        "billing_tel": "7376257882",
+                        "membership_type": "Falak",
+                        "created_at": "2024-09-20",
+                        "orderid": "order_OzQ0PdGJYMETQP",
+                        "receiptno": "FALAK7669",
+                        "total_amount": "116.82",
+                        "user_type": "NONMAHE",
+                        "name": "Shreyas Chaudhary",
+                        "registration_number": "7376257882",
+                        "email": "shreyaschaudhary0702@gmail.com",
+                        "esports": true,
+                        "esports_amount": 116.82,
+                        "amount": 0,
+                        "gst": 17.82,
+                        "base_price": 99
+                    }
+                ],
+                "totalDocs": 1,
+                "limit": 10,
+                "page": 1,
+                "totalPages": 1,
+                "pagingCounter": 1,
+                "hasPrevPage": false,
+                "hasNextPage": false,
+                "prevPage": null,
+                "nextPage": null
+            }
+        }
         console.log(payments.data.docs);
         if (!payments) {
             redirect(302, '/payment/m-check?status=1&details=No%20Payments%20Found');
