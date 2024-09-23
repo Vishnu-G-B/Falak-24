@@ -7,6 +7,8 @@
     import {browser} from "$app/environment";
     import Ticket from "$lib/common/Ticket.svelte";
     import {page} from "$app/stores";
+    import AICanvasClaude2 from "$lib/common/AICanvasClaude2.svelte";
+    import HelperAnimations from "$lib/common/HelperAnimations.svelte";
 
     let isSelectedTeamEvent;
     let selectedEvent;
@@ -239,7 +241,13 @@
 
     export let data;
     console.log(data.registrationData.ownerOrSolo);
+    let helperAnimations;
 </script>
+
+<HelperAnimations bind:this={helperAnimations}/>
+<div class="h-screen w-full fixed top-0">
+    <AICanvasClaude2/>
+</div>
 <div class="h-fit w-full overflow-hidden">
     <div class="h-screen w-full fixed top-[100%] backdrop-blur-2xl hidden join-code-data-form items-center justify-center z-[3] px-4 pt-4">
         <button class="h-screen w-full bg-transparent absolute top-0" on:click={() => {hideForm('join-code')}}></button>
@@ -253,14 +261,17 @@
                     fields and click on submit to register!</p>
             </div>
             <div class="h-fit w-full flex flex-col gap-2">
-                <form action="?/joinTeam" method="post" use:enhance={async (event) => {
+                <form action="/events/compete?/joinTeam" method="post" use:enhance={async (event) => {
+                    helperAnimations.animateLoadingPhase('user-register');
                 attemptTeamJoining(event);
                 return async ({result}) => {
+                    helperAnimations.stopLoadingPhase('user-register');
                     console.log(result);
                     if (result.type === 'redirect') {
                         await goto(result.location);
                     } else if (result.type === 'success') {
                         updateUrlStatus(result.data.state);
+                        setTimeout(()=>{window.location.reload();}, 2000);
                     }
                 }
             }}>
@@ -299,14 +310,17 @@
                     fields and click on submit to register!</p>
             </div>
             <div class="h-fit w-full flex flex-col gap-2">
-                <form action="?/attemptEventRegistration" method="post" use:enhance={async (event) => {
+                <form action="/events/compete?/attemptEventRegistration" method="post" use:enhance={async (event) => {
+                    helperAnimations.animateLoadingPhase('user-register');
                 attemptEventRegistration(event);
                 return async ({result}) => {
                     console.log(result);
+                    helperAnimations.stopLoadingPhase('user-register');
                     if (result.type === 'redirect') {
                         await goto(result.location);
                     } else if (result.type === 'success') {
                         updateUrlStatus(result.data.state);
+                        setTimeout(()=>{window.location.reload();}, 2000);
                     }
                 }
             }}>

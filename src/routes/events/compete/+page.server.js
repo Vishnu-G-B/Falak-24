@@ -157,9 +157,12 @@ export const actions = {
                 redirect(302, `/tickets?status=1&details=Please Buy The ${foundUser.is_mahe ? requiredEvent.passRequiredM : requiredEvent.passRequiredNM} Ticket To Register`);
             }
         } else {
+            let getEventData = await eventRegistration.find({
+                email: session.user.email,
+            });
             return {
                 success: false,
-                state: `?status=1&details=Registration%20For%20${requiredEvent.EventName}%20Is%20Closed`
+                state: `?status=1&details=Registration%20For%20${requiredEvent.EventName}%20Is%20Closed`,
             }
         }
     },
