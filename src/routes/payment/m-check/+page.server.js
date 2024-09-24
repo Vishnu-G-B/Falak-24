@@ -67,6 +67,7 @@ export const actions = {
         if (payments.data.totalDocs === 0) {
             redirect(302, '/payment/m-check?status=1&details=No%20Payments%20Found');
         } else {
+
             if (payments.data.totalPages === 1) {
                 for (let i = 0; i < payments.data.docs.length; i++) {
                     console.log(payments.data.docs[i].event_name);
@@ -99,32 +100,30 @@ export const actions = {
                                 banned: false,
                             })
                         }
-                    } else {
-                        let maheESports = payments.data.docs[i].esports;
-                        if (maheESports) {
-                            let esportsPassFound = await passes.findOne({
+                    }
+                    if (payments.data.docs[i].esports) {
+                        let esportsPassFound = await passes.findOne({
+                            email: session.user.email,
+                            pass_name: 'Esports',
+                            banned: false,
+                        });
+                        if (!esportsPassFound) {
+                            let generatedTokenForPass;
+                            while (true) {
+                                generatedTokenForPass = uuidv4().toString().slice(29, 35);
+                                let foundToken = await passes.findOne({
+                                    token: generatedTokenForPass,
+                                })
+                                if (!foundToken) {
+                                    break;
+                                }
+                            }
+                            await passes.insertOne({
                                 email: session.user.email,
                                 pass_name: 'Esports',
+                                token: generatedTokenForPass,
                                 banned: false,
-                            });
-                            if (!esportsPassFound) {
-                                let generatedTokenForPass;
-                                while (true) {
-                                    generatedTokenForPass = uuidv4().toString().slice(29, 35);
-                                    let foundToken = await passes.findOne({
-                                        token: generatedTokenForPass,
-                                    })
-                                    if (!foundToken) {
-                                        break;
-                                    }
-                                }
-                                await passes.insertOne({
-                                    email: session.user.email,
-                                    pass_name: 'Esports',
-                                    token: generatedTokenForPass,
-                                    banned: false,
-                                })
-                            }
+                            })
                         }
                     }
                 }
