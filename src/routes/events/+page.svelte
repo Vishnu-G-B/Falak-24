@@ -292,7 +292,7 @@
         {#each data.sports_events as mainevent}
             <EventCard prefix={'h'+mainevent.EventPriority} eventName={mainevent.EventName}
                        eventDate={mainevent.eventDate} eventDesc={mainevent.EventDescription}
-                       prizePool={mainevent.PrizePool} rulebookLink={"none"}
+                       prizePool={mainevent.PrizePool} rulebookLink={mainevent.RulebookLink}
                        userSignedIn="{data.userSignedIn}"
                        eventPriority="{mainevent.EventPriority}"
                        passRequiredM="{mainevent.passRequiredM}"
