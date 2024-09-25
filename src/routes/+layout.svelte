@@ -7,12 +7,20 @@
     import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     import {onMount} from "svelte";
     import InfoSnackbar from "$lib/common/InfoSnackbar.svelte";
-    import { inject } from '@vercel/analytics';
-    import { dev } from '$app/environment';
+    import {inject} from '@vercel/analytics';
+    import {dev} from '$app/environment';
+    import UnsupportedUserAgent from "$lib/common/UnsupportedUserAgent.svelte";
 
-    inject({ mode: dev ? 'development' : 'production' });
+    inject({mode: dev ? 'development' : 'production'});
+
+    let isInstagram;
+    let isSamsungBrowser;
 
     onMount(() => {
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        isInstagram = (ua.indexOf('Instagram') > -1);
+        isSamsungBrowser = (ua.indexOf('SamsungBrowser') > -1);
+
         gsap.registerPlugin(ScrollTrigger);
         const lenis = new Lenis({
             lerp: 0.05
@@ -23,7 +31,9 @@
         });
     })
 </script>
-
+{#if isInstagram || isSamsungBrowser}
+    <UnsupportedUserAgent/>
+{/if}
 <InfoSnackbar/>
 <Navbar/>
 <PageTransistion/>
