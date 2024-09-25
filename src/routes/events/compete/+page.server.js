@@ -82,7 +82,7 @@ export const actions = {
             } else if (!foundUser.is_mahe) {
                 if (requiredEvent.passRequiredNM === 'none') {
                     hasRequiredPass = true;
-                } else if(requiredEvent.passRequiredNM === 'deny'){
+                } else if (requiredEvent.passRequiredNM === 'deny') {
                     return {
                         success: false,
                         state: `?status=1&details=Not Open For NON MAHE Students`,
@@ -222,41 +222,48 @@ export const actions = {
         let apiEventsURL = `https://cms.mitblrfest.org/api/events?filters[EventName][$eq]=${foundTeam.event_name}`;
         const response = await fetch(apiEventsURL);
         let jsonResponse = await response.json();
-        let requiredEvent = jsonResponse.data[0].attributes;
+        if (jsonResponse.data[0]) {
+            let requiredEvent = jsonResponse.data[0].attributes;
 
-        if (!requiredEvent.isTeamEvent) {
+            if (!requiredEvent.isTeamEvent) {
+                return {
+                    success: 'false',
+                    state: '?status=1&details=Catastrophic Failure Contact IT Department',
+                }
+            }
+
+            if (requiredEvent.passRequiredNM === 'Esports' || requiredEvent.passRequiredM === 'Esports') {
+                let passFound = await passes.findOne({
+                    email: session.user.email,
+                    banned: false,
+                    pass_name: 'Esports',
+                });
+                if (!passFound) {
+                    redirect(302, `/tickets?status=1&details=Please Buy The Esports Pass To Join A Team`);
+                }
+            } else if (requiredEvent.passRequiredM === 'Flagship' && foundUser.is_mahe) {
+                let passFound = await passes.findOne({
+                    email: session.user.email,
+                    banned: false,
+                    pass_name: 'Flagship',
+                });
+                if (!passFound) {
+                    redirect(302, `/tickets?status=1&details=Please Buy The Flagship Pass To Join A Team`);
+                }
+            }
+
+            await eventRegistration.updateOne({
+                join_code: joinCode,
+            }, {
+                $push: {'team_members': session.user.email},
+                $inc: {'team_member_count': 1},
+            });
+            return {success: true, state: '?status=2&details=Joined The Team Successfully!'};
+        } else {
             return {
-                success: 'false',
-                state: '?status=1&details=Catastrophic Failure Contact IT Department',
+                success: false,
+                state: '?status=2&details=Event Does Not Exist. If We Are Wrong, Please Let The IT Team Know.'
             }
         }
-
-        if (requiredEvent.passRequiredNM === 'Esports' || requiredEvent.passRequiredM === 'Esports') {
-            let passFound = await passes.findOne({
-                email: session.user.email,
-                banned: false,
-                pass_name: 'Esports',
-            });
-            if (!passFound) {
-                redirect(302, `/tickets?status=1&details=Please Buy The Esports Pass To Join A Team`);
-            }
-        } else if (requiredEvent.passRequiredM === 'Flagship' && foundUser.is_mahe) {
-            let passFound = await passes.findOne({
-                email: session.user.email,
-                banned: false,
-                pass_name: 'Flagship',
-            });
-            if (!passFound) {
-                redirect(302, `/tickets?status=1&details=Please Buy The Flagship Pass To Join A Team`);
-            }
-        }
-
-        await eventRegistration.updateOne({
-            join_code: joinCode,
-        }, {
-            $push: {'team_members': session.user.email},
-            $inc: {'team_member_count': 1},
-        });
-        return {success: true, state: '?status=2&details=Joined The Team Successfully!'};
     }
 }
