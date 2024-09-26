@@ -76,7 +76,12 @@
             name: 'AD DESIGN',
             price: 590,
             points: ['Only for NON-MAHE Students'],
-        }
+        },
+        {
+            name: 'ECHO PULSE',
+            price: 150,
+            points: ['Only for NON-MAHE Students'],
+        },
     ];
 
     let sportsPasses = [
@@ -134,7 +139,8 @@
             name: 'CHESS',
             price: 500,
             points: ['For both MAHE and NON-MAHE Students']
-        }
+        },
+
     ];
 
     let esportsPasses = [
