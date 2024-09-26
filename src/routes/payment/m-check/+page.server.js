@@ -34,6 +34,7 @@ let passMapping = {
     'Badminton(mixed)': 'Mixed Badminton',
     'Table Tennis': 'Table Tennis',
     'Chess': 'Chess',
+    'Echo Pulse': 'Echo Pulse NM',
 }
 
 export const load = async (event) => {
