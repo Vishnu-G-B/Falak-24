@@ -30,17 +30,17 @@
         {
             name: 'SOLO DANCE',
             price: 236,
-            points: ['Only for NON-MAHE Students'],
+            points: ['Only for NON-MAHE Students', 'Allows you to register for the following event(s): <br> TAAL SE TAAL <br> CRESCENDO'],
         },
         {
             name: 'GROUP DANCE',
             price: 2360,
-            points: ['Only for NON-MAHE Students'],
+            points: ['Only for NON-MAHE Students', 'Allows you to register for the following event(s): <br> HOP TILL YOU DROP <br> NRITYODAYA'],
         },
         {
             name: 'SOLO SINGING',
             price: 177,
-            points: ['Only for NON-MAHE Students'],
+            points: ['Only for NON-MAHE Students', 'Allows you to register for the following event(s): <br> MELODIES'],
         },
         {
             name: 'FASHION SHOW',
@@ -55,27 +55,27 @@
         {
             name: 'DRAMA',
             price: 1298,
-            points: ['Only for NON-MAHE Students'],
+            points: ['Only for NON-MAHE Students', 'Allows you to register for the following event(s): <br> TAMASHA'],
         },
         {
             name: 'MONO ACTING',
             price: 177,
-            points: ['Only for NON-MAHE Students'],
+            points: ['Only for NON-MAHE Students', 'Allows you to register for the following event(s): <br> SPOTLIGHT'],
         },
         {
             name: 'PHOTOGRAPHY COMPETITION',
             price: 147.50,
-            points: ['Only for NON-MAHE Students'],
+            points: ['Only for NON-MAHE Students', 'Allows you to register for the following event(s): <br> SPECTRA'],
         },
         {
             name: 'FILM MAKING',
             price: 295,
-            points: ['Only for NON-MAHE Students'],
+            points: ['Only for NON-MAHE Students', 'Allows you to register for the following event(s): <br> FLICKS'],
         },
         {
             name: 'AD DESIGN',
             price: 590,
-            points: ['Only for NON-MAHE Students'],
+            points: ['Only for NON-MAHE Students', 'Allows you to register for the following event(s): <br> AD VENTURE'],
         },
         {
             name: 'ECHO PULSE',
@@ -571,7 +571,7 @@
         {#each sportsPasses as culturalTicket, index}
             <div class="h-fit w-fit sports-content-ticket sports-ticket-div absolute sports-carousel-{index+2} origin-bottom-left"
                  style="transform: translate3d({12 * (index+1)}%, 0, {-8 * (index+1)}em); z-index: {sportsPasses.length - index+1}">
-        <!--        &lt;!&ndash;                 style="transform: translate(-{80 * (index+1)}%, -{20 * (index+1)}%) rotate(-{20 * (index+1)}deg); z-index: {culturalPasses.length - index+1}">&ndash;&gt;-->
+                <!--        &lt;!&ndash;                 style="transform: translate(-{80 * (index+1)}%, -{20 * (index+1)}%) rotate(-{20 * (index+1)}deg); z-index: {culturalPasses.length - index+1}">&ndash;&gt;-->
                 <Ticket mainTitle="{culturalTicket.name}" isPassHeading="{false}" showBuyButton="{true}"
                         price="{culturalTicket.price}" includesArray="{culturalTicket.points}" description="{false}"
                         on:buyClicked={() => {showDataForm()}}/>

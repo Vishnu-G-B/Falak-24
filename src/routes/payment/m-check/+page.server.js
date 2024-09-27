@@ -17,6 +17,7 @@ let passMapping = {
     'Group Dance': 'Group Dance NM',
     'Solo Singing': 'Solo Singing NM',
     'eSports': 'Esports',
+    'Mono Acting': 'Mono Acting NM',
     'Fashion Show': 'Fashion Show NM',
     'Battle Of Bands': 'BOB NM',
     'Drama': 'Drama NM',
