@@ -79,7 +79,7 @@
                 <div class="h-fit w-full flex flex-col items-center justify-center py-2 regular-font text-lg px-5">
                     <ul class="list-disc marker:text-green-600 marker:text-2xl text-on-surface">
                         {#each includesArray as includeValue}
-                            <li>{includeValue}</li>
+                            <li>{@html includeValue}</li>
                         {/each}
                     </ul>
                 </div>
