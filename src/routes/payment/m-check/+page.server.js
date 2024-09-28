@@ -74,7 +74,8 @@ export const actions = {
                 for (let i = 0; i < payments.data.docs.length; i++) {
                     console.log(payments.data.docs[i].event_name);
                     console.log(passMapping[payments.data.docs[i].event_name]);
-                    let passName = passMapping[payments.data.docs[i].event_name];
+                    let trimmed = payments.data.docs[i].event_name.trim()
+                    let passName = passMapping[trimmed];
 
                     if (passName !== undefined) {
                         let foundPass = await passes.findOne({
@@ -97,7 +98,7 @@ export const actions = {
                             }
                             await passes.insertOne({
                                 email: session.user.email,
-                                pass_name: passMapping[payments.data.docs[i].event_name],
+                                pass_name: passMapping[trimmed],
                                 token: generatedTokenForPass,
                                 banned: false,
                             })
