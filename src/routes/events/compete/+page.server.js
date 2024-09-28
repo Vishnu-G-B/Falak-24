@@ -110,7 +110,7 @@ export const actions = {
                     }
                 } else {
                     let registrationCount = await eventRegistration.countDocuments({event_priority: requiredEvent.EventPriority});
-                    if (registrationCount >= requiredEvent.maxTeamMembers) {
+                    if (requiredEvent.maxTeamMembers !== -1 && registrationCount >= requiredEvent.maxTeamMembers) {
                         return {
                             success: false,
                             state: `?status=1&details=Maximum Event Registrations Reached :(`
