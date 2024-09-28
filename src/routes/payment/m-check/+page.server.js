@@ -98,7 +98,7 @@ export const actions = {
                             }
                             await passes.insertOne({
                                 email: session.user.email,
-                                pass_name: passMapping[payments.data.docs[i].event_name],
+                                pass_name: passMapping[trimmed],
                                 token: generatedTokenForPass,
                                 banned: false,
                             })
