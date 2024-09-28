@@ -5,10 +5,10 @@
     import {enhance} from "$app/forms";
     import {goto} from "$app/navigation";
     import {browser} from "$app/environment";
-    import Ticket from "$lib/common/Ticket.svelte";
     import {page} from "$app/stores";
     import AICanvasClaude2 from "$lib/common/AICanvasClaude2.svelte";
     import HelperAnimations from "$lib/common/HelperAnimations.svelte";
+    import Ticket from "$lib/common/Ticket.svelte";
 
     let isSelectedTeamEvent;
     let selectedEvent;
@@ -16,6 +16,7 @@
     let joinCode;
     let errors = {teamNameError: '', selectedEventError: '', joinCodeError: ''}
     let animationPlaying = false;
+    let eventPriority;
 
     let currentIndex = {
         'cultural': 0,
@@ -30,6 +31,19 @@
 
     onMount(() => {
         gsap.registerPlugin(TextPlugin);
+        let register = $page.url.searchParams.get('register');
+        eventPriority = $page.url.searchParams.get('event-priority');
+        if (register === 'true') {
+            if (eventPriority) {
+                for (let event of data.eventList) {
+                    if (event.attributes.EventPriority === eventPriority) {
+                        selectedEvent = event;
+                    }
+                }
+            }
+            console.log(selectedEvent);
+            showDataForm('register');
+        }
 
         let onLoadTimeline = gsap.timeline();
         onLoadTimeline.to('.main-page-heading', {
@@ -333,9 +347,15 @@
                                 type="input"
                                 required=""
                                 bind:value={selectedEvent} on:change={setTeamEvent}>
-                            <option value="-1" class="bg-surface text-on-surface" selected disabled>
-                                Select an event to register
-                            </option>
+                            {#if eventPriority}
+                                <option value="-1" class="bg-surface text-on-surface" selected disabled>
+                                    Select an event to register
+                                </option>
+                            {:else}
+                                <option value="-1" class="bg-surface text-on-surface" disabled>
+                                    Select an event to register
+                                </option>
+                            {/if}
                             {#each data.eventList as event}
                                 <option value="{event}"
                                         class="bg-surface text-on-surface">{event.attributes.EventName}</option>
