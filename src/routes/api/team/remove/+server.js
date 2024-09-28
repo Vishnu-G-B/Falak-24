@@ -17,10 +17,14 @@ export async function POST({request}) {
         // Remove the member from the team_members array
         await eventRegistration.updateOne(
             {email, event_priority: eventPriority},
-            {$pull: {team_members: memberEmail}}
+            {
+                $pull: {team_members: memberEmail},
+                $inc: {team_member_count: -1}
+            },
         );
         return json({success: true, error: "/?status=2&details=Successfully%20Removed%20Member"});
-    } catch (error) {
+    } catch
+        (error) {
         return json({success: false, error: error.message});
     }
 }
