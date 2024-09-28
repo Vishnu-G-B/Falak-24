@@ -8,6 +8,7 @@
     import AICanvasClaude2 from "$lib/common/AICanvasClaude2.svelte";
     import {goto} from "$app/navigation";
     import HelperAnimations from "$lib/common/HelperAnimations.svelte";
+    import {browser} from "$app/environment";
 
     export let form;
     export let data;
@@ -20,6 +21,33 @@
     let helperAnimations;
 
     let errors = {userNameError: '', userPhoneNumberError: '', userLearnerIdError: '', isMaheError: ''};
+
+    let passToEventMapping = {
+        'FLAGSHIP': [-1],
+        'SOLO DANCE': [2260, 2120],
+        'GROUP DANCE': [2170, 2200],
+        'SOLO SINGING': [2190],
+        'FASHION SHOW': [2010],
+        'BATTLE OF BANDS': [2100],
+        'DRAMA': [2040],
+        'MONO ACTING': [2030],
+        'PHOTOGRAPHY COMPETITION': [2070],
+        'FILM MAKING': [2160],
+        'AD DESIGN': [2080],
+        'ECHO PULSE': [2140],
+        'FOOTBALL': [4090],
+        'MENS BASKETBALL': [4050],
+        'WOMENS BASKETBALL': [4060],
+        'CRICKET': [4080],
+        'VOLLEYBALL': [4120],
+        'ATHLETICS': [4010],
+        'MENS BADMINTON': [4020],
+        'WOMENS BADMINTON': [4040],
+        'MIXED BADMINTON': [4030],
+        'TABLE TENNIS': [4100],
+        'CHESS': [4070],
+        'ESPORTS': [-1],
+    }
 
     let culturalPasses = [
         {
@@ -366,9 +394,36 @@
         });
     }
 
-    function showDataForm() {
+    function updateStatus(status) {
+        if (browser) {
+            const urlParams = new URLSearchParams(window.location.search);
+            window.history.pushState({}, document.title, window.location.pathname + status);
+            setTimeout(() => {
+                if (urlParams.has('details')) {
+                    window.history.pushState({}, document.title, window.location.pathname);
+                }
+            }, 2000);
+        }
+    }
+
+    async function showDataForm(event) {
         if (data.registered) {
-            goto('/payment/disclaimer');
+            let arrayToCheck = passToEventMapping[event];
+            if (arrayToCheck[0] === -1) {
+                await goto('/payment/disclaimer');
+            } else {
+                const response = await fetch('/api/ticket/check-max', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email: $page.data.session?.user.email, toCheck: arrayToCheck})
+                });
+                const result = await response.json();
+                if (result.redirect) {
+                    await goto('/payment/disclaimer');
+                } else {
+                    updateStatus(result.state);
+                }
+            }
         } else {
             let dataTimeline = gsap.timeline();
             dataTimeline.to('.data-form', {
@@ -535,7 +590,7 @@
                 <!--                 style="transform: translate(-{80 * (index+1)}%, -{20 * (index+1)}%) rotate(-{20 * (index+1)}deg); z-index: {culturalPasses.length - index+1}">-->
                 <Ticket mainTitle="{culturalTicket.name}" isPassHeading="{false}" showBuyButton="{true}"
                         price="{culturalTicket.price}" includesArray="{culturalTicket.points}" description="{false}"
-                        on:buyClicked={() => {showDataForm()}}/>
+                        on:buyClicked={() => {showDataForm(culturalTicket.name)}}/>
             </div>
         {/each}
     </div>
@@ -574,7 +629,7 @@
                 <!--        &lt;!&ndash;                 style="transform: translate(-{80 * (index+1)}%, -{20 * (index+1)}%) rotate(-{20 * (index+1)}deg); z-index: {culturalPasses.length - index+1}">&ndash;&gt;-->
                 <Ticket mainTitle="{culturalTicket.name}" isPassHeading="{false}" showBuyButton="{true}"
                         price="{culturalTicket.price}" includesArray="{culturalTicket.points}" description="{false}"
-                        on:buyClicked={() => {showDataForm()}}/>
+                        on:buyClicked={() => {showDataForm(culturalTicket.name)}}/>
             </div>
         {/each}
     </div>
@@ -613,7 +668,7 @@
                 <!--                 style="transform: translate(-{80 * (index+1)}%, -{20 * (index+1)}%) rotate(-{20 * (index+1)}deg); z-index: {culturalPasses.length - index+1}">-->
                 <Ticket mainTitle="{culturalTicket.name}" isPassHeading="{false}" showBuyButton="{true}"
                         price="{culturalTicket.price}" includesArray="{culturalTicket.points}" description="{false}"
-                        on:buyClicked={() => {showDataForm()}}/>
+                        on:buyClicked={() => {showDataForm(culturalTicket.name)}}/>
             </div>
         {/each}
     </div>
