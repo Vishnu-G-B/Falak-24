@@ -38,6 +38,8 @@
                 for (let event of data.eventList) {
                     if (event.attributes.EventPriority === eventPriority) {
                         selectedEvent = event;
+                        isSelectedTeamEvent = event.attributes.isTeamEvent;
+                        break;
                     }
                 }
             }
