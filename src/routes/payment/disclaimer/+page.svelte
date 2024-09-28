@@ -7,7 +7,7 @@
 </svelte:head>
 
 
-<div class="h-fit w-full bg-surface flex items-center justify-center mt-12 overflow-x-hidden">
+<div class="min-h-screen h-fit w-full bg-surface flex items-center justify-center mt-12 overflow-x-hidden">
     <div class="h-fit w-fit p-5 flex flex-col items-center justify-center">
         <p class="brand-font text-8xl w-full text-primary text-left">DISCLAIMER!</p>
         <p class="brand-font text-3xl w-full text-primary text-left">COME BACK TO THIS PAGE AFTER YOU HAVE COMPLETED
