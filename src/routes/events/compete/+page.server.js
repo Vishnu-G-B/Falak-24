@@ -109,6 +109,13 @@ export const actions = {
                         state: `?status=1&details=Already Registered For ${requiredEvent.EventName}`
                     }
                 } else {
+                    let registrationCount = await eventRegistration.countDocuments({event_priority: requiredEvent.EventPriority});
+                    if (registrationCount >= requiredEvent.maxTeamMembers) {
+                        return {
+                            success: false,
+                            state: `?status=1&details=Maximum Event Registrations Reached :(`
+                        }
+                    }
                     if (requiredEvent.isTeamEvent) {
                         // check if not part of any team
                         let member = await eventRegistration.findOne({
