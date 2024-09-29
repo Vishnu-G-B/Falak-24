@@ -52,7 +52,7 @@
     let culturalPasses = [
         {
             name: 'FLAGSHIP',
-            price: 699,
+            price: 749,
             points: ['Only for MAHE Students', 'Includes proshow + all the events for MAHE students'],
         },
         {
