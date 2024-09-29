@@ -74,7 +74,10 @@ export const actions = {
                 for (let i = 0; i < payments.data.docs.length; i++) {
                     console.log(payments.data.docs[i].event_name);
                     console.log(passMapping[payments.data.docs[i].event_name]);
-                    let trimmed = payments.data.docs[i].event_name.trim()
+                    let trimmed;
+                    if (payments.data.docs[i].event_name) {
+                        trimmed = payments.data.docs[i].event_name.trim();
+                    }
                     let passName = passMapping[trimmed];
 
                     if (passName !== undefined) {
