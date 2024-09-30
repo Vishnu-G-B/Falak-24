@@ -421,6 +421,7 @@
                 if (result.redirect) {
                     await goto('/payment/disclaimer');
                 } else {
+                    helperAnimations.stopLoadingPhase('ticket-buy');
                     updateStatus(result.state);
                 }
             }
