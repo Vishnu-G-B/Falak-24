@@ -59,13 +59,17 @@
 </script>
 <HelperAnimations bind:this={helperAnimations}/>
 
+<div class="w-full h-[6rem]"
+    style="display: {reactiveUserData !== undefined ? 'hidden': 'block'}"></div>
 <div class="min-h-screen h-fit w-full flex flex-col items-center justify-center">
     <div class="h-fit w-fit relative border-4 border-primary bg-surface flex flex-col items-start justify-center z-[6] px-5 pt-5 gap-5">
         <div class="h-fit w-fit flex flex-col gap-1">
             <p class="brand-font text-primary text-[40px] leading-8 tracking-wide">PASS VERIFICATION</p>
-            <p class="regular-font text-on-surface/70 text-lg leading-5 tracking-wide text-left mt-1">Enter the 6 digit
+            <p class="regular-font text-on-surface/70 text-lg leading-5 tracking-wide text-left mt-1">Enter the 6
+                digit
                 code on my-tickets route</p>
-            <p class="regular-font text-on-surface/70 text-lg leading-5 tracking-wide text-left mt-1">Code will always
+            <p class="regular-font text-on-surface/70 text-lg leading-5 tracking-wide text-left mt-1">Code will
+                always
                 be of length == 6</p>
         </div>
         <div class="h-fit w-full flex flex-col gap-2">
@@ -125,6 +129,7 @@
     {#if reactiveUserData}
         <div class="h-fit w-fit relative border-4 border-primary bg-surface flex flex-col items-start justify-center z-[6] px-5 pt-5 gap-5">
             <p class="regular-font text-on-surface">
+                <span class="brand-font text-5xl">USER DETAILS-> <br></span>
                 User Name: {reactiveUserData.user_name} <br>
                 User Phone Number: {reactiveUserData.userPhoneNumber} <br>
                 User Email: {reactiveUserData.email} <br>
@@ -134,6 +139,7 @@
         <div class="h-fit w-fit relative border-4 border-primary bg-surface flex flex-col items-start justify-center z-[6] px-5 pt-5 gap-5">
             {#if reactiveUserRegistrationData.is_team}
                 <p class="regular-font text-on-surface">
+                    <span class="brand-font text-5xl">REGISTRATION DETAILS-> <br></span>
                     Team Leader: {reactiveUserRegistrationData.email} <br>
                     Team Name: {reactiveUserRegistrationData.team_name} <br>
                     Event Name: {reactiveUserRegistrationData.event_name} <br>
@@ -151,7 +157,7 @@
                 </p>
             {/if}
         </div>
-        <form action="/ticket-verification?/markAttendance" method="post" use:enhance={async (event) => {
+        <form action="/ticket-verification?/markAttendance" method="post" class="h-fit w-fit mb-4" use:enhance={async (event) => {
             helperAnimations.animateLoadingPhase('get-details');
             attemptAttendanceMarking(event);
             return async ({result}) => {
@@ -163,7 +169,7 @@
                 }
             }
         }}>
-            <button class="w-full h-fit bg-primary text-on-surface text-3xl py-1 brand-font mt-4 pt-2 mb-2 uppercase relative"
+            <button class="w-full h-fit bg-primary text-on-surface text-3xl py-1 brand-font mt-4 pt-2 mb-2 uppercase relative px-2"
                     type="submit">
                 <p class="get-details-button-inner-text">
                     Mark Attendance
