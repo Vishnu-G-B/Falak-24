@@ -113,6 +113,7 @@ export const actions = {
                         }
                     }
                     if (payments.data.docs[i].esports) {
+                        console.log("Esports Generated through esports=True");
                         let esportsPassFound = await passes.findOne({
                             email: session.user.email,
                             pass_name: 'Esports',
