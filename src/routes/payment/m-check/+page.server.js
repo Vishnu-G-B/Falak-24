@@ -157,6 +157,11 @@ export const actions = {
         }
         try {
             const email = session.user.email;
+            const userPasses = await passes.find({email: email}).toArray();
+            if (userPasses.length !== 0) {
+                return {success: false, message: "You cannot change your phone number if you have already have a pass! Contact IT.",code:"scamPt"};
+            }
+            console.log(userPasses.length);
             const foundUser = await user.findOne({email});
             if (!foundUser) {
                 return {success: false, message: "User not authenticated"};

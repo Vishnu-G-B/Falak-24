@@ -160,6 +160,10 @@
                         })
                         setTimeout(() => {history.replaceState(null, '', $page.url.pathname)},5000);
                     } else {
+                        if(result.data?.code === "scamPt"){
+                            console.log("Potentially someone trying to be clever");
+                            await goto(`/my-tickets?status=1&details=${result.data.message}`);
+                        }
                         updatePhoneNumberMessage = result.data.message;
                         setTimeout(() => {updatePhoneNumberMessage = ''},5000);
                     }

@@ -203,10 +203,11 @@
     <div id="main-events"
          class="flex flex-col items-center gap-5 justify-center min-h-screen relative w-full overflow-hidden">
 
-        <div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[535px] eventdiv">
+        <div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[470px] sm:h-[535px] eventdiv">
             <div class="w-full h-full absolute flex flex-col flex-shrink-0 overflow-hidden bg-surface z-[2] p-main-div origin-bottom-left">
-                <div class="flex flex-col items-start justify-center px-1 h-full">
-                    <img src="{singerImg}" alt="Singer" class="h-full w-full object-cover imagediv" loading="eager">
+                <div class="flex flex-col items-start justify-center sm:px-1 h-full">
+                    <img src="{singerImg}" alt="Singer" class="h-full w-full object-contain sm:object-cover imagediv"
+                         loading="eager">
                 </div>
                 <div class="absolute left-0 bg-primary w-[5px] h-full"></div>
                 <div class="absolute top-0 bg-primary h-[5px] w-full"></div>
@@ -214,7 +215,7 @@
                 <div class="absolute right-0 bg-primary w-[5px] h-full"></div>
             </div>
         </div>
-        <div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[525px] eventdiv">
+        <div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[470px] sm:h-[535px] eventdiv">
             <div class="w-full h-full absolute flex flex-col flex-shrink-0 overflow-hidden bg-surface z-[2] p-main-div origin-bottom-left">
                 <div class="flex flex-col items-start justify-center px-1 h-full">
                     <img src="{standupImg}" alt="Singer" class="h-full w-full object-cover imagediv" loading="lazy">
