@@ -1,3 +1,4 @@
+// +page.server.js
 import {MongoClient} from "mongodb";
 import * as dotenv from 'dotenv';
 import {redirect} from "@sveltejs/kit";
@@ -50,6 +51,10 @@ export const load = async (event) => {
     if (!foundUser) {
         redirect(302, '/?status=1&details=User%20Not%20Registered');
     }
+    return {
+        email: foundUser.email,
+        phoneNumber: foundUser.userPhoneNumber,
+    }
 }
 
 
@@ -74,7 +79,10 @@ export const actions = {
                 for (let i = 0; i < payments.data.docs.length; i++) {
                     console.log(payments.data.docs[i].event_name);
                     console.log(passMapping[payments.data.docs[i].event_name]);
-                    let trimmed = payments.data.docs[i].event_name.trim()
+                    let trimmed;
+                    if (payments.data.docs[i].event_name) {
+                        trimmed = payments.data.docs[i].event_name.trim();
+                    }
                     let passName = passMapping[trimmed];
 
                     if (passName !== undefined) {
@@ -134,6 +142,46 @@ export const actions = {
                 redirect(302, '/my-tickets?status=2&details=Tickets%20Generated!');
             }
         }
+    },
+    updatePhoneNumber: async (event) => {
+        const session = await event.locals.auth();
+        if (!session?.user) {
+            redirect(302, '/tickets?status=1&details=Sign In To Access');
+        }
+
+        const data = await event.request.formData();
+        const newPhoneNumber = data.get('newPhoneNumber').trim();
+        const phoneNumberRegex = /^[0-9]{10}$/;
+        if (!phoneNumberRegex.test(newPhoneNumber)) {
+            return {success: false, message: "Invalid phone number format"};
+        }
+        try {
+            const email = session.user.email;
+            const foundUser = await user.findOne({email});
+            if (!foundUser) {
+                return {success: false, message: "User not authenticated"};
+            }
+            const existingUser = await user.findOne({userPhoneNumber: newPhoneNumber});
+            console.log(existingUser);
+            if (existingUser) {
+                return {success: false, message: "This phone number is already associated with another account"};
+            }
+
+            const result = await user.updateOne(
+                {email: email},
+                {$set: {userPhoneNumber: newPhoneNumber}}
+            );
+
+            if (result.modifiedCount === 1) {
+                return {success: true, message: "Phone number updated successfully!"};
+            } else {
+                return {success: false, message: "Failed to update phone number, contact IT."};
+            }
+        } catch (error) {
+            console.error("Error updating phone number:", error);
+            return {success: false, message: "An error occurred while updating the phone number"};
+        }
+
     }
 }
 
