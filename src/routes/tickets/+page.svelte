@@ -457,7 +457,7 @@
                     as they will be used to verify your pass purchase!</p>
             </div>
             <div class="h-fit w-full flex flex-col gap-2">
-                <form action="?/registerUserAndProceed" method="post" use:enhance={(event)=>{
+                <form action="/tickets?/registerUserAndProceed" method="post" use:enhance={(event)=>{
                     helperAnimations.animateLoadingPhase('user-register');
                     attemptPayment(event)
                     return async ({result}) => {

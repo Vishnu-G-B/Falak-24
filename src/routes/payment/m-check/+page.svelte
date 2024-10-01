@@ -119,12 +119,12 @@
     <div class="h-screen w-full flex flex-col items-center justify-center backdrop-blur-2xl
             absolute top-full left-1/2 transform -translate-x-1/2 z-10"
          id="updatePhoneNumberDiv">
-        <div class="h-[450px] mt-14 bg-surface flex flex-col items-center justify-start w-[320px] sm:w-[375px] relative">
+        <div class="h-[450px] mt-14 bg-surface flex flex-col items-center justify-between pb-6 w-[320px] sm:w-[375px] relative">
             <div class="flex flex-row justify-between items-center text-on-surface flex-wrap">
                 <div class="flex flex-row justify-between items-center">
                     <p class="text-5xl brand-font text-on-surface mt-[20px] ml-[24px] mr-[24px] uppercase">
                         MADE A PAYMENT
-                        BUT DID NOT GET THE PASS . . . </p>
+                        BUT DID NOT GET THE PASS </p>
                 </div>
                 <div class="flex flex-col justify-between items-center">
                     <p class="text-lg regular-font text-on-surface mt-2 ml-[20px] mr-[20px] text-left">
