@@ -6,7 +6,8 @@
     import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
     import {ScrollToPlugin} from "gsap/dist/ScrollToPlugin";
     import {onMount} from "svelte";
-    import barcode from "$lib/assets/images/svgs/updated_2.svg";
+    import singerImg from "$lib/assets/images/eventImages/monali_thaakur_poster.webp";
+    import standupImg from "$lib/assets/images/eventImages/stand_up.webp";
 
     let subnavOpen = false;
 
@@ -198,68 +199,31 @@
         <p class="text-2xl lg:text-2xl xl:text-3xl regular-font esports-pass-text-main"></p>
     </div>
 </div>
-<div class="flex flex-col mt-10 flex-wrap gap-[20rem] items-center justify-center min-h-screen relative w-full
+<div class="flex flex-col mt-20 flex-wrap gap-[20rem] items-center justify-center min-h-screen relative w-full
             overflow-hidden mb-14">
     <div id="main-events"
          class="flex flex-col items-center gap-5 justify-center min-h-screen relative w-full overflow-hidden">
 
-        <div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[475px] eventdiv">
+        <div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[535px] eventdiv">
             <div class="w-full h-full absolute flex flex-col flex-shrink-0 overflow-hidden bg-surface z-[2] p-main-div origin-bottom-left">
-                <div class="flex flex-col items-start justify-center mt-6 pl-6 pr-6 h-full">
-                    <div class="w-full absolute left-0 -bottom-[28%] sm:-bottom-[32%]">
-                        <img src="{barcode}" alt="" class="object-fill fill-on-surface/20 w-full">
-                    </div>
-                    <p class="text-[10px] text-on-surface regular-font font-thin">WHEN</p>
-                    <div class="flex flex-row items-end justify-between w-full mt-5">
-                        <div class="flex flex-col items-start justify-center">
-                            <p class="text-5xl text-on-surface/70 brand-font">OCTOBER</p>
-                            <p class="text-5xl text-on-surface/70 brand-font">2024</p>
-                        </div>
-                        <p class="text-8xl text-on-surface/70 brand-font leading-[1]">07</p>
-                    </div>
-                    <div class="h-[20px] w-full bg-primary mt-4"></div>
-                    <div class="w-full flex flex-col items-start pt-2 bg-surface -translate-x-[25px] z-[2] mt-5">
-                        <p class="brand-font text-6xl text-on-surface">Pro-Show</p>
-                    </div>
-                    <div class="h-full w-full flex flex-col items-start justify-between z-[2] relative">
-                        <p class="regular-font text-xl text-on-surface/80"></p>
-                    </div>
-
+                <div class="flex flex-col items-start justify-center px-1 h-full">
+                    <img src="{singerImg}" alt="Singer" class="h-full w-full object-cover">
                 </div>
-                <div class="w-full h-fit flex flex-row items-center justify-between gap-5 px-10
-                    absolute bottom-7 left-1/2 transform -translate-x-1/2 z-10">
-                    <button class="h-fit w-full bg-primary p-1 regular-font text-on-surface"
-                            on:click={() => {showDetail("p")}}>
-                        Details
-                    </button>
-                </div>
-                <div class="absolute left-0 bg-primary w-[14px] h-full"></div>
-                <div class="absolute top-0 bg-primary h-[14px] w-full"></div>
-                <div class="absolute bottom-0 bg-primary h-[14px] w-full"></div>
-                <div class="absolute right-0 bg-primary w-[14px] h-full"></div>
+                <div class="absolute left-0 bg-primary w-[5px] h-full"></div>
+                <div class="absolute top-0 bg-primary h-[5px] w-full"></div>
+                <div class="absolute bottom-0 bg-primary h-[5px] w-full"></div>
+                <div class="absolute right-0 bg-primary w-[5px] h-full"></div>
             </div>
-            <div class="w-full h-full absolute flex-shrink-0 flex flex-col overflow-hidden bg-surface p-description-div origin-bottom-left"
-                 style="transform: translate3d(-80%, -20%, 0) rotate(-20deg); opacity: 0;">
-                <div class="flex flex-col items-start justify-start mt-3 px-4 pb-4 pt-1 h-full w-full">
-                    <div class="w-full absolute left-0 -bottom-[28%] sm:-bottom-[32%]">
-                        <img src="{barcode}" alt="" class="object-fill fill-on-surface/20 w-full">
-                    </div>
-                    <div class="w-full h-full flex justify-center items-center bg-surface text-center text-on-surface
-                                text-6xl brand-font px-2">
-                        Details will be announced soon!
-                    </div>
+        </div>
+        <div class="relative w-[320px] min-[375px]:w-[325px] sm:w-[400px] h-[525px] eventdiv">
+            <div class="w-full h-full absolute flex flex-col flex-shrink-0 overflow-hidden bg-surface z-[2] p-main-div origin-bottom-left">
+                <div class="flex flex-col items-start justify-center px-1 h-full">
+                    <img src="{standupImg}" alt="Singer" class="h-full w-full object-cover">
                 </div>
-                <div class="w-full h-fit flex flex-row items-center justify-between gap-5 px-10
-                    absolute bottom-7 left-1/2 transform -translate-x-1/2 z-10">
-                    <button class="h-fit w-full bg-primary p-1 regular-font text-on-surface"
-                            on:click={() => {hideDetail("p")}}>
-                        Back
-                    </button>
-                </div>
-                <div class="absolute left-0 bg-primary w-[14px] h-full"></div>
-                <div class="absolute top-0 bg-primary h-[14px] w-full"></div>
-                <div class="absolute bottom-0 bg-primary h-[14px] w-full"></div>
-                <div class="absolute right-0 bg-primary w-[14px] h-full"></div>
+                <div class="absolute left-0 bg-primary w-[5px] h-full"></div>
+                <div class="absolute top-0 bg-primary h-[5px] w-full"></div>
+                <div class="absolute bottom-0 bg-primary h-[5px] w-full"></div>
+                <div class="absolute right-0 bg-primary w-[5px] h-full"></div>
             </div>
         </div>
         <!--{#each data.main_events as mainevent}-->
