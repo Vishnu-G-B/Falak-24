@@ -20,7 +20,7 @@ let passMapping = {
     'eSports': 'Esports',
     'Mono Acting': 'Mono Acting NM',
     'Fashion Show': 'Fashion Show NM',
-    'Battle Of Bands': 'BOB NM',
+    'Battle of Bands': 'BOB NM',
     'Drama': 'Drama NM',
     'Photography': 'Photo-Op NM',
     'Short Film Making': 'Film Making NM',
@@ -77,8 +77,8 @@ export const actions = {
 
             if (payments.data.totalPages === 1) {
                 for (let i = 0; i < payments.data.docs.length; i++) {
-                    console.log(payments.data.docs[i].event_name);
-                    console.log(passMapping[payments.data.docs[i].event_name]);
+                    console.log("Event Name as per Manipal API", payments.data.docs[i].event_name);
+                    console.log("Event mapping as per our Database", passMapping[payments.data.docs[i].event_name]);
                     let trimmed;
                     if (payments.data.docs[i].event_name) {
                         trimmed = payments.data.docs[i].event_name.trim();
@@ -159,7 +159,11 @@ export const actions = {
             const email = session.user.email;
             const userPasses = await passes.find({email: email}).toArray();
             if (userPasses.length !== 0) {
-                return {success: false, message: "You cannot change your phone number if you have already have a pass! Contact IT.",code:"scamPt"};
+                return {
+                    success: false,
+                    message: "You cannot change your phone number if you have already have a pass! Contact IT.",
+                    code: "scamPt"
+                };
             }
             console.log(userPasses.length);
             const foundUser = await user.findOne({email});
