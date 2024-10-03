@@ -14,7 +14,7 @@
     import ccc from "$lib/assets/images/logos/CancelCulture_logo.webp";
 </script>
 
-<div class="h-[980px] w-[325px] sm:w-[375px] bg-primary relative mx-auto mt-1">
+<div class="h-[910px] sm:h-[980px] w-[325px] sm:w-[375px] bg-primary relative mx-auto mt-1">
     <div class="h-fit w-full text-on-surface brand-font text-[4.3rem] sm:text-[5rem] text-center uppercase tracking-wide">
         Falak&nbsp;Festival
     </div>
