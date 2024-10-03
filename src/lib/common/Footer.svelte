@@ -8,18 +8,37 @@
     import {goto} from "$app/navigation";
     import {signIn} from "@auth/sveltekit/client";
     import {page} from "$app/stores";
+    import beardoLogo from "$lib/assets/images/logos/berado_logo.webp";
+    import spykartLogo from "$lib/assets/images/logos/Spykar-Logo.webp";
+    import Findoc from "$lib/assets/images/logos/Findoc_Logo.webp";
+    import ccc from "$lib/assets/images/logos/CancelCulture_logo.webp";
 </script>
 
-<div class="h-[380px] w-[325px] sm:w-[375px] bg-primary relative mx-auto mt-1">
-    <!--    <div class="h-fit w-full text-surface brand-font text-9xl text-center uppercase self-start">FALAK</div>-->
-    <!--    <div class="h-1/4 w-full flex justify-center overflow-hidden -mb-10">-->
-    <!--        <img src="{barcodeImg}" alt="barcode" class="h-full w-[85%] object-cover">-->
-    <!--    </div>-->
+<div class="h-[980px] w-[325px] sm:w-[375px] bg-primary relative mx-auto mt-1">
     <div class="h-fit w-full text-on-surface brand-font text-[4.3rem] sm:text-[5rem] text-center uppercase tracking-wide">
         Falak&nbsp;Festival
     </div>
     <div class="h-[55px] w-[89%] mx-auto -mt-6 sm:-mt-8">
-        <img src="{barcodeImg}" alt="barcode" class="w-full h-full object-cover">
+        <img src="{barcodeImg}" alt="barcode" class="w-full h-full object-cover" loading="lazy">
+    </div>
+    <div class="h-fit w-full text-on-surface brand-font text-[4rem] sm:text-[4.5rem] text-center uppercase tracking-wide">
+        Our Sponsors
+    </div>
+    <div class="w-full h-fit flex justify-center items-center px-5 mb-8 flex-col -mt-6">
+        <!--        <div class="brand-font text-[2rem] text-on-surface">Style Partner</div>-->
+        <img src="{beardoLogo}" alt="logo 1" class="w-full h-full object-cover bg-on-surface p-2 " loading="lazy">
+    </div>
+    <div class="w-full h-fit flex justify-center items-center px-5 mb-8 flex-col -mt-4">
+        <!--        <div class="brand-font text-[2rem] text-on-surface">Fashion Partner</div>-->
+        <img src="{spykartLogo}" alt="logo 1" class="w-full h-full object-cover bg-on-surface" loading="lazy">
+    </div>
+    <div class="w-full h-fit flex justify-center items-center px-5 mb-8 flex-col -mt-4">
+        <!--        <div class="brand-font text-[2rem] text-on-surface">Trading Partner</div>-->
+        <img src="{Findoc}" alt="logo 1" class="w-full h-full object-cover p-2" loading="lazy">
+    </div>
+    <div class="w-full h-fit flex justify-center items-center px-5 mb-8 flex-col -mt-4">
+        <!--        <div class="brand-font text-[2rem] text-on-surface">Clothing Partner</div>-->
+        <img src="{ccc}" alt="logo 1" class="w-full h-[134px] object-cover p-2 bg-surface" loading="lazy">
     </div>
     <button class="h-fit w-[90%] mx-auto flex justify-between items-center border-2 border-black bg-surface text-on-surface
                     hover:bg-on-surface hover:text-black py-2 px-3 group mt-4" on:click={async () => {
@@ -40,23 +59,17 @@
               </svg>
             </span>
     </button>
-    <div class="w-full h-fit flex justify-center items-center mt-7">
+    <div class="w-full h-fit flex justify-center items-center mt-3">
         <div class="h-fit w-3/4 flex justify-center items-center gap-2">
             <button class="h-[48px] w-[48px] bg-surface p-1.5"
                     on:click={() => {window.open("https://www.instagram.com/falak.mitblr?igsh=MTZlZjZ2bzRkemlzaA==","_blank")}}>
                 <img src="{instagram}" alt="instagram logo" class="w-full h-full object-cover">
             </button>
-            <!--            <button class="h-[48px] w-[48px] bg-surface p-1.5">-->
-            <!--                <img src="{twitter}" alt="twitter logo" class="w-full h-full object-cover">-->
-            <!--            </button>-->
             <button class="h-[48px] w-[48px] bg-surface p-1.5"
                     on:click={() => {window.open("https://www.linkedin.com/company/falakmitb/","_blank")}}>
                 <img src="{linkedin}" alt="linkedin logo" class="w-full h-full object-cover"
                 >
             </button>
-            <!--            <button class="h-[48px] w-[48px] bg-surface p-1.5">-->
-            <!--                <img src="{meta}" alt="meta logo" class="w-full h-full object-cover">-->
-            <!--            </button>-->
         </div>
     </div>
     <div class="h-[400px] w-[90%] absolute -bottom-[21rem] left-1/2 transform -translate-x-1/2 z-10 overflow-visible">
