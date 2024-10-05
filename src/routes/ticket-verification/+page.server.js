@@ -26,8 +26,11 @@ export const load = async (event) => {
         redirect(302, '/?status=1&details=Not Authorised');
     }
 
-    let permissions = foundMapping.event_access.split(',');
+    let permissions = foundMapping.event_access.split(',').filter(function (x) {
+        return x != "";
+    });
     let allowedEvents = [];
+    console.log(permissions);
     if (permissions[0] !== 'ALL#') {
         for (let permission of permissions) {
             let apiEventsURL = `https://cms.mitblrfest.org/api/events?filters[EventPriority][$eq]=${permission}`;
@@ -202,7 +205,7 @@ export const actions = {
             email: foundUser.email,
             event_priority: requiredEvent.EventPriority,
         });
-        if(foundMarked){
+        if (foundMarked) {
             return {
                 success: false,
                 state: '?status=1&details=User Already Marked',
