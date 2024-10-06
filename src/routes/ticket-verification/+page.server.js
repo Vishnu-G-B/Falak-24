@@ -121,18 +121,27 @@ export const actions = {
             }
         }
 
-        const foundUserRegistration = await eventRegistration.findOne({
-            email: foundPass.email,
-            event_priority: requiredEvent.EventPriority,
-        }, {projection: {_id: 0}});
-        if (!foundUserRegistration) {
-            return {
-                success: false,
-                state: '?status=1&details=User Not Registered For This Event But The Pass Exists'
+        if (eventPriority.toString() !== '1') {
+            const foundUserRegistration = await eventRegistration.findOne({
+                email: foundPass.email,
+                event_priority: requiredEvent.EventPriority,
+            }, {projection: {_id: 0}});
+            if (!foundUserRegistration) {
+                return {
+                    success: false,
+                    state: '?status=1&details=User Not Registered For This Event But The Pass Exists'
+                }
             }
+            return {success: true, foundUser: foundUser, foundEventRegistration: foundUserRegistration};
+        } else {
+            return {
+                success: true,
+                foundUser: foundUser,
+                foundEventRegistration: {event_priority: "1", email: foundPass.email, event_name: "Proshow"}
+            };
         }
 
-        return {success: true, foundUser: foundUser, foundEventRegistration: foundUserRegistration};
+
     },
 
     markAttendance: async (event) => {

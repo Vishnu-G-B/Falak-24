@@ -60,7 +60,7 @@
 <HelperAnimations bind:this={helperAnimations}/>
 
 <div class="w-full h-[6rem]"
-    style="display: {reactiveUserData !== undefined ? 'hidden': 'block'}"></div>
+     style="display: {reactiveUserData !== undefined ? 'hidden': 'block'}"></div>
 <div class="min-h-screen h-fit w-full flex flex-col items-center justify-center">
     <div class="h-fit w-fit relative border-4 border-primary bg-surface flex flex-col items-start justify-center z-[6] px-5 pt-5 gap-5">
         <div class="h-fit w-fit flex flex-col gap-1">
@@ -129,7 +129,7 @@
     {#if reactiveUserData}
         <div class="h-fit w-fit relative border-4 border-primary bg-surface flex flex-col items-start justify-center z-[6] px-5 pt-5 gap-5">
             <p class="regular-font text-on-surface">
-                <span class="brand-font text-5xl">USER DETAILS-> <br></span>
+                <span class="brand-font text-5xl">USER DETAILS: <br></span>
                 User Name: {reactiveUserData.user_name} <br>
                 User Phone Number: {reactiveUserData.userPhoneNumber} <br>
                 User Email: {reactiveUserData.email} <br>
@@ -139,7 +139,7 @@
         <div class="h-fit w-fit relative border-4 border-primary bg-surface flex flex-col items-start justify-center z-[6] px-5 pt-5 gap-5">
             {#if reactiveUserRegistrationData.is_team}
                 <p class="regular-font text-on-surface">
-                    <span class="brand-font text-5xl">REGISTRATION DETAILS-> <br></span>
+                    <span class="brand-font text-5xl">REGISTRATION DETAILS: <br></span>
                     Team Leader: {reactiveUserRegistrationData.email} <br>
                     Team Name: {reactiveUserRegistrationData.team_name} <br>
                     Event Name: {reactiveUserRegistrationData.event_name} <br>
